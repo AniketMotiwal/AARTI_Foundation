@@ -1,0 +1,633 @@
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@keyframes textAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .animate-text {
+    background-size: 200% 200%;
+    animation: textAnimation 3s linear infinite;
+  }
+  
+  .animate-text1 {
+    background: linear-gradient(90deg, #FF0000, #00FF00, #0000FF, #FFFF00, #FF00FF);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textAnimation 3s linear infinite;
+  }
+
+  .text-gradient {
+    background: linear-gradient(to right, #f39c12, #e74c3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .text-shadow {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  @keyframes textAnimation {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  }
+  
+  .animate-text {
+    animation: textAnimation 1s ease-in-out infinite;
+  }
+  /* In a global CSS file or within a <style> tag */
+.text-justify {
+  text-align: justify;
+}
+
+.innovation-container {
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #fcb69f);
+  background-size: 400% 400%;
+  animation: gradientBackground 15s ease infinite;
+  border-radius: 15px;
+}
+
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.door-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.door-button:hover {
+  background-color: #0056b3;
+}
+
+.cuboid {
+  margin: 20px auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  perspective: 1000px;
+}
+
+.cuboid-content {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  transition: border-color 0.5s ease, transform 0.5s ease;
+}
+
+.cuboid-content:hover {
+  border-color: #007bff;
+  transform: rotateY(10deg) rotateX(5deg);
+}
+
+.highlight-on-hover {
+  transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.highlight-on-hover:hover {
+  color: #007bff;
+  font-weight: bold;
+}
+.all {
+  display: flex;
+  perspective: 1000px;
+  transform: perspective(300px) rotateX(20deg);
+  will-change: transform;
+  perspective-origin: center center;
+  transition: all 1.3s ease-out;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+/* Ensure -moz prefixes are added for Firefox compatibility */
+.all:hover {
+  perspective: 10000px;
+  transition: all 1.3s ease-in;
+  transform: perspective(10000px) rotateX(0deg);
+  -webkit-transform: perspective(10000px) rotateX(0deg);
+  -moz-transform: perspective(10000px) rotateX(0deg);
+  .text {
+    opacity: 1;
+  }
+  & > div {
+    opacity: 1;
+    transition-delay: 0s;
+  }
+  .center-box {
+    opacity: 0;
+  }
+}
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+.typing-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid; /* Cursor (bar) */
+  animation: typing 6s steps(50, end) infinite, blink 0.75s step-end infinite;
+  font-family: 'Courier New', Courier, monospace;
+  width: 0; /* Start with zero width to enable typing effect */
+}
+
+.typing-effect-show {
+  animation: typing 6s steps(50, end) forwards, blink 0.75s step-end infinite;
+  width: 100%; /* Ensure full width after typing */
+}
+
+/* Smart centres */
+.smart-centers-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.smart-centers-container h1 {
+  font-size: 1.5em; /* Medium size for h1 */
+  font-weight: bold;
+  margin: 66px; /* Remove default margin */
+  padding-top: 20px; /* Add some padding from the top */
+  color: #333;
+}
+
+
+
+.pillars {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.pillar {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  width: 18%;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pillar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.pillar h3 {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-top: 60px; /* Reduced margin */
+  color: #555;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: -30px; /* Adjusted for reduced margin */
+  left: calc(50% - 40px);
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.icon img {
+  max-width: 60%;
+  max-height: 60%;
+}
+
+/* Fire Animation */
+.fire-animation .icon {
+  animation: fire 2s infinite;
+}
+
+@keyframes fire {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+  }
+}
+
+/* Water Animation */
+.water-animation .icon {
+  animation: water 2s infinite;
+}
+
+@keyframes water {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 0, 255, 0.8);
+  }
+}
+
+@media (max-width: 1024px) {
+  .pillars {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pillar {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pillar {
+    width: 100%;
+  }
+
+  .icon {
+    top: -20px;
+    left: calc(50% - 30px);
+  }
+}
+
+.pillars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust the gap between pillars as needed */
+}
+
+.pillar {
+  position: relative; /* Required for positioning the pop-up list */
+  padding: 10px; /* Padding around the pillar */
+  border: 1px solid #ddd; /* Optional border */
+  border-radius: 8px; /* Rounded corners */
+  transition: transform 0.3s; /* Smooth scaling effect */
+}
+
+.pillar:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+
+/* modal */
+
+/* Modal Styles */
+/* Modal Styles */
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure modal is above other content */
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80%;
+  overflow-y: auto; /* Allows scrolling if content overflows */
+  z-index: 1001; /* Ensure modal content is above the overlay */
+}
+
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+/* List Styles */
+.modal-content ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.modal-content li {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Adjusts spacing between content */
+}
+
+.modal-content li:hover {
+  background: #e0e0e0;
+  border-color: #bbb;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Add these styles to your CSS file or Tailwind CSS configuration */
+/* Add these styles to your CSS file or Tailwind CSS configuration */
+.circles-container {
+  display: flex;
+  justify-content: flex-end; /* Aligns the circles to the right */
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.circle {
+  width: 100px; /* Increase size if needed */
+  height: 100px;
+  border-radius: 50%; /* Ensures circular shape */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  margin: 10px;
+  padding: 5px;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer; /* Ensures it's clear the circle is clickable */
+  z-index: 1; /* Make sure it stays above other elements */
+}
+
+.circle h4 {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden; /* Initially hidden */
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  font-size: 14px;
+  color: black;
+}
+
+.circle:hover h4 {
+  opacity: 1;
+  visibility: visible; /* Show the heading on hover */
+}
+
+.circle span {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.circle:hover span {
+  opacity: 0; /* Hide the default text on hover */
+}
+
+.circle:hover {
+  transform: scale(1.1); /* Slightly enlarge the circle on hover */
+}
+
+.arrow {
+  position: absolute;
+  bottom: 10px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Arrow shape */
+  transform: translateY(10px); /* Start position of the arrow */
+  transition: transform 0.3s ease; /* Animation for arrow */
+}
+
+.circle:hover .arrow {
+  transform: translateY(0); /* Move arrow up on hover */
+}
+
+.green-circle {
+  background-color: green;
+}
+
+.yellow-circle {
+  background-color: yellow;
+  color: black;
+}
+
+
+.pillars {
+  margin-top: 20px; /* Ensure there is space between circles and the pillars section */
+}
+.pillar.yellow-bg {
+  background-color: yellow;
+}
+
+.pillar.green-bg {
+  background-color: green;
+}
+
+.pillar.half-yellow-half-green {
+  background: linear-gradient(to right, yellow 50%, green 50%);
+}
+.pillars h3 {
+  font-weight: bold; /* Make the text bold */
+  color: #333; /* Darker attractive color, you can adjust this */
+}
+
+/* strategic partners */
+/* styles.css */
+a:active {
+  @apply bg-yellow-300;
+}
+
+/* border */
+
+/* Process.css */
+/* Process.css */
+/* Bounce animation for both cards and arrow icons */
+
+.glow {
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6), 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.4), 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* animation */
+@keyframes bubble {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  animation: bubble 6s infinite;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* iPhone 12 Pro and iPhone 14 Pro */
+@media only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
+  .header-container {
+    /* Adjust header styles for iPhone 12 Pro and iPhone 14 Pro */
+    padding-top: 0; /* Adjust padding-top as needed */
+    padding-bottom: 0; /* Adjust padding-bottom as needed */
+    font-size: 1.25rem; /* Adjust font size if needed */
+  }
+
+  .header-container img {
+    /* Adjust image sizes for better fit */
+    width: 24px; /* Example adjustment */
+    height: 24px; /* Example adjustment */
+  }
+
+  .header-container h2 {
+    /* Adjust heading styles */
+    font-size: 2rem; /* Example adjustment */
+    line-height: 1.2; /* Example adjustment */
+  }
+
+  .header-container p {
+    /* Adjust paragraph styles */
+    font-size: 1rem; /* Example adjustment */
+  }
+}
+
+/* iPhone 12 Pro Max */
+@media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+  .header-container {
+    /* Adjust header styles for iPhone 12 Pro Max */
+    padding-top: 0; /* Adjust padding-top as needed */
+    padding-bottom: 0; /* Adjust padding-bottom as needed */
+    font-size: 1.5rem; /* Adjust font size if needed */
+  }
+
+  .header-container img {
+    /* Adjust image sizes for better fit */
+    width: 28px; /* Example adjustment */
+    height: 28px; /* Example adjustment */
+  }
+
+  .header-container h2 {
+    /* Adjust heading styles */
+    font-size: 2.5rem; /* Example adjustment */
+    line-height: 1.3; /* Example adjustment */
+  }
+
+  .header-container p {
+    /* Adjust paragraph styles */
+    font-size: 1.2rem; /* Example adjustment */
+  }
+}
+@keyframes colorChange {
+  0% { color: #ffffff; } /* Starting color */
+  25% { color: #191717; } /* Intermediate color 1 */
+  50% { color: #e1ede3; } /* Intermediate color 2 */
+  75% { color: #33eeff; } /* Intermediate color 3 */
+  100% { color: #ffffffa9; } /* Ending color (same as starting) */
+}
+
+.color-changing {
+  animation: colorChange 5s infinite; /* Duration and iteration count */
+}
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes colorChange {
+  0% { color: #ff0000; }
+  25% { color: #00ff00; }
+  50% { color: #0000ff; }
+  75% { color: #ff00ff; }
+  100% { color: #ff0000; }
+}
+
+.animate-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 10s linear infinite, colorChange 4s linear infinite;
+}
+
+
