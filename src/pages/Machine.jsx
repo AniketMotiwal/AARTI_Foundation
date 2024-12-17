@@ -1,5 +1,5 @@
 import React from 'react';
-import Cell from 'C:/Aaarti/my-project/src/assets/cell.webp';
+import Cell from '/src/assets/cell.webp';
 
 const Machine = () => {
   return (

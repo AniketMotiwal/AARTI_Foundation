@@ -1,8 +1,8 @@
 import React from 'react';
-import AIimg from 'C:/Aaarti/my-project/src/assets/AIimg.webp';
-import factory from 'C:/Aaarti/my-project/src/assets/factory.webp';
-import emulation from 'C:/Aaarti/my-project/src/assets/emulation.webp';
-import iot from 'C:/Aaarti/my-project/src/assets/iot.webp';
+import AIimg from '/src/assets/AIimg.webp';
+import factory from '/src/assets/factory.webp';
+import emulation from '/src/assets/emulation.webp';
+import iot from '/src/assets/iot.webp';
 const Research = () => {
   const topics = [
     { title: 'AI-Based Manufacturing', description: 'Leveraging AI in manufacturing.', image: AIimg },

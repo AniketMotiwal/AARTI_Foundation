@@ -1,5 +1,5 @@
 import React from 'react';
-import flag from 'C:/Aaarti/my-project/src/assets/flag.png';
+import flag from '/src/assets/flag.png';
 
 const MakeInIndia = () => {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import logo from 'C:/Aaarti/my-project/src/assets/logo.png'; 
-import akon from 'C:/Aaarti/my-project/src/assets/Akon.png';
-import iit from 'C:/Aaarti/my-project/src/assets/iit.png';
+import logo from '/src/assets/logo.png'; 
+import akon from 'src/assets/Akon.png';
+import iit from '/src/assets/iit.png';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Header = () => {

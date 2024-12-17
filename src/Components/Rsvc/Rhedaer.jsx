@@ -1,7 +1,7 @@
 import React from 'react';
-import iit from 'C:/Aaarti/my-project/src/assets/iit.webp'; // Update path as needed
-import rscvc1 from 'C:/Aaarti/my-project/src/assets/rscvcbg.webp'; // Update path as needed
-import logo from 'C:/Aaarti/my-project/src/assets/logo.webp'; // Update path as needed
+import iit from '/src/assets/iit.webp'; // Update path as needed
+import rscvc1 from '/src/assets/rscvcbg.webp'; // Update path as needed
+import logo from '/src/assets/logo.webp'; // Update path as needed
 
 const Rhedaer = () => {
   return (

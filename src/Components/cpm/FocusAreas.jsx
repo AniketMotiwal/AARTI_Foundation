@@ -1,8 +1,8 @@
 import React from 'react';
-import icon from 'C:/Aaarti/my-project/src/assets/icon.webp';
-import smart from 'C:/Aaarti/my-project/src/assets/smart.webp';
-import sustainimg from 'C:/Aaarti/my-project/src/assets/sustainimg.webp';
-import upkskill from 'C:/Aaarti/my-project/src/assets/upkskill.webp';
+import icon from '/src/assets/icon.webp';
+import smart from '/src/assets/smart.webp';
+import sustainimg from '/src/assets/sustainimg.webp';
+import upkskill from '/src/assets/upkskill.webp';
 import Logos from '../cpm/Logos';
 
 const FocusAreas = () => {

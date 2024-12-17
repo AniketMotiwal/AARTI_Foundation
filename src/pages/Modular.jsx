@@ -1,6 +1,6 @@
 import React from 'react';
 import 'tailwindcss/tailwind.css'; // Ensure Tailwind CSS is imported
-import motor from 'C:/Aaarti/my-project/src/assets/motor.webp';
+import motor from '/src/assets/motor.webp';
 
 const Modular = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import process from 'C:/Aaarti/my-project/src/assets/process.png';
+import process from '/src/assets/process.png';
 
 const Process = () => {
   return (

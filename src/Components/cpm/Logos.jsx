@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Akon from 'C:/Aaarti/my-project/src/assets/Akon.webp';
-import iit from 'C:/Aaarti/my-project/src/assets/iit.webp'; // Import additional logos
+import Akon from '/src/assets/Akon.webp';
+import iit from '/src/assets/iit.webp'; // Import additional logos
 
 const Logos = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

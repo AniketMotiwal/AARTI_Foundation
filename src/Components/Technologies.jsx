@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 // Import your images here
-import Picture2 from 'C:/Aaarti/my-project/src/assets/Picture2.webp';
-import motor from 'C:/Aaarti/my-project/src/assets/motor.webp';
-import yali from 'C:/Aaarti/my-project/src/assets/yali.webp';
-import cell from 'C:/Aaarti/my-project/src/assets/cell.webp';
+import Picture2 from '/src/assets/Picture2.webp';
+import motor from '/src/assets/motor.webp';
+import yali from '/src/assets/yali.webp';
+import cell from '/src/assets/cell.webp';
 
 const Technologies = () => {
   return (

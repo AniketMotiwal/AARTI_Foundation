@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import phd from 'C:/Aaarti/my-project/src/assets/phd.png';
-import rotary from 'C:/Aaarti/my-project/src/assets/Rotary.png';
-import infosys from 'C:/Aaarti/my-project/src/assets/infosys.png';
-import gram from 'C:/Aaarti/my-project/src/assets/Gram.webp';
-import sobus from 'C:/Aaarti/my-project/src/assets/sobus.png';
-import manthan from 'C:/Aaarti/my-project/src/assets/manthan.jpg'; 
-import iit from  'C:/Aaarti/my-project/src/assets/iit.png';
-import tr from 'C:/Aaarti/my-project/src/assets/tr.jpg';
-import viransh from 'C:/Aaarti/my-project/src/assets/viransh.png';
-import platform from 'C:/Aaarti/my-project/src/assets/platform.webp';
-import Mphasis from 'C:/Aaarti/my-project/src/assets/Mphasis.jpg';
-import Picture12 from 'C:/Aaarti/my-project/src/assets/Picture12.png';
+import phd from '/src/assets/phd.png';
+import rotary from '/src/assets/Rotary.png';
+import infosys from '/src/assets/infosys.png';
+import gram from '/src/assets/Gram.webp';
+import sobus from '/src/assets/sobus.png';
+import manthan from '/src/assets/manthan.jpg'; 
+import iit from  '/src/assets/iit.png';
+import tr from '/src/assets/tr.jpg';
+import viransh from '/src/assets/viransh.png';
+import platform from '/src/assets/platform.webp';
+import Mphasis from '/src/assets/Mphasis.jpg';
+import Picture12 from '/src/assets/Picture12.png';
 
 const Strategic = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

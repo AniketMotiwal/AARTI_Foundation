@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import smarticon1 from 'C:/Aaarti/my-project/src/assets/smarticon1.png';
-import transfer from 'C:/Aaarti/my-project/src/assets/transfer.png';
-import costicon from 'C:/Aaarti/my-project/src/assets/costicon.png';
-import deployment from 'C:/Aaarti/my-project/src/assets/deployment.png';
-import impact from 'C:/Aaarti/my-project/src/assets/impact.png';
+import smarticon1 from '/src/assets/smarticon1.png';
+import transfer from '/src/assets/transfer.png';
+import costicon from '/src/assets/costicon.png';
+import deployment from '/src/assets/deployment.png';
+import impact from '/src/assets/impact.png';
 import { FaTimes } from 'react-icons/fa';
-import hubImage from 'C:/Aaarti/my-project/src/assets/hub.png';
-import spokeImage from 'C:/Aaarti/my-project/src/assets/spoke.png';
+import hubImage from '/src/assets/hub.png';
+import spokeImage from '/src/assets/spoke.png';
 
 const SmartCenters = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

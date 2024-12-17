@@ -1,7 +1,7 @@
 import React from 'react';
-import member from 'C:/Aaarti/my-project/src/assets/member.webp';
-import partnership from 'C:/Aaarti/my-project/src/assets/partnership.webp';
-import exclusive from 'C:/Aaarti/my-project/src/assets/exclusive.webp';
+import member from '/src/assets/member.webp';
+import partnership from '/src/assets/partnership.webp';
+import exclusive from '/src/assets/exclusive.webp';
 
 const Membership = () => {
   const models = [
