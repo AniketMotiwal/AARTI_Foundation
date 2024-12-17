@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import logo from '/src/assets/logo.png'; 
-import akon from 'src/assets/Akon.png';
+import akon from '/src/assets/Akon.png';
 import iit from '/src/assets/iit.png';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
