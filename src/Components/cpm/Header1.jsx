@@ -27,7 +27,7 @@ const Header = () => {
           </div>
 
           <div className="text-center md:text-right mt-2 md:mt-0">
-            <h1 className="text-lg md:text-xl lg:text-4xl font-bold">CPM1 (Centre of Precision Manufacturing)</h1>
+            <h1 className="text-lg md:text-xl lg:text-4xl font-bold">CPM (Centre of Precision Manufacturing)</h1>
           </div>
 
           <button onClick={toggleMenu} className="md:hidden text-black absolute right-4 top-4 z-60">
