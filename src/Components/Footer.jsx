@@ -95,7 +95,7 @@ const Footer = () => {
           </span>
           {/* Added "Designed by Aniket Moitiwal" */}
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400 ml-auto">
-            Designed by <span className="font-semibold text-blue-600">Aniket Moitiwal</span>
+            Designed by <span className="font-semibold text-blue-600">Aniket Motiwal</span>
           </span>
         </div>
         <button
