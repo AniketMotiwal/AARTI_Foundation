@@ -94,9 +94,9 @@ const Footer = () => {
             © 2024 <a href="#" className="hover:underline">AARTI™</a>. All Rights Reserved.
           </span>
           {/* Added "Designed by Aniket Moitiwal" */}
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400 ml-auto">
+          {/* <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400 ml-auto">
             Designed by <span className="font-semibold text-blue-600">Aniket Motiwal</span>
-          </span>
+          </span> */}
         </div>
         <button
           onClick={scrollToTop}
