@@ -21,4 +21,7 @@ export default defineConfig({
     },
   },
   assetsInclude: ['**/*.JPG'], // Add this line to handle .JPG files
+  server: {
+    port: 3000, // Specify the port you want to use
+  },
 });
