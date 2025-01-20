@@ -37,58 +37,64 @@ const Navbar = ({ toggleDarkMode, darkMode }) => {
           </div>
 
           {/* Navbar Links */}
-          <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-  <div className="hidden sm:ml-6 sm:block">
-    <div className="flex space-x-16 justify-center">
-      <Link
-        to="/"
-        className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
-      >
-        Home
-      </Link>
-      <Link
-        to="/about"
-        className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
-      >
-        About
-      </Link>
-      <Link
-        to="/cpm"
-        className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
-      >
-        CPM
-      </Link>
-      <Link
-        to="/Rsvc"
-        className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
-      >
-        RSVC
-      </Link>
-      <Link
-        to="/Teams"
-        className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
-      >
-        Team
-      </Link>
-      {/* Group the Multiskilling Lab and Contact Us links together in a flex container */}
-      <div className="flex space-x-4">
-        <Link
-          to="/Multiskilling"
-          className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
-        >
-          Multiskilling Lab
-        </Link>
-        <Link
-          to="/ContactUs"
-          className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
-        >
-          Contact Us
-        </Link>
-      </div>
-    </div>
-  </div>
-</div>
+          <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-between">
+            <div className="hidden sm:flex sm:space-x-8 sm:overflow-x-auto"> {/* Adjusted space-x-6 to space-x-8 */}
+              <Link
+                to="/"
+                className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
+              >
+                Home
+              </Link>
+              <Link
+                to="/about"
+                className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
+              >
+                About
+              </Link>
+              <Link
+                to="/cpm"
+                className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
+              >
+                CPM
+              </Link>
+              <Link
+                to="/Rsvc"
+                className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
+              >
+                RSVC
+              </Link>
+              <Link
+                to="/Teams"
+                className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
+              >
+                Team
+              </Link>
+              {/* New "Call for Bid" Link */}
+              <Link
+                to="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fiitr.ac.in%2FCareers%2Fstatic%2FSRIC%2FTechnical_Specifications_Shared_final.docx&wdOrigin=BROWSELINK"
+                target="_blank"
+                className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
+              >
+                Call for Bid
+              </Link>
 
+              {/* Group the Multiskilling Lab and Contact Us links together */}
+              <div className="flex space-x-4">
+                <Link
+                  to="/Multiskilling"
+                  className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
+                >
+                  Multiskilling Lab
+                </Link>
+                <Link
+                  to="/ContactUs"
+                  className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </div>
+          </div>
 
           {/* Dark Mode Toggle */}
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -169,6 +175,14 @@ const Navbar = ({ toggleDarkMode, darkMode }) => {
               className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-lg font-semibold py-2 px-3 rounded-md`}
             >
               Contact Us
+            </Link>
+            {/* New "Call for Bid" Link in Mobile Menu */}
+            <Link
+              to="/call-for-bid"
+              onClick={toggleMobileMenu}
+              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-lg font-semibold py-2 px-3 rounded-md`}
+            >
+              Call for Bid
             </Link>
           </div>
         </div>
