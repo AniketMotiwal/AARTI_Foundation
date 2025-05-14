@@ -52,7 +52,7 @@ const Header = () => {
               <a href="/cpm/Introduction" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
                 Introduction
               </a>
-              <a href="/cpm/Vision" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
+              <a href="/cpm/vision" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">
                 Vision
               </a>
               <a href="/cpm/Objective" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">

@@ -1,73 +1,82 @@
-import React, { useEffect, useState, useRef } from 'react';
-import slide1 from '../../assets/slide2.webp';
+import React, { useEffect, useState } from 'react';
+import slide1 from '../../assets/IIT-Roorkee.jpg';
+import slide from '../../assets/DSC_2094.JPG';
 import slide2 from '../../assets/bg.png';
 import slide3 from '../../assets/DSC_3081.JPG';
 import slide4 from '../../assets/rsvc.jpeg';
+import slide5 from '../../assets/DSC_9686.JPG';
+import slide6 from '../../assets/DSC_9695.JPG';
+import slide7 from '../../assets/DSC_9630.JPG';
+import slide8 from '../../assets/DSC_9626.JPG';
+import slide9 from '../../assets/DSC_9633.JPG';
+import slide10 from '../../assets/DSC_9691.JPG';
+import slide11 from '../../assets/DSC_9682.JPG';
+import slide12 from '../../assets/DSC_9699.JPG';
+import slide13 from '../../assets/DSC_9742.JPG';
+import slide14 from '../../assets/DSC_9819.JPG';
+import slide15 from '../../assets/DSC_9844.JPG';
+import slide16 from '../../assets/DSC_9871.JPG';
 
-// Define the array of images for the slideshow
-const images = [slide1, slide2, slide3, slide4];
+const images = [
+  slide1, slide, slide2, slide3, slide4,
+  slide5, slide6, slide7, slide8, slide9,
+  slide10, slide11, slide12, slide13, slide14, slide15,slide16
+];
 
 const HeroSection = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [transitioning, setTransitioning] = useState(false);
-  const [backgroundImage, setBackgroundImage] = useState(images[0]);
-  const ref = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState(null);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setTransitioning(true);
-      setTimeout(() => {
-        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-        setBackgroundImage(images[(currentImageIndex + 1) % images.length]);
-        setTransitioning(false);
-      }, 500); // Match this with the transition duration
-    }, 5000);
+    const interval = setInterval(() => {
+      const next = (currentIndex + 1) % images.length;
+      setPrevIndex(currentIndex);
+      setCurrentIndex(next);
+    }, 4000);
 
-    // Cleanup interval on component unmount
-    return () => clearInterval(intervalId);
-  }, [currentImageIndex]);
+    return () => clearInterval(interval);
+  }, [currentIndex]);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setBackgroundImage(images[currentImageIndex]);
-        }
-      },
-      { threshold: 0.1 }
-    );
+  const getFitStyle = (index) =>
+    [5, 6, 7, 8, 9, 10, 11, 12, 13, 14].includes(index) ? 'object-fit' : 'object-cover';
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, [currentImageIndex]);
+  const imageStyle = 'filter brightness-110 contrast-110'; // boost brightness and contrast a bit
 
   return (
-    <div ref={ref} className="relative bg-primary text-primary-foreground overflow-hidden">
-      <div
-        className={`absolute inset-0 transition-all duration-500 ease-in-out ${transitioning ? 'opacity-0' : 'opacity-100'}`}
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          filter: 'brightness(1.8) contrast(1.2)', // Increase brightness and contrast
-        }}
-      >
-        <div className="absolute inset-0 bg-black opacity-50 z-[-1]"></div>
-      </div>
-      <div className="relative z-10 flex flex-col items-center justify-center h-screen text-center px-4 sm:px-8 md:px-12">
-        {/* You can add back your heading and buttons here */}
-        {/* <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white">
-          Welcome to Hero Section
-        </h1> */}
-        
+    <div className="relative h-screen overflow-hidden bg-black">
+      {/* Previous Image */}
+      {prevIndex !== null && (
+        <img
+          src={images[prevIndex]}
+          alt={`Slide ${prevIndex + 1}`}
+          className={`absolute inset-0 w-full h-full ${getFitStyle(prevIndex)} ${imageStyle} transition-opacity duration-700 ease-in-out opacity-0 z-0`}
+        />
+      )}
+
+      {/* Current Image */}
+      <img
+        src={images[currentIndex]}
+        alt={`Slide ${currentIndex + 1}`}
+        className={`absolute inset-0 w-full h-full ${getFitStyle(currentIndex)} ${imageStyle} transition-opacity duration-700 ease-in-out opacity-100 z-10`}
+      />
+
+      {/* Reduced Overlay for brightness */}
+      <div className="absolute inset-0 bg-black opacity-10 z-20" />
+
+      {/* Navigation Dots */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-30">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => {
+              setPrevIndex(currentIndex);
+              setCurrentIndex(index);
+            }}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              currentIndex === index ? 'bg-white scale-110' : 'bg-gray-400 opacity-70'
+            }`}
+          />
+        ))}
       </div>
     </div>
   );

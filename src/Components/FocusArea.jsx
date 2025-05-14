@@ -17,7 +17,7 @@ const FocusArea = () => {
       heading: 'E-Mobility',
       points: ['E-Mobility'],
       backgroundImage: `url(${eMobImage})`,
-      link: '/eMobilityProjects',
+      link: '/EMobilityProjects',
     },
     {
       heading: 'Economic Growth',

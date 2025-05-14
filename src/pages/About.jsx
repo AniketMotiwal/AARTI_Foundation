@@ -48,7 +48,7 @@ const About = () => {
       {/* Mission Section */}
       <section className="bg-gradient-to-r from-blue-400 to-green-400 py-12 text-white mt-12">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-bold mb-6 text-black">Our Mission</h2>
+          <h2 className="text-4xl font-bold mb-6 text-black">Our Vison</h2>
           <p className="text-lg md:text-xl mb-4 text-justify text-black">
             To establish a global ecosystem where every innovation seamlessly transitions from concept to commercialization, creating a self-reliant and economically empowered society. Driving transformative technological solutions through seamless industry-academia collaboration, startup acceleration, and the integration of advanced readiness frameworks, ultimately fostering sustainable economic growth and global competitiveness.
           </p>
@@ -58,7 +58,7 @@ const About = () => {
       {/* Vision Section */}
       <section className="bg-gradient-to-r from-yellow-400 to-orange-400 py-12 text-white mt-12">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-bold mb-6 text-black">Our Vision</h2>
+          <h2 className="text-4xl font-bold mb-6 text-black">Our Mission</h2>
           <ul className="list-disc space-y-3 text-lg text-black pl-5">
             <li>Foster dynamic collaboration between research and industry to bridge the gap from innovation to commercialization.</li>
             <li>Support startup ecosystems and accelerate the development of transformative technologies.</li>

@@ -1,5 +1,9 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&display=swap');
 
+.font-hindi {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -631,3 +635,118 @@ a:active {
 }
 
 
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+.work-with-us-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-title {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.update-banner {
+  background-color: #e3f2fd;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2.5rem;
+  border-left: 5px solid #2196f3;
+}
+
+.update-banner h3 {
+  margin-top: 0;
+  color: #0d47a1;
+}
+
+.opportunities-section {
+  margin-bottom: 3rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.update-badge {
+  background-color: #ff9800;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.opportunities-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.opportunities-table th {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #424242;
+}
+
+.opportunities-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.opportunities-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.available {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.coming-soon {
+  color: #ff9800;
+  font-weight: bold;
+}
+
+.contact-note {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.contact-btn {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+}
+
+.contact-btn:hover {
+  background-color: #0d47a1;
+}

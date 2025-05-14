@@ -1,12 +1,12 @@
-import React, { useState, useEffect, startTransition, lazy, Suspense } from 'react';
+import React, { useState,lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Loader from '../src/Components/Loader';
+
 // Lazy load components
 const Header = lazy(() => import('../src/Components/Header'));
 const Navbar = lazy(() => import('../src/Components/Navbar'));
 const HeroSection = lazy(() => import('../src/Components/Hero/HeroSection'));
 const FocusArea = lazy(() => import('../src/Components/FocusArea'));
-
 const Footer = lazy(() => import('../src/Components/Footer'));
 const ProgramPartners = lazy(() => import('../src/Components/ProgramPartners'));
 const IndustryAccelerator = lazy(() => import('../src/Components/IndustryAccelerator'));
@@ -26,8 +26,11 @@ const Modular = lazy(() => import('../src/pages/Modular'));
 const Machine = lazy(() => import('../src/pages/Machine'));
 const Team = lazy(() => import('../src/pages/Team'));
 const Multiskilling = lazy(() => import('../src/pages/Multiskilling'));
+const Workwithus = lazy(() => import('../src/pages/Workwithus'));
 const About = lazy(() => import('../src/pages/About'));
 const Contact = lazy(() => import('../src/pages/Contact'));
+const CallForBid = lazy(() => import('../src/pages/callforbid'));
+const  Projects = lazy(()=>import('../src/pages/Projects'));
 
 // CPM website components
 const Header1 = lazy(() => import('../src/Components/cpm/Header1'));
@@ -51,6 +54,7 @@ const IndustryCollaboration = lazy(() => import('../src/Components/cpm/Pages/Ind
 const CapacityBuilding = lazy(() => import('../src/Components/cpm/Pages/CapacityBuilding'));
 // RSVC website components
 const RNavbar = lazy(() => import('../src/Components/Rsvc/RNavbar'));
+const heading = lazy(()=>import('../src/Components/Rsvc/heading'))
 const RHeader = lazy(() => import('../src/Components/Rsvc/Rhedaer'));
 const RHero = lazy(() => import('../src/Components/Rsvc/Rhero'));
 const Approach = lazy(() => import('../src/Components/Rsvc/Approach'));
@@ -60,10 +64,12 @@ const Footer2 = lazy(() => import('../src/Components/Rsvc/Footer2'));
 const Strategic = lazy(() => import('../src/Components/Rsvc/Strategic'));
 const Rutage = lazy(() => import('../src/Components/Rsvc/Pages/Rutage'));
 const Entities = lazy(() => import('../src/Components/Rsvc/Pages/Entities'));
-
+const Activites = lazy(() => import('./Components/Rsvc/Pages/Activites'));
+const Village = lazy(()=> import('./Components/Rsvc/village'));
 const AppContent = ({ darkMode, toggleDarkMode }) => {
   const location = useLocation();
   const isAartiWebsite = !location.pathname.startsWith('/cpm') && !location.pathname.startsWith('/Rsvc');
+  console.log(location.pathname);  // This will help you debug the current pathname in your app
 
 
   return (
@@ -101,8 +107,12 @@ const AppContent = ({ darkMode, toggleDarkMode }) => {
         <Route path="/Battery Pack Assembly Equipment" element={<Suspense fallback={<Loader />}><Machine /></Suspense>} />
         <Route path="/Teams" element={<Suspense fallback={<Loader />}><Team darkMode={darkMode} /></Suspense>} />
         <Route path="/Multiskilling" element={<Suspense fallback={<Loader />}><Multiskilling darkMode={darkMode} /></Suspense>} />
+        <Route path="/WorkWithUs" element={<Suspense fallback={<Loader />}><Workwithus darkMode={darkMode} /></Suspense>} />
         <Route path="/About" element={<Suspense fallback={<Loader />}><About darkMode={darkMode} /></Suspense>} />
         <Route path="/ContactUs" element={<Suspense fallback={<Loader />}><Contact darkMode={darkMode} /></Suspense>} />
+        <Route path="/Callforbid" element={<Suspense fallback={<Loader />}><CallForBid darkMode={darkMode} /></Suspense>} />
+        <Route path="/Projects" element={<Suspense fallback={<Loader />}><Projects darkMode={darkMode} /></Suspense>} />
+        
         {/* CPM Website Routes */}
         <Route path="/cpm" element={
           <Suspense fallback={<Loader />}>
@@ -127,19 +137,23 @@ const AppContent = ({ darkMode, toggleDarkMode }) => {
         <Route path="/cpm/SustainabilityManufacturing" element={<Suspense fallback={<Loader />}><SustainabilityManufacturing /></Suspense>} />
         <Route path="/cpm/IndustryCollaboration" element={<Suspense fallback={<Loader />}><IndustryCollaboration /></Suspense>} />
         <Route path="/cpm/CapacityBuilding" element={<Suspense fallback={<Loader />}><CapacityBuilding /></Suspense>} />
+        
         {/* RSVC Website Routes */}
         <Route path="/Rsvc" element={
           <Suspense fallback={<Loader />}>
-            <RNavbar />
             <RHeader />
+            <RNavbar />
             <RHero />
             <Approach />
-            <Recent/>
+            <Village/>
+            <Recent />
             <SmartCenters />
-            <Strategic />
+
             <Footer2 />
           </Suspense>
         } />
+        <Route path="/Rsvc/Activites" element={<Suspense fallback={<Loader />}><Activites /></Suspense>} />
+        <Route path="/Rsvc/Strategic" element={<Suspense fallback={<Loader />}><Strategic /></Suspense>} />
         <Route path="/Rsvc/Rutage" element={<Suspense fallback={<Loader />}><Rutage /></Suspense>} />
         <Route path="/Rsvc/Entities" element={<Suspense fallback={<Loader />}><Entities /></Suspense>} />
       </Routes>
@@ -147,30 +161,16 @@ const AppContent = ({ darkMode, toggleDarkMode }) => {
   );
 };
 
-const App = () => {
-  const [loading, setLoading] = useState(true);
+function App() {
   const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-            startTransition(() => {
-        setLoading(false);
-      });
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, []);
+  
+  const toggleDarkMode = () => setDarkMode(prev => !prev);
 
   return (
     <Router>
-      <div className={`relative overflow-hidden ${darkMode ? 'dark' : ''}`}>
-        {loading && <Loader />}
-        <div className={`transition-opacity ${loading ? 'opacity-0' : 'opacity-100'} duration-500`}>
-          <AppContent darkMode={darkMode} toggleDarkMode={() => startTransition(() => setDarkMode(prev => !prev))} />
-        </div>
-      </div>
+      <AppContent darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
     </Router>
   );
-};
+}
 
 export default App;

@@ -15,7 +15,7 @@ const RNavbar = () => {
         <div className="flex items-center justify-between w-full max-w-5xl space-x-12"> {/* Adjusted max width and spacing */}
           <Link to="/Rsvc" className="text-white text-4xl font-bold hover:underline">Home</Link>
           <Link to="#" className="text-white text-4xl font-bold hover:underline">About</Link>
-          <Link to="#" className="text-white text-4xl font-bold hover:underline">Approach</Link>
+          <Link to="/Rsvc/Activites" className="text-white text-4xl font-bold hover:underline">Activities</Link>
 
           <div className="relative inline-block text-left">
             <button

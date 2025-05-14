@@ -12,7 +12,7 @@ const Navbar = ({ toggleDarkMode, darkMode }) => {
     <nav className={`sticky top-0 ${darkMode ? 'bg-gray-900' : 'bg-gray-800'} transition-colors duration-300 z-50`}>
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Left Side */}
           <div className="flex items-center sm:hidden">
             <button
               onClick={toggleMobileMenu}
@@ -36,9 +36,9 @@ const Navbar = ({ toggleDarkMode, darkMode }) => {
             </button>
           </div>
 
-          {/* Navbar Links */}
-          <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-between">
-            <div className="hidden sm:flex sm:space-x-8 sm:overflow-x-auto"> {/* Adjusted space-x-6 to space-x-8 */}
+          {/* Navbar Links - Centered */}
+          <div className="flex-1 flex items-center justify-center">
+            <div className="hidden sm:flex items-center space-x-2 overflow-x-auto whitespace-nowrap">
               <Link
                 to="/"
                 className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
@@ -46,7 +46,7 @@ const Navbar = ({ toggleDarkMode, darkMode }) => {
                 Home
               </Link>
               <Link
-                to="/about"
+                to="/About"
                 className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
               >
                 About
@@ -69,35 +69,41 @@ const Navbar = ({ toggleDarkMode, darkMode }) => {
               >
                 Team
               </Link>
-              {/* New "Call for Bid" Link */}
               <Link
-                to="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fiitr.ac.in%2FCareers%2Fstatic%2FSRIC%2FTechnical_Specifications_Shared_final.docx&wdOrigin=BROWSELINK"
-                target="_blank"
+                to="/Projects"
+                className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
+              >
+                Projects
+              </Link>
+              <Link
+                to="/Callforbid"
                 className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
               >
                 Call for Bid
               </Link>
-
-              {/* Group the Multiskilling Lab and Contact Us links together */}
-              <div className="flex space-x-4">
-                <Link
-                  to="/Multiskilling"
-                  className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
-                >
-                  Multiskilling Lab
-                </Link>
-                <Link
-                  to="/ContactUs"
-                  className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
-                >
-                  Contact Us
-                </Link>
-              </div>
+              <Link
+                to="/Multiskilling"
+                className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
+              >
+                Multiskilling Lab
+              </Link>
+              <Link
+                to="/WorkWithUs"
+                className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
+              >
+                Work with Us
+              </Link>
+              <Link
+                to="/ContactUs"
+                className={`text-2xl font-medium px-3 py-2 rounded-md ${darkMode ? 'text-white hover:bg-gray-700 hover:underline' : 'text-gray-300 hover:bg-gray-700 hover:underline'} hover:text-white`}
+              >
+                Contact Us
+              </Link>
             </div>
           </div>
 
-          {/* Dark Mode Toggle */}
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          {/* Dark Mode Toggle - Right Side */}
+          <div className="flex items-center">
             <button
               type="button"
               onClick={toggleDarkMode}
@@ -130,57 +136,70 @@ const Navbar = ({ toggleDarkMode, darkMode }) => {
             <Link
               to="/"
               onClick={toggleMobileMenu}
-              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-lg font-semibold py-2 px-3 rounded-md`}
+              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-2xl font-semibold py-2 px-3 rounded-md`}
             >
               Home
             </Link>
             <Link
-              to="/about"
+              to="/About"
               onClick={toggleMobileMenu}
-              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-lg font-semibold py-2 px-3 rounded-md`}
+              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-2xl font-semibold py-2 px-3 rounded-md`}
             >
               About
             </Link>
             <Link
               to="/cpm"
               onClick={toggleMobileMenu}
-              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-lg font-semibold py-2 px-3 rounded-md`}
+              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-2xl font-semibold py-2 px-3 rounded-md`}
             >
               CPM
             </Link>
             <Link
               to="/Rsvc"
               onClick={toggleMobileMenu}
-              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-lg font-semibold py-2 px-3 rounded-md`}
+              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-2xl font-semibold py-2 px-3 rounded-md`}
             >
               RSVC
             </Link>
             <Link
               to="/Teams"
               onClick={toggleMobileMenu}
-              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-lg font-semibold py-2 px-3 rounded-md`}
+              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-2xl font-semibold py-2 px-3 rounded-md`}
             >
               Team
             </Link>
             <Link
+              to="/Projects"
+              onClick={toggleMobileMenu}
+              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-2xl font-semibold py-2 px-3 rounded-md`}
+            >
+              Projects
+            </Link>
+            <Link
               to="/Multiskilling"
               onClick={toggleMobileMenu}
-              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-lg font-semibold py-2 px-3 rounded-md`}
+              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-2xl font-semibold py-2 px-3 rounded-md`}
             >
               Multiskilling Lab
             </Link>
             <Link
+              to="/WorkWithUs"
+              onClick={toggleMobileMenu}
+              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-2xl font-semibold py-2 px-3 rounded-md`}
+            >
+              Work with Us
+            </Link>
+            <Link
               to="/ContactUs"
               onClick={toggleMobileMenu}
-              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-lg font-semibold py-2 px-3 rounded-md`}
+              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-2xl font-semibold py-2 px-3 rounded-md`}
             >
               Contact Us
             </Link>
-            {/* New "Call for Bid" Link in Mobile Menu */}
             <Link
-              to="/call-for-bid"
+              to="/Callforbid"
               onClick={toggleMobileMenu}
-              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-lg font-semibold py-2 px-3 rounded-md`}
+              className={`block text-gray-300 hover:bg-gray-700 hover:text-white text-2xl font-semibold py-2 px-3 rounded-md`}
             >
               Call for Bid
             </Link>

@@ -47,7 +47,8 @@ const Technologies = () => {
             />
             <div className="absolute inset-0 bg-blue-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
               <div className="text-center text-black p-4 group-hover:text-black group-hover:font-bold transition-colors duration-300">
-                <h3 className="text-lg font-bold mb-2">Soft Magnetic Composite Motor</h3>
+                <h3 className="text-lg font-bold mb-2">Axial Flux Motor and Controller
+                </h3>
                 <p className="text-sm">
                   Developed by <strong>Bodycast Innovators Pvt. Ltd.</strong>, this axial flux motor is a leader in efficiency and power density.
                 </p>

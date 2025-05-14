@@ -10,7 +10,7 @@ export default defineConfig({
       targets: [
         {
           src: 'src/assets/**/*', // Source folder
-          dest: 'assets',        // Destination folder
+          dest: 'assets',         // Destination folder
         },
       ],
     }),
@@ -24,4 +24,5 @@ export default defineConfig({
   server: {
     port: 3000, // Specify the port you want to use
   },
+  base:  '/ ', // Set the base path for your app when deployed
 });
