@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight, FaExternalLinkAlt } from 'react-icons/fa';
 import img1 from '../../assets/rsvc.jpeg';
-import img2 from '../../assets/DSC_3081.JPG';
-import img3 from '../../assets/DSC_3093.JPG';
+import img2 from '../../assets/site/rsvc-hero-inauguration.webp';
+import img3 from '../../assets/site/rsvc-hero-exhibit.webp';
 
 const Recent = () => {
   const slides = [

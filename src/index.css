@@ -8,6 +8,84 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------- AARTI design tokens ---------- */
+@layer base {
+  :root {
+    --c-page: 248 247 243;
+    --c-surface: 255 255 255;
+    --c-muted: 241 239 232;
+    --c-ink: 11 16 51;
+    --c-ink-soft: 75 82 116;
+    --c-line: 228 225 216;
+    --c-accent: 1 22 131;
+    color-scheme: light;
+  }
+  html.dark {
+    --c-page: 7 11 31;
+    --c-surface: 14 20 48;
+    --c-muted: 20 27 59;
+    --c-ink: 236 238 247;
+    --c-ink-soft: 164 170 198;
+    --c-line: 35 43 82;
+    --c-accent: 250 193 46;
+    color-scheme: dark;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    @apply bg-page text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  :focus-visible {
+    outline: 2px solid rgb(var(--c-accent));
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-700 dark:text-gold-400;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply h-px w-6 bg-gold-500;
+  }
+  .prose-site p + p {
+    @apply mt-4;
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes loading-progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-logo-scroll {
+    animation: none;
+  }
+}
+
 
 @keyframes textAnimation {
     0% {
@@ -500,11 +578,6 @@
   color: #333; /* Darker attractive color, you can adjust this */
 }
 
-/* strategic partners */
-/* styles.css */
-a:active {
-  @apply bg-yellow-300;
-}
 
 /* border */
 

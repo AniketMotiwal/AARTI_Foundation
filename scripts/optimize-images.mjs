@@ -1,0 +1,81 @@
+// Converts the large source photos in src/assets into web-sized WebP files
+// under src/assets/site. Run with: npm run images
+import sharp from 'sharp';
+import { mkdir, stat } from 'node:fs/promises';
+import path from 'node:path';
+
+const SRC = 'src/assets';
+const OUT = 'src/assets/site';
+
+// [source file, output name, max width]
+const jobs = [
+  // Hero
+  ['IIT-Roorkee.jpg', 'hero-iitr', 1920],
+  ['DSC_9871.JPG', 'hero-drone-training', 1920],
+  ['DSC_9851.JPG', 'hero-ev-lab', 1920],
+  ['DSC_9834.JPG', 'hero-ev-workbench', 1920],
+
+  // Moments / gallery
+  ['DSC_2094.JPG', 'moment-mou-signing', 1400],
+  ['DSC_3081.JPG', 'moment-rsvc-inauguration', 1400],
+  ['DSC_3093.JPG', 'moment-rsvc-exhibit', 1400],
+  ['DSC_9626.JPG', 'moment-lamp-lighting', 1400],
+  ['DSC_9682.JPG', 'moment-capacity-courses', 1400],
+  ['DSC_9686.JPG', 'moment-mou-exchange', 1400],
+  ['DSC_9691.JPG', 'moment-hella-mou', 1400],
+  ['DSC_9699.JPG', 'moment-green-hydrogen', 1400],
+  ['DSC_9742.JPG', 'moment-felicitation', 1400],
+  ['DSC_9819.JPG', 'moment-ev-lab-opening', 1400],
+  ['DSC_9824.JPG', 'moment-ev-lab-tour', 1400],
+  ['DSC_9838.JPG', 'moment-ev-lab-demo', 1400],
+
+  // Programmes
+  ['businnes-chorts1.jpg', 'cohort-1', 1200],
+  ['businnes-chorts2.jpg', 'cohort-2', 1200],
+  ['businnes-chorts3.jpg', 'cohort-3', 1200],
+  ['Capcity building for young women.jpg', 'outreach-women-capacity', 1200],
+  ['Int conf.jpg', 'outreach-intl-conference', 1200],
+  ['sampak.jpg', 'outreach-global-faculty', 1200],
+  ['Rsvc-speech.png', 'rsvc-community', 1200],
+  ['rsvc.jpeg', 'rsvc-team', 1200],
+  ['rutage.jpg', 'rsvc-centre', 1200],
+  ['almora.jpg', 'rsvc-almora', 1200],
+  ['Onground.png', 'rsvc-on-ground', 1200],
+  ['Picture38.png', 'rsvc-nse-award', 1600],
+  ['DSC_3081.JPG', 'rsvc-hero-inauguration', 1920],
+  ['DSC_3093.JPG', 'rsvc-hero-exhibit', 1920],
+  ['hellaportotype.jpg', 'hella-prototype', 1200],
+  ['Picture1.jpg', 'ev-lab-collage', 1000],
+  ['CPM1.jpg', 'cpm-1', 1200],
+];
+
+// Vector logos rasterised to WebP
+const logos = [['MHI.svg', 'logo-mhi', 480]];
+
+await mkdir(OUT, { recursive: true });
+
+let before = 0;
+let after = 0;
+for (const [file, name, width] of jobs) {
+  const input = path.join(SRC, file);
+  const output = path.join(OUT, `${name}.webp`);
+  await sharp(input)
+    .rotate()
+    .resize({ width, withoutEnlargement: true })
+    .webp({ quality: 74, effort: 5 })
+    .toFile(output);
+  const a = (await stat(input)).size;
+  const b = (await stat(output)).size;
+  before += a;
+  after += b;
+  console.log(`${file.padEnd(40)} ${(a / 1024).toFixed(0).padStart(7)} KB -> ${(b / 1024).toFixed(0).padStart(5)} KB`);
+}
+for (const [file, name, width] of logos) {
+  await sharp(path.join(SRC, file), { density: 200 })
+    .resize({ width, withoutEnlargement: true })
+    .webp({ quality: 85 })
+    .toFile(path.join(OUT, `${name}.webp`));
+  console.log(`${file.padEnd(40)} -> ${name}.webp`);
+}
+
+console.log(`\nTotal:${(before / 1048576).toFixed(1)} MB -> ${(after / 1048576).toFixed(1)} MB`);

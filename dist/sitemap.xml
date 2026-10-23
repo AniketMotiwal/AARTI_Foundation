@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://aarti.iitr.ac.in/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://aarti.iitr.ac.in/About</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://aarti.iitr.ac.in/Projects</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://aarti.iitr.ac.in/ContactUs</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://aarti.iitr.ac.in/Teams</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://aarti.iitr.ac.in/WorkWithUs</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/about</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/team</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/projects</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/tenders</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/careers</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/contact</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/ev-lab</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/focus/e-mobility</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/focus/economic-growth</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/focus/support-development</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/focus/innovation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/focus/networking</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/technologies/accessible-mobility-vehicle</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/technologies/axial-flux-motor</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/technologies/modular-e2w-platform</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/technologies/battery-pack-assembly</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://aarti.iitr.ac.in/cpm</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
   <url><loc>https://aarti.iitr.ac.in/cpm/Introduction</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://aarti.iitr.ac.in/cpm/Facilities</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>

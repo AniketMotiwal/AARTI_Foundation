@@ -1,0 +1,1 @@
+import{j as o}from"./index-BPvB20sQ.js";import"./react-wUXpKk3C.js";import{F as t}from"./FocusAreaPage-BK_QmIpQ.js";import"./Header1-CDRf6SXd.js";import"./iit-BkkEoOgD.js";import"./index-7thHIQzu.js";import"./Footer1-DuiNSibC.js";const l=()=>o.jsx(t,{title:"Industry Collaboration"});export{l as default};

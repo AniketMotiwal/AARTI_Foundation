@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import backgroundImage1 from '../../assets/rsvc.jpeg';
-import backgroundImage2 from '../../assets/DSC_3081.JPG';
-import backgroundImage3 from '../../assets/DSC_3093.JPG';
-import backgroundImage4 from '../../assets/Picture38.png';
+import backgroundImage2 from '../../assets/site/rsvc-hero-inauguration.webp';
+import backgroundImage3 from '../../assets/site/rsvc-hero-exhibit.webp';
+import backgroundImage4 from '../../assets/site/rsvc-nse-award.webp';
 
 const Rhero = () => {
   const images = [

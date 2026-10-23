@@ -1,1 +1,0 @@
-import{j as i}from"./index-DOauHXIN.js";import{F as o}from"./FocusAreaPage-CW1JVgmn.js";import"./Header1-CwTmluWB.js";import"./iit-BkkEoOgD.js";import"./index-BeT5ydlg.js";import"./iconBase-DjINZ690.js";import"./Footer1-zabzl2Dx.js";const a=()=>i.jsx(o,{title:"Precision Finishing"});export{a as default};

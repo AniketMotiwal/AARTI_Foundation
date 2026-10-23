@@ -52,33 +52,69 @@ const seoRoutes = {
       'AARTI Foundation at IIT Roorkee — industry accelerator for automotive, mobility, precision manufacturing (CPM), RuTAGe Smart Village Centres (RSVC), industrial R&D, and Make in India innovation.',
     keywords: `${baseKeywords}, CPM IIT Roorkee, RSVC IIT Roorkee, RuTAGe, business accelerator cohorts`,
   },
-  '/About': {
+  '/about': {
     title: 'About AARTI Foundation | IIT Roorkee',
     description:
       'Learn about AARTI Foundation — objectives, vision, recognition, outreach, and industry-academia collaboration at Indian Institute of Technology Roorkee.',
     keywords: baseKeywords,
   },
-  '/Projects': {
+  '/projects': {
     title: 'Projects & Industrial R&D | AARTI Foundation IIT Roorkee',
     description:
       'AARTI Foundation projects: Hella India LED driver R&D, industrial RFPs through SRIC, DGCA RPTO, and collaborative research at IIT Roorkee.',
     keywords: `${baseKeywords}, Hella India IIT Roorkee, industrial RFP SRIC, LED driver research`,
   },
-  '/ContactUs': {
+  '/contact': {
     title: 'Contact AARTI Foundation | IIT Roorkee',
     description:
       'Contact AARTI Foundation at IIT Roorkee — James Thomson Building, Roorkee, Uttarakhand. Industry partnerships and research enquiries.',
     keywords: `${baseKeywords}, contact AARTI IIT Roorkee`,
   },
-  '/Teams': {
+  '/team': {
     title: 'Team | AARTI Foundation IIT Roorkee',
     description: 'Meet the AARTI Foundation team at IIT Roorkee.',
     keywords: baseKeywords,
   },
-  '/WorkWithUs': {
+  '/careers': {
     title: 'Work With Us | AARTI Foundation IIT Roorkee',
     description: 'Careers and openings at AARTI Foundation, IIT Roorkee.',
     keywords: `${baseKeywords}, jobs AARTI IIT Roorkee`,
+  },
+  '/tenders': {
+    title: 'Tenders & Calls for Bid | AARTI Foundation IIT Roorkee',
+    description: 'Tender notices, corrigenda and calls for bid issued by AARTI Foundation, IIT Roorkee.',
+    keywords: `${baseKeywords}, AARTI tender, IIT Roorkee tender`,
+  },
+  '/ev-lab': {
+    title: 'Electric Vehicle Multiskilling Lab | AARTI Foundation IIT Roorkee',
+    description:
+      'EV Multiskilling Lab at IIT Roorkee — hands-on training in EV assembly, powertrain and battery testing, charging and simulation, sponsored by ICICI Foundation.',
+    keywords: `${baseKeywords}, EV lab IIT Roorkee, electric vehicle training, ICICI Foundation EV lab`,
+  },
+  '/focus/e-mobility': {
+    title: 'E-Mobility | AARTI Foundation IIT Roorkee',
+    description: 'E-mobility technologies accelerated at AARTI — accessible vehicles, axial flux motors, modular E2W platforms and battery-assembly equipment.',
+    keywords: `${baseKeywords}, e-mobility IIT Roorkee, EV start-ups India`,
+  },
+  '/focus/economic-growth': {
+    title: 'Economic Growth Projects | AARTI Foundation IIT Roorkee',
+    description: 'Ventures funded under the Ministry of Heavy Industries Industry Accelerator — technology indigenisation and commercialisation.',
+    keywords: baseKeywords,
+  },
+  '/focus/support-development': {
+    title: 'Support & Development | AARTI Foundation IIT Roorkee',
+    description: 'Start-up support and skill development programmes run by AARTI Foundation at IIT Roorkee.',
+    keywords: baseKeywords,
+  },
+  '/focus/innovation': {
+    title: 'Innovation & Integration | AARTI Foundation IIT Roorkee',
+    description: 'Integrating TRL and MRL to take innovations from prototype to large-scale production.',
+    keywords: baseKeywords,
+  },
+  '/focus/networking': {
+    title: 'Networking | AARTI Foundation IIT Roorkee',
+    description: 'Networking for innovation and sustainable growth with IIT Roorkee, ICAT and industry.',
+    keywords: baseKeywords,
   },
   '/cpm': {
     title: 'CPM IIT Roorkee | Centre for Precision Manufacturing | AARTI Foundation',
@@ -134,6 +170,26 @@ const seoRoutes = {
 export function getSeoForPath(pathname) {
   if (seoRoutes[pathname]) {
     return seoRoutes[pathname];
+  }
+
+  const lower = pathname.toLowerCase();
+  const caseMatch = Object.keys(seoRoutes).find((key) => key.toLowerCase() === lower);
+  if (caseMatch) {
+    return { ...seoRoutes[caseMatch], canonicalPath: caseMatch };
+  }
+
+  if (lower.startsWith('/technologies/')) {
+    const name = lower
+      .split('/')[2]
+      .split('-')
+      .map((w) => (w === 'e2w' ? 'E2W' : w.charAt(0).toUpperCase() + w.slice(1)))
+      .join(' ');
+    return {
+      title: `${name} | AARTI Foundation IIT Roorkee`,
+      description: `${name} — a technology accelerated by AARTI Foundation, the industry accelerator of IIT Roorkee.`,
+      keywords: `${baseKeywords}, ${name}`,
+      canonicalPath: pathname,
+    };
   }
 
   if (pathname.startsWith('/cpm')) {

@@ -24,7 +24,7 @@ import {
 } from "react-icons/fi";
 import icc from "../assets/icc.png";
 import heroImg from "../assets/Picture1.jpg";
-import labImg from "../assets/DSC_9819.JPG";
+import labImg from "../assets/site/moment-ev-lab-opening.webp";
 import evLab1 from "../assets/EV-LAB/EV-lab-1.jpeg";
 import evLab2 from "../assets/EV-LAB/EV-lab-2.jpeg";
 import evLab3 from "../assets/EV-LAB/EV-lab-3.jpeg";

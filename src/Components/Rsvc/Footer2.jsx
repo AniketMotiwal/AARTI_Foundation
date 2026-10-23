@@ -113,32 +113,32 @@ const Footer2 = () => {
             </h4>
             <ul className="space-y-3">
               <li>
-                <Link to="/About" className={linkClass}>
+                <Link to="/about" className={linkClass}>
                   About
                 </Link>
               </li>
               <li>
-                <Link to="/Teams" className={linkClass}>
+                <Link to="/team" className={linkClass}>
                   Team
                 </Link>
               </li>
               <li>
-                <Link to="/Projects" className={linkClass}>
+                <Link to="/projects" className={linkClass}>
                   Projects
                 </Link>
               </li>
               <li>
-                <Link to="/ContactUs" className={linkClass}>
+                <Link to="/contact" className={linkClass}>
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link to="/WorkWithUs" className={linkClass}>
+                <Link to="/careers" className={linkClass}>
                   Work with Us
                 </Link>
               </li>
               <li>
-                <Link to="/Multiskilling" className={linkClass}>
+                <Link to="/ev-lab" className={linkClass}>
                   Multiskilling Lab
                 </Link>
               </li>

@@ -1,140 +1,133 @@
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
-import Loader from '../src/Components/Loader';
-import ScrollToTop from '../src/Components/ScrollToTop';
-import Seo from '../src/Components/Seo';
-import DarkModeToggle from '../src/Components/DarkModeToggle';
-import { DarkModeProvider, useDarkMode } from '../src/context/DarkModeContext';
+import { BrowserRouter as Router, Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import ScrollToTop from './Components/ScrollToTop';
+import Seo from './Components/Seo';
+import DarkModeToggle from './Components/DarkModeToggle';
+import { DarkModeProvider } from './context/DarkModeContext';
+import SiteLayout, { PageLoading } from './site/layout/SiteLayout';
 
-// Lazy load components
-const Header = lazy(() => import('../src/Components/Header'));
-const Navbar = lazy(() => import('../src/Components/Navbar'));
-const HeroSection = lazy(() => import('../src/Components/Hero/HeroSection'));
-const FocusArea = lazy(() => import('../src/Components/FocusArea'));
-const Footer = lazy(() => import('../src/Components/Footer'));
-const ProgramPartners = lazy(() => import('../src/Components/ProgramPartners'));
-const IndustryAccelerator = lazy(() => import('../src/Components/IndustryAccelerator'));
-const Highlights = lazy(() => import('../src/Components/Highlights'));
-const BusinessAcceleratorCohorts = lazy(() => import('../src/Components/BusinessAcceleratorCohorts'));
-const RsvcShowcase = lazy(() => import('../src/Components/RsvcShowcase'));
-const OutreachEvents = lazy(() => import('../src/Components/OutreachEvents'));
-const IndustrialRfpShowcase = lazy(() => import('../src/Components/IndustrialRfpShowcase'));
-const HellaIndustrialRd = lazy(() => import('../src/Components/HellaIndustrialRd'));
-const Technologies = lazy(() => import('../src/Components/Technologies'));
-const Metheod = lazy(() => import('../src/Components/Metheod'));
-const EconomicProjects = lazy(() => import('../src/pages/EconomicProjects'));
-const EMobilityProjects = lazy(() => import('../src/pages/EMobilityProjects'));
-const Innovation = lazy(() => import('../src/pages/Innovation'));
-const Networking = lazy(() => import('../src/pages/Networking'));
-const SupportDevlopemnt = lazy(() => import('../src/pages/SupportDevlopemnt'));
-const Objectives = lazy(() => import('../src/pages/Objectives'));
-const Mission = lazy(() => import('../src/pages/Mission'));
-const Vision = lazy(() => import('../src/pages/Vision'));
-const Mob = lazy(() => import('../src/pages/Mob'));
-const Magnetic = lazy(() => import('../src/pages/MagneticMotors'));
-const Modular = lazy(() => import('../src/pages/Modular'));
-const Machine = lazy(() => import('../src/pages/Machine'));
-const Team = lazy(() => import('../src/pages/Team'));
-const Multiskilling = lazy(() => import('../src/pages/Multiskilling'));
-const Workwithus = lazy(() => import('../src/pages/Workwithus'));
-const About = lazy(() => import('../src/pages/About'));
-const Contact = lazy(() => import('../src/pages/Contact'));
-const CallForBid = lazy(() => import('../src/pages/callforbid'));
-const Projects = lazy(() => import('../src/pages/Projects'));
+// AARTI main website (redesign)
+const Home = lazy(() => import('./site/pages/Home'));
+const About = lazy(() => import('./site/pages/About'));
+const Team = lazy(() => import('./site/pages/Team'));
+const Projects = lazy(() => import('./site/pages/Projects'));
+const Contact = lazy(() => import('./site/pages/Contact'));
+const Technology = lazy(() => import('./site/pages/Technology'));
+const NotFound = lazy(() => import('./site/pages/NotFound'));
+const Tenders = lazy(() => import('./site/pages/Opportunities').then((m) => ({ default: m.Tenders })));
+const Careers = lazy(() => import('./site/pages/Opportunities').then((m) => ({ default: m.Careers })));
+const focus = (name) => lazy(() => import('./site/pages/FocusPages').then((m) => ({ default: m[name] })));
+const EMobility = focus('EMobility');
+const EconomicGrowth = focus('EconomicGrowth');
+const SupportDevelopment = focus('SupportDevelopment');
+const Innovation = focus('Innovation');
+const Networking = focus('Networking');
+const EvLab = lazy(() => import('./pages/Multiskilling'));
 
 // CPM website components
-const Header1 = lazy(() => import('../src/Components/cpm/Header1'));
-const CpmOverview = lazy(() => import('../src/Components/cpm/CpmOverview'));
-const Research = lazy(() => import('../src/Components/cpm/Research'));
-const MakeInIndia = lazy(() => import('../src/Components/cpm/MakeInIndia'));
+const Header1 = lazy(() => import('./Components/cpm/Header1'));
+const CpmOverview = lazy(() => import('./Components/cpm/CpmOverview'));
+const Research = lazy(() => import('./Components/cpm/Research'));
+const MakeInIndia = lazy(() => import('./Components/cpm/MakeInIndia'));
 const SmartFactory = lazy(() => import('./Components/cpm/SmartFactory'));
-const Footer1 = lazy(() => import('../src/Components/cpm/Footer1'));
-const Objective = lazy(() => import('../src/Components/cpm/Pages/Objective'));
-const Visions = lazy(() => import('../src/Components/cpm/Pages/Visions'));
-const Introduction = lazy(() => import('../src/Components/cpm/Pages/Introduction'));
-const Facilities = lazy(() => import('../src/Components/cpm/Pages/Facilities'));
-const Global = lazy(() => import('../src/Components/cpm/Pages/Global'));
-const PrecisonFinishing = lazy(() => import('../src/Components/cpm/Pages/PrecisonFinishing'));
-const SmartManufacturing = lazy(() => import('../src/Components/cpm/Pages/SmartManufacturing'));
-const SustainabilityManufacturing = lazy(() => import('../src/Components/cpm/Pages/SustainabilityManufacturing'));
-const IndustryCollaboration = lazy(() => import('../src/Components/cpm/Pages/IndustryCollaboration'));
-const CapacityBuilding = lazy(() => import('../src/Components/cpm/Pages/CapacityBuilding'));
+const Footer1 = lazy(() => import('./Components/cpm/Footer1'));
+const Objective = lazy(() => import('./Components/cpm/Pages/Objective'));
+const Visions = lazy(() => import('./Components/cpm/Pages/Visions'));
+const Introduction = lazy(() => import('./Components/cpm/Pages/Introduction'));
+const Facilities = lazy(() => import('./Components/cpm/Pages/Facilities'));
+const Global = lazy(() => import('./Components/cpm/Pages/Global'));
+const PrecisonFinishing = lazy(() => import('./Components/cpm/Pages/PrecisonFinishing'));
+const SmartManufacturing = lazy(() => import('./Components/cpm/Pages/SmartManufacturing'));
+const SustainabilityManufacturing = lazy(() => import('./Components/cpm/Pages/SustainabilityManufacturing'));
+const IndustryCollaboration = lazy(() => import('./Components/cpm/Pages/IndustryCollaboration'));
+const CapacityBuilding = lazy(() => import('./Components/cpm/Pages/CapacityBuilding'));
+
 // RSVC website components
-const RNavbar = lazy(() => import('../src/Components/Rsvc/RNavbar'));
-const heading = lazy(() => import('../src/Components/Rsvc/heading'))
-const RHeader = lazy(() => import('../src/Components/Rsvc/Rhedaer'));
-const RHero = lazy(() => import('../src/Components/Rsvc/Rhero'));
-const Approach = lazy(() => import('../src/Components/Rsvc/Approach'));
-const IsvcCenters = lazy(() => import('../src/Components/IsvcCenters'));
-const Recent = lazy(() => import('../src/Components/Rsvc/Recent'));
-const SmartCenters = lazy(() => import('../src/Components/Rsvc/SmartCenters'));
-const Footer2 = lazy(() => import('../src/Components/Rsvc/Footer2'));
-const Strategic = lazy(() => import('../src/Components/Rsvc/Strategic'));
-const Rutage = lazy(() => import('../src/Components/Rsvc/Pages/Rutage'));
-const Entities = lazy(() => import('../src/Components/Rsvc/Pages/Entities'));
+const RNavbar = lazy(() => import('./Components/Rsvc/RNavbar'));
+const RHeader = lazy(() => import('./Components/Rsvc/Rhedaer'));
+const RHero = lazy(() => import('./Components/Rsvc/Rhero'));
+const Approach = lazy(() => import('./Components/Rsvc/Approach'));
+const IsvcCenters = lazy(() => import('./Components/IsvcCenters'));
+const Recent = lazy(() => import('./Components/Rsvc/Recent'));
+const SmartCenters = lazy(() => import('./Components/Rsvc/SmartCenters'));
+const Footer2 = lazy(() => import('./Components/Rsvc/Footer2'));
+const Strategic = lazy(() => import('./Components/Rsvc/Strategic'));
+const Rutage = lazy(() => import('./Components/Rsvc/Pages/Rutage'));
+const Entities = lazy(() => import('./Components/Rsvc/Pages/Entities'));
 const Activites = lazy(() => import('./Components/Rsvc/Pages/Activites'));
 const Village = lazy(() => import('./Components/Rsvc/village'));
-const AppContent = () => {
-  const { darkMode, toggleDarkMode } = useDarkMode();
-  const location = useLocation();
-  const isAartiWebsite = !location.pathname.startsWith('/cpm') && !location.pathname.startsWith('/Rsvc');
 
+// Old URLs → new URLs. Paths differing only by letter case (e.g. /About) already
+// match the new lowercase routes because React Router matching is case-insensitive.
+const redirects = {
+  '/Teams': '/team',
+  '/ContactUs': '/contact',
+  '/WorkWithUs': '/careers',
+  '/Callforbid': '/tenders',
+  '/Multiskilling': '/ev-lab',
+  '/EMobilityProjects': '/focus/e-mobility',
+  '/EconomicProjects': '/focus/economic-growth',
+  '/SupportDevlopemnt': '/focus/support-development',
+  '/Innovation': '/focus/innovation',
+  '/Networking': '/focus/networking',
+  '/Mission': '/about#mission',
+  '/Vision': '/about#vision',
+  '/Objectives': '/about#objectives',
+  '/mob': '/technologies/accessible-mobility-vehicle',
+  '/magnetic-motor': '/technologies/axial-flux-motor',
+  '/modular-platform': '/technologies/modular-e2w-platform',
+  '/Battery Pack Assembly Equipment': '/technologies/battery-pack-assembly',
+};
+
+const page = (Component) => (
+  <Suspense fallback={<PageLoading />}>
+    <Component />
+  </Suspense>
+);
+
+const SubsiteThemeToggle = () => {
+  const { pathname } = useLocation();
+  const isSubsite = pathname.startsWith('/cpm') || pathname.toLowerCase().startsWith('/rsvc');
+  if (!isSubsite) return null;
   return (
-    <>
-      <Seo />
-      {isAartiWebsite && (
-        <Suspense fallback={<Loader />}>
-          <Navbar />
-        </Suspense>
-      )}
-      {!isAartiWebsite && (
-        <div className="fixed bottom-5 right-5 z-[9999] lg:hidden">
-          <DarkModeToggle className="p-3 bg-slate-900/90 text-white border border-slate-600 shadow-xl backdrop-blur-md hover:scale-105" iconClass="h-5 w-5" />
-        </div>
-      )}
-      <Routes>
-        {/* Aarti Website Routes */}
-        <Route path="/" element={
-          <Suspense fallback={<Loader />}>
-            <Header />
-            <HeroSection darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-            <Highlights />
-            <BusinessAcceleratorCohorts />
-            <RsvcShowcase />
-            <OutreachEvents />
-            <IndustrialRfpShowcase />
-            <HellaIndustrialRd />
-            <FocusArea darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-            <Technologies darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-            <ProgramPartners darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-            <IndustryAccelerator darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-            <Metheod darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-            <Footer />
-          </Suspense>
-        } />
-        <Route path="/EconomicProjects" element={<Suspense fallback={<Loader />}><EconomicProjects /></Suspense>} />
-        <Route path="/EMobilityProjects" element={<Suspense fallback={<Loader />}><EMobilityProjects /></Suspense>} />
-        <Route path="/SupportDevlopemnt" element={<Suspense fallback={<Loader />}><SupportDevlopemnt /></Suspense>} />
-        <Route path="/Innovation" element={<Suspense fallback={<Loader />}><Innovation /></Suspense>} />
-        <Route path="/Networking" element={<Suspense fallback={<Loader />}><Networking /></Suspense>} />
-        <Route path="/Objectives" element={<Suspense fallback={<Loader />}><Objectives /></Suspense>} />
-        <Route path="/Mission" element={<Suspense fallback={<Loader />}><Mission /></Suspense>} />
-        <Route path="/Vision" element={<Suspense fallback={<Loader />}><Vision /></Suspense>} />
-        <Route path="/mob" element={<Suspense fallback={<Loader />}><Mob /></Suspense>} />
-        <Route path="/magnetic-motor" element={<Suspense fallback={<Loader />}><Magnetic /></Suspense>} />
-        <Route path="/modular-platform" element={<Suspense fallback={<Loader />}><Modular /></Suspense>} />
-        <Route path="/Battery Pack Assembly Equipment" element={<Suspense fallback={<Loader />}><Machine /></Suspense>} />
-        <Route path="/Teams" element={<Suspense fallback={<Loader />}><Team darkMode={darkMode} /></Suspense>} />
-        <Route path="/Multiskilling" element={<Suspense fallback={<Loader />}><Multiskilling darkMode={darkMode} /></Suspense>} />
-        <Route path="/WorkWithUs" element={<Suspense fallback={<Loader />}><Workwithus darkMode={darkMode} /></Suspense>} />
-        <Route path="/About" element={<Suspense fallback={<Loader />}><About darkMode={darkMode} /></Suspense>} />
-        <Route path="/ContactUs" element={<Suspense fallback={<Loader />}><Contact darkMode={darkMode} /></Suspense>} />
-        <Route path="/Callforbid" element={<Suspense fallback={<Loader />}><CallForBid darkMode={darkMode} /></Suspense>} />
-        <Route path="/Projects" element={<Suspense fallback={<Loader />}><Projects darkMode={darkMode} /></Suspense>} />
+    <div className="fixed bottom-5 right-5 z-[9999] lg:hidden">
+      <DarkModeToggle className="p-3 bg-slate-900/90 text-white border border-slate-600 shadow-xl backdrop-blur-md hover:scale-105" iconClass="h-5 w-5" />
+    </div>
+  );
+};
 
-        {/* CPM Website Routes */}
-        <Route path="/cpm" element={
-          <Suspense fallback={<Loader />}>
+const AppRoutes = () => (
+  <>
+    <Seo />
+    <SubsiteThemeToggle />
+    <Routes>
+      {/* AARTI main website */}
+      <Route element={<SiteLayout />}>
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="team" element={<Team />} />
+        <Route path="projects" element={<Projects />} />
+        <Route path="tenders" element={<Tenders />} />
+        <Route path="careers" element={<Careers />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="ev-lab" element={<EvLab />} />
+        <Route path="focus/e-mobility" element={<EMobility />} />
+        <Route path="focus/economic-growth" element={<EconomicGrowth />} />
+        <Route path="focus/support-development" element={<SupportDevelopment />} />
+        <Route path="focus/innovation" element={<Innovation />} />
+        <Route path="focus/networking" element={<Networking />} />
+        <Route path="technologies/:slug" element={<Technology />} />
+        {Object.entries(redirects).map(([from, to]) => (
+          <Route key={from} path={from} element={<Navigate to={to} replace />} />
+        ))}
+        <Route path="*" element={<NotFound />} />
+      </Route>
+
+      {/* CPM website */}
+      <Route
+        path="/cpm"
+        element={
+          <Suspense fallback={<PageLoading />}>
             <Header1 />
             <CpmOverview />
             <Research />
@@ -142,21 +135,24 @@ const AppContent = () => {
             <SmartFactory />
             <Footer1 />
           </Suspense>
-        } />
-        <Route path="/cpm/Objective" element={<Suspense fallback={<Loader />}><Objective /></Suspense>} />
-        <Route path="/cpm/vision" element={<Suspense fallback={<Loader />}><Visions /></Suspense>} />
-        <Route path="/cpm/Vision" element={<Suspense fallback={<Loader />}><Visions /></Suspense>} />
-        <Route path="/cpm/Introduction" element={<Suspense fallback={<Loader />}><Introduction /></Suspense>} />
-        <Route path="/cpm/Facilities" element={<Suspense fallback={<Loader />}><Facilities /></Suspense>} />
-        <Route path="/cpm/Global" element={<Suspense fallback={<Loader />}><Global /></Suspense>} />
-        <Route path="/cpm/PrecisonFinishing" element={<Suspense fallback={<Loader />}><PrecisonFinishing /></Suspense>} />
-        <Route path="/cpm/SmartManufacturing" element={<Suspense fallback={<Loader />}><SmartManufacturing /></Suspense>} />
-        <Route path="/cpm/SustainabilityManufacturing" element={<Suspense fallback={<Loader />}><SustainabilityManufacturing /></Suspense>} />
-        <Route path="/cpm/IndustryCollaboration" element={<Suspense fallback={<Loader />}><IndustryCollaboration /></Suspense>} />
-        <Route path="/cpm/CapacityBuilding" element={<Suspense fallback={<Loader />}><CapacityBuilding /></Suspense>} />
-        {/* RSVC Website Routes */}
-        <Route path="/Rsvc" element={
-          <Suspense fallback={<Loader />}>
+        }
+      />
+      <Route path="/cpm/Objective" element={page(Objective)} />
+      <Route path="/cpm/vision" element={page(Visions)} />
+      <Route path="/cpm/Introduction" element={page(Introduction)} />
+      <Route path="/cpm/Facilities" element={page(Facilities)} />
+      <Route path="/cpm/Global" element={page(Global)} />
+      <Route path="/cpm/PrecisonFinishing" element={page(PrecisonFinishing)} />
+      <Route path="/cpm/SmartManufacturing" element={page(SmartManufacturing)} />
+      <Route path="/cpm/SustainabilityManufacturing" element={page(SustainabilityManufacturing)} />
+      <Route path="/cpm/IndustryCollaboration" element={page(IndustryCollaboration)} />
+      <Route path="/cpm/CapacityBuilding" element={page(CapacityBuilding)} />
+
+      {/* RSVC website */}
+      <Route
+        path="/Rsvc"
+        element={
+          <Suspense fallback={<PageLoading />}>
             <RHeader />
             <RNavbar />
             <RHero />
@@ -167,22 +163,22 @@ const AppContent = () => {
             <SmartCenters />
             <Footer2 />
           </Suspense>
-        } />
-        <Route path="/Rsvc/Activites" element={<Suspense fallback={<Loader />}><Activites /></Suspense>} />
-        <Route path="/Rsvc/Strategic" element={<Suspense fallback={<Loader />}><Strategic /></Suspense>} />
-        <Route path="/Rsvc/Rutage" element={<Suspense fallback={<Loader />}><Rutage /></Suspense>} />
-        <Route path="/Rsvc/Entities" element={<Suspense fallback={<Loader />}><Entities /></Suspense>} />
-      </Routes>
-    </>
-  );
-};
+        }
+      />
+      <Route path="/Rsvc/Activites" element={page(Activites)} />
+      <Route path="/Rsvc/Strategic" element={page(Strategic)} />
+      <Route path="/Rsvc/Rutage" element={page(Rutage)} />
+      <Route path="/Rsvc/Entities" element={page(Entities)} />
+    </Routes>
+  </>
+);
 
 function App() {
   return (
     <Router>
       <DarkModeProvider>
         <ScrollToTop />
-        <AppContent />
+        <AppRoutes />
       </DarkModeProvider>
     </Router>
   );

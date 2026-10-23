@@ -3,7 +3,7 @@ import { FaChevronLeft, FaChevronRight, FaCheckCircle, FaUsers, FaLeaf, FaWater 
 import Rutage1 from '../../assets/rutage.jpg';
 import Rutage2 from '../../assets/almora.jpg';
 import WorkshopImage from '../../assets/events.jpg';
-import OngroundImage from '../../assets/Onground.png';
+import OngroundImage from '../../assets/site/rsvc-on-ground.webp';
 
 const SectionBadge = ({ children }) => (
   <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-blue-100 text-blue-700 mb-3">
