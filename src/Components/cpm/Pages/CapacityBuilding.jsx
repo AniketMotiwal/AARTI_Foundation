@@ -1,11 +1,6 @@
-import React from 'react'
+import React from 'react';
+import FocusAreaPage from './FocusAreaPage';
 
-const CapacityBuilding = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const CapacityBuilding = () => <FocusAreaPage title="Capacity Building" />;
 
-export default CapacityBuilding
+export default CapacityBuilding;

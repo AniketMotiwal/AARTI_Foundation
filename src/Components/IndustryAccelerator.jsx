@@ -7,8 +7,15 @@ const IndustryAcceleratorSection = () => {
         <h2 className="text-5xl font-extrabold text-center text-gray-800 mb-12 animate-fadeInUp">
           Industry Accelerator Program
         </h2>
-        <p className="text-xl text-center text-gray-700 mb-12 max-w-2xl mx-auto animate-fadeInUp">
+        <p className="text-xl text-center text-gray-700 mb-6 max-w-3xl mx-auto animate-fadeInUp">
           Enhancing competitiveness in the Indian Capital Goods Sector by supporting startups and industry partners in the Auto and Mobility domains.
+        </p>
+        <p className="text-lg text-center text-gray-700 mb-12 max-w-3xl mx-auto animate-fadeInUp">
+          See our{' '}
+          <a href="#business-accelerator-cohorts" className="text-indigo-700 font-semibold hover:underline">
+            Three Business Accelerator Cohorts
+          </a>{' '}
+          section above for program outcomes, mentoring, and photos from recent cohorts.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fadeIn">
           <div className="bg-white p-12 rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300">

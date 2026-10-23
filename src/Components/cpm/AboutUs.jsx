@@ -1,20 +1,22 @@
 import React from 'react';
+import { cpmMission } from './cpmContent';
 
 const AboutUs = () => {
   return (
-    <div className="bg-gray-600 text-white p-8 rounded-lg shadow-lg">
-    <h2 className="text-3xl font-bold mb-4 text-center">About the Centre for Precision Manufacturing (CPM)</h2>
-    <p className="text-lg leading-relaxed mb-4">The Centre for Precision Manufacturing (CPM) at IIT Roorkee is a cutting-edge research hub aimed at positioning India as a global leader in manufacturing...</p>
-    <ul className="list-disc list-inside space-y-2">
-        <li>Research Hub: Developing cutting-edge research in precision manufacturing.</li>
-        <li>Industry Collaboration: Partnering with industry to ensure technology transfer and practical applications.</li>
-        <li>Talent Development: Generating a skilled workforce through advanced training and education.</li>
-        <li>Sustainability: Integrating sustainable practices into all aspects of manufacturing.</li>
-    </ul>
-    <p className="text-lg leading-relaxed mt-4">CPM boasts state-of-the-art facilities, including AI-based manufacturing tools, smart factory emulation platforms, and advanced CNC machinery...</p>
-</div>
-
+    <section id="about-cpm" className="py-14 px-4 sm:px-6 bg-slate-800 text-white">
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="text-3xl md:text-4xl font-bold">
+          Centre for Precision Manufacturing (CPM)
+        </h2>
+        <p className="mt-3 text-indigo-200 text-lg">
+          AARTI Foundation · IIT Roorkee · University of Akron, USA
+        </p>
+        <p className="mt-8 text-lg leading-relaxed text-slate-200 text-left md:text-center">
+          {cpmMission}
+        </p>
+      </div>
+    </section>
   );
-}
+};
 
 export default AboutUs;

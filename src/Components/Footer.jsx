@@ -23,15 +23,15 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-200 dark:bg-gray-900 relative">
+    <footer className="bg-gray-200 dark:bg-slate-950 dark:border-t dark:border-slate-800 relative">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
-          <div className="mb-6 md:mb-0">
-            <a href="#" className="flex items-center">
+          <div className="mb-6 md:mb-0 shrink-0">
+            <a href="/" className="inline-block" aria-label="AARTI Foundation home">
               <img
                 src={logo}
-                className="h-30 w-30 md:h-32 md:w-32 transition-transform duration-300 transform hover:scale-150"
-                alt="#"
+                alt="AARTI Foundation"
+                className="block h-auto w-28 sm:w-32 max-w-[9rem] object-contain object-left"
               />
             </a>
           </div>
@@ -40,9 +40,12 @@ const Footer = () => {
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Resources
               </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
+              <ul className="text-gray-500 dark:text-slate-300 font-medium">
                 <li className="mb-4">
-                  <a href="#" className="hover:underline">AARTI</a>
+                  <a href="/" className="hover:underline">AARTI Foundation</a>
+                </li>
+                <li className="text-sm leading-relaxed">
+                  AARTI and RuTAGe logos accepted for publication in the Trademark Journal.
                 </li>
               </ul>
             </div>
@@ -77,7 +80,7 @@ const Footer = () => {
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Legal
               </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
+              <ul className="text-gray-500 dark:text-slate-300 font-medium">
                 <li className="mb-4">
                   <a href="#" className="hover:underline">Privacy Policy</a>
                 </li>

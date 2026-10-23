@@ -1,46 +1,150 @@
-import React from 'react';
-import iit from '/src/assets/iit.webp'; // Update path as needed
-import rscvc1 from '/src/assets/rscvcbg.webp'; // Update path as needed
-import logo from '/src/assets/logo.webp'; // Update path as needed
+import React, { useRef, useEffect, useCallback } from 'react';
+import iit from '/src/assets/iit.webp';
+import rscvc1 from '/src/assets/rscvcbg.webp';
+import logo from '/src/assets/logo.webp';
+
+const logoClass =
+  'object-contain transform hover:scale-110 transition-transform duration-300';
+const aartiLogoClass = `${logoClass} filter brightness-125`;
+const iitLogoClass = `${logoClass} filter brightness-80`;
+const rightLogoClass = 'object-contain w-auto filter brightness-125';
+
+const mobileLogoSize = 'h-12 mobile320:h-14 sm:h-20 w-auto';
+const desktopLogoSize =
+  'h-[4.5rem] md:h-20 lg:h-[5.25rem] xl:h-32 2xl:h-40 w-auto max-w-none';
+
+const useFitText = (minSize, maxSize) => {
+  const containerRef = useRef(null);
+  const textRef = useRef(null);
+
+  const fit = useCallback(() => {
+    const container = containerRef.current;
+    const text = textRef.current;
+    if (!container || !text) return;
+
+    let size = maxSize;
+    text.style.fontSize = `${size}px`;
+
+    while (text.scrollWidth > container.clientWidth && size > minSize) {
+      size -= 0.5;
+      text.style.fontSize = `${size}px`;
+    }
+  }, [minSize, maxSize]);
+
+  useEffect(() => {
+    fit();
+    const t1 = setTimeout(fit, 150);
+    const t2 = setTimeout(fit, 600);
+
+    const observer = new ResizeObserver(fit);
+    if (containerRef.current) observer.observe(containerRef.current);
+
+    window.addEventListener('resize', fit);
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(fit);
+    }
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      observer.disconnect();
+      window.removeEventListener('resize', fit);
+    };
+  }, [fit]);
+
+  return { containerRef, textRef };
+};
 
 const Rhedaer = () => {
+  const titleFit = useFitText(15, 72);
+  const subtitleFit = useFitText(10, 28);
+
   return (
-    <header className="header-container flex flex-col items-center bg-white text-gray-800">
-      <div className="flex items-center justify-between w-full mb-2">
-        {/* Left Logos */}
-        <div className="flex-shrink-0 ml-3 flex items-center space-x-4">
-          <img
-            src={logo}
-            alt="New Logo"
-            className="w-32 h-32 md:w-12 md:h-12 lg:w-12 lg:h-24 xl:w-24 xl:h-24 sm:w-24 sm:h-24 transform hover:scale-150 transition-transform duration-300 filter brightness-125"
-          />
-          <img
-            src={iit}
-            alt="Left Logo"
-            className="w-40 h-40 md:w-16 md:h-16 lg:w-16 lg:h-32 xl:w-24 xl:h-24 sm:w-24 sm:h-24 transform hover:scale-150 transition-transform duration-300 filter brightness-80"
-          />
-        </div>
-
-        {/* Center Content */}
-        <div className="flex-1 flex flex-col items-center">
-          <h2 className="text-5xl font-bold mb-0 bg-gradient-to-r from-blue-500 via-green-500 to-yellow-500 text-transparent bg-clip-text leading-tight pb-1">
-            RuTAGe - Smart Village Centre (RSVC)
-          </h2>
-
-          <div className="w-full flex justify-end mt-2 sm:mt-1">
-            <p className="text-base transition-colors duration-300 hover:text-red-500 hover:font-bold">
-              A Rural Technology Enabled Employment & Entrepreneurship model
-            </p>
+    <header className="w-full bg-white text-gray-800 px-2 sm:px-3 md:px-4 lg:px-6 overflow-visible">
+      <div className="max-w-[1920px] mx-auto w-full py-2 sm:py-3 md:py-4 lg:py-5">
+        {/* Mobile & small tablets */}
+        <div className="flex flex-col gap-2 md:hidden">
+          <div className="flex items-center justify-center gap-2 sm:gap-4 w-full">
+            <img
+              src={logo}
+              alt="AARTI Logo"
+              className={`${mobileLogoSize} ${aartiLogoClass}`}
+            />
+            <img
+              src={iit}
+              alt="IIT Roorkee Logo"
+              className={`${mobileLogoSize} ${iitLogoClass}`}
+            />
           </div>
+
+          <div className="flex justify-center w-full">
+            <img
+              src={rscvc1}
+              alt="Manthan & PSA Logo"
+              className={`h-10 mobile320:h-12 sm:h-16 max-w-[92%] ${rightLogoClass}`}
+            />
+          </div>
+
+          <div className="w-full px-1">
+            <h2 className="text-center font-bold leading-tight py-0.5 text-[clamp(0.72rem,3.4vw,1.25rem)]">
+              <span className="text-blue-600">RuTAGe</span>
+              <span className="text-green-600"> - Smart Village Centre </span>
+              <span className="text-yellow-500">(RSVC)</span>
+            </h2>
+          </div>
+
+          <p className="text-center text-[clamp(0.65rem,2.6vw,0.9rem)] leading-snug px-2">
+            A Rural Technology Enabled Employment & Entrepreneurship model
+          </p>
         </div>
 
-        {/* Right Logo */}
-        <div className="flex-shrink-0">
-          <img
-            src={rscvc1}
-            alt="Right Logo"
-            className="h-48 w-auto filter brightness-125"
-          />
+        {/* Desktop */}
+        <div className="hidden md:grid md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-center md:gap-x-3 lg:gap-x-5 xl:gap-x-8 2xl:gap-x-12 w-full">
+          <div className="flex shrink-0 items-center gap-2 lg:gap-3 justify-self-start">
+            <img
+              src={logo}
+              alt="AARTI Logo"
+              className={`${desktopLogoSize} ${aartiLogoClass}`}
+            />
+            <img
+              src={iit}
+              alt="IIT Roorkee Logo"
+              className={`${desktopLogoSize} ${iitLogoClass}`}
+            />
+          </div>
+
+          <div className="flex flex-col items-center justify-center min-w-0 w-full px-1 lg:px-2 relative z-10">
+            <div ref={titleFit.containerRef} className="w-full overflow-hidden">
+              <h2
+                ref={titleFit.textRef}
+                className="font-bold whitespace-nowrap text-center leading-tight tracking-tight w-max max-w-none mx-auto"
+              >
+                <span className="text-blue-600">RuTAGe</span>
+                <span className="text-green-600"> - Smart Village Centre </span>
+                <span className="text-yellow-500">(RSVC)</span>
+              </h2>
+            </div>
+
+            <div
+              ref={subtitleFit.containerRef}
+              className="w-full overflow-hidden mt-1 lg:mt-2"
+            >
+              <p
+                ref={subtitleFit.textRef}
+                className="text-center whitespace-nowrap w-max max-w-none mx-auto leading-snug text-gray-800"
+              >
+                A Rural Technology Enabled Employment & Entrepreneurship model
+              </p>
+            </div>
+          </div>
+
+          <div className="flex shrink-0 items-center justify-self-end self-center pl-1 lg:pl-2">
+            <img
+              src={rscvc1}
+              alt="Manthan & PSA Logo"
+              className="h-24 md:h-[5.5rem] lg:h-28 xl:h-32 2xl:h-40 object-contain w-auto filter brightness-125"
+            />
+          </div>
         </div>
       </div>
     </header>

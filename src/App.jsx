@@ -1,6 +1,10 @@
-import React, { useState,lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Loader from '../src/Components/Loader';
+import ScrollToTop from '../src/Components/ScrollToTop';
+import Seo from '../src/Components/Seo';
+import DarkModeToggle from '../src/Components/DarkModeToggle';
+import { DarkModeProvider, useDarkMode } from '../src/context/DarkModeContext';
 
 // Lazy load components
 const Header = lazy(() => import('../src/Components/Header'));
@@ -10,6 +14,12 @@ const FocusArea = lazy(() => import('../src/Components/FocusArea'));
 const Footer = lazy(() => import('../src/Components/Footer'));
 const ProgramPartners = lazy(() => import('../src/Components/ProgramPartners'));
 const IndustryAccelerator = lazy(() => import('../src/Components/IndustryAccelerator'));
+const Highlights = lazy(() => import('../src/Components/Highlights'));
+const BusinessAcceleratorCohorts = lazy(() => import('../src/Components/BusinessAcceleratorCohorts'));
+const RsvcShowcase = lazy(() => import('../src/Components/RsvcShowcase'));
+const OutreachEvents = lazy(() => import('../src/Components/OutreachEvents'));
+const IndustrialRfpShowcase = lazy(() => import('../src/Components/IndustrialRfpShowcase'));
+const HellaIndustrialRd = lazy(() => import('../src/Components/HellaIndustrialRd'));
 const Technologies = lazy(() => import('../src/Components/Technologies'));
 const Metheod = lazy(() => import('../src/Components/Metheod'));
 const EconomicProjects = lazy(() => import('../src/pages/EconomicProjects'));
@@ -30,17 +40,14 @@ const Workwithus = lazy(() => import('../src/pages/Workwithus'));
 const About = lazy(() => import('../src/pages/About'));
 const Contact = lazy(() => import('../src/pages/Contact'));
 const CallForBid = lazy(() => import('../src/pages/callforbid'));
-const  Projects = lazy(()=>import('../src/pages/Projects'));
+const Projects = lazy(() => import('../src/pages/Projects'));
 
 // CPM website components
 const Header1 = lazy(() => import('../src/Components/cpm/Header1'));
-const Hero = lazy(() => import('../src/Components/cpm/Hero'));
-const AboutUs = lazy(() => import('../src/Components/cpm/AboutUs'));
-const FocusAreas = lazy(() => import('../src/Components/cpm/FocusAreas'));
+const CpmOverview = lazy(() => import('../src/Components/cpm/CpmOverview'));
 const Research = lazy(() => import('../src/Components/cpm/Research'));
-const Membership = lazy(() => import('../src/Components/cpm/Membership'));
 const MakeInIndia = lazy(() => import('../src/Components/cpm/MakeInIndia'));
-const NewsEvents = lazy(() => import('../src/Components/cpm/NewsEvents'));
+const SmartFactory = lazy(() => import('./Components/cpm/SmartFactory'));
 const Footer1 = lazy(() => import('../src/Components/cpm/Footer1'));
 const Objective = lazy(() => import('../src/Components/cpm/Pages/Objective'));
 const Visions = lazy(() => import('../src/Components/cpm/Pages/Visions'));
@@ -54,10 +61,11 @@ const IndustryCollaboration = lazy(() => import('../src/Components/cpm/Pages/Ind
 const CapacityBuilding = lazy(() => import('../src/Components/cpm/Pages/CapacityBuilding'));
 // RSVC website components
 const RNavbar = lazy(() => import('../src/Components/Rsvc/RNavbar'));
-const heading = lazy(()=>import('../src/Components/Rsvc/heading'))
+const heading = lazy(() => import('../src/Components/Rsvc/heading'))
 const RHeader = lazy(() => import('../src/Components/Rsvc/Rhedaer'));
 const RHero = lazy(() => import('../src/Components/Rsvc/Rhero'));
 const Approach = lazy(() => import('../src/Components/Rsvc/Approach'));
+const IsvcCenters = lazy(() => import('../src/Components/IsvcCenters'));
 const Recent = lazy(() => import('../src/Components/Rsvc/Recent'));
 const SmartCenters = lazy(() => import('../src/Components/Rsvc/SmartCenters'));
 const Footer2 = lazy(() => import('../src/Components/Rsvc/Footer2'));
@@ -65,19 +73,24 @@ const Strategic = lazy(() => import('../src/Components/Rsvc/Strategic'));
 const Rutage = lazy(() => import('../src/Components/Rsvc/Pages/Rutage'));
 const Entities = lazy(() => import('../src/Components/Rsvc/Pages/Entities'));
 const Activites = lazy(() => import('./Components/Rsvc/Pages/Activites'));
-const Village = lazy(()=> import('./Components/Rsvc/village'));
-const AppContent = ({ darkMode, toggleDarkMode }) => {
+const Village = lazy(() => import('./Components/Rsvc/village'));
+const AppContent = () => {
+  const { darkMode, toggleDarkMode } = useDarkMode();
   const location = useLocation();
   const isAartiWebsite = !location.pathname.startsWith('/cpm') && !location.pathname.startsWith('/Rsvc');
-  console.log(location.pathname);  // This will help you debug the current pathname in your app
-
 
   return (
     <>
+      <Seo />
       {isAartiWebsite && (
         <Suspense fallback={<Loader />}>
-          <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+          <Navbar />
         </Suspense>
+      )}
+      {!isAartiWebsite && (
+        <div className="fixed bottom-5 right-5 z-[9999] lg:hidden">
+          <DarkModeToggle className="p-3 bg-slate-900/90 text-white border border-slate-600 shadow-xl backdrop-blur-md hover:scale-105" iconClass="h-5 w-5" />
+        </div>
       )}
       <Routes>
         {/* Aarti Website Routes */}
@@ -85,6 +98,12 @@ const AppContent = ({ darkMode, toggleDarkMode }) => {
           <Suspense fallback={<Loader />}>
             <Header />
             <HeroSection darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            <Highlights />
+            <BusinessAcceleratorCohorts />
+            <RsvcShowcase />
+            <OutreachEvents />
+            <IndustrialRfpShowcase />
+            <HellaIndustrialRd />
             <FocusArea darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             <Technologies darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             <ProgramPartners darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
@@ -112,23 +131,21 @@ const AppContent = ({ darkMode, toggleDarkMode }) => {
         <Route path="/ContactUs" element={<Suspense fallback={<Loader />}><Contact darkMode={darkMode} /></Suspense>} />
         <Route path="/Callforbid" element={<Suspense fallback={<Loader />}><CallForBid darkMode={darkMode} /></Suspense>} />
         <Route path="/Projects" element={<Suspense fallback={<Loader />}><Projects darkMode={darkMode} /></Suspense>} />
-        
+
         {/* CPM Website Routes */}
         <Route path="/cpm" element={
           <Suspense fallback={<Loader />}>
             <Header1 />
-            <Hero />
-            <AboutUs />
-            <FocusAreas />
+            <CpmOverview />
             <Research />
-            <Membership />
             <MakeInIndia />
-            <NewsEvents />
+            <SmartFactory />
             <Footer1 />
           </Suspense>
         } />
         <Route path="/cpm/Objective" element={<Suspense fallback={<Loader />}><Objective /></Suspense>} />
         <Route path="/cpm/vision" element={<Suspense fallback={<Loader />}><Visions /></Suspense>} />
+        <Route path="/cpm/Vision" element={<Suspense fallback={<Loader />}><Visions /></Suspense>} />
         <Route path="/cpm/Introduction" element={<Suspense fallback={<Loader />}><Introduction /></Suspense>} />
         <Route path="/cpm/Facilities" element={<Suspense fallback={<Loader />}><Facilities /></Suspense>} />
         <Route path="/cpm/Global" element={<Suspense fallback={<Loader />}><Global /></Suspense>} />
@@ -137,7 +154,6 @@ const AppContent = ({ darkMode, toggleDarkMode }) => {
         <Route path="/cpm/SustainabilityManufacturing" element={<Suspense fallback={<Loader />}><SustainabilityManufacturing /></Suspense>} />
         <Route path="/cpm/IndustryCollaboration" element={<Suspense fallback={<Loader />}><IndustryCollaboration /></Suspense>} />
         <Route path="/cpm/CapacityBuilding" element={<Suspense fallback={<Loader />}><CapacityBuilding /></Suspense>} />
-        
         {/* RSVC Website Routes */}
         <Route path="/Rsvc" element={
           <Suspense fallback={<Loader />}>
@@ -145,10 +161,10 @@ const AppContent = ({ darkMode, toggleDarkMode }) => {
             <RNavbar />
             <RHero />
             <Approach />
-            <Village/>
+            <IsvcCenters />
+            <Village />
             <Recent />
             <SmartCenters />
-
             <Footer2 />
           </Suspense>
         } />
@@ -162,13 +178,12 @@ const AppContent = ({ darkMode, toggleDarkMode }) => {
 };
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-  
-  const toggleDarkMode = () => setDarkMode(prev => !prev);
-
   return (
     <Router>
-      <AppContent darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <DarkModeProvider>
+        <ScrollToTop />
+        <AppContent />
+      </DarkModeProvider>
     </Router>
   );
 }

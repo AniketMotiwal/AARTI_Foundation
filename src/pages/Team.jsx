@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import DirectorSir from '../assets/DirectorSir.webp';
 import akdewedi from '../assets/akdewedi.webp';
-import up from '../assets/up.webp';
+import deputy from '../assets/deputy.jpg';
 import Gk from '../assets/Gk.webp';
 import Sir from '../assets/dalera.webp'
 import Ak from '../assets/ankit.webp'
@@ -13,7 +13,7 @@ import Ak from '../assets/ankit.webp'
 // Directors and Programmes team data with designation and link to external websites
 const directors = [
   { name: 'Prof. K. K. Pant', designation: 'Chairperson', img: DirectorSir, link: 'https://www.iitr.ac.in/Institute/Director%20IIT%20Roorkee.html', central: true },
-  { name: 'Prof. U. P. Singh', designation: 'Deputy Director, IIT Roorkee', img: up, link: 'https://iitr.ac.in/Departments/Chemistry%20Department/People/Faculty/U.P.%20Singh.html' },
+  { name: 'Prof. Praveen Kumar', designation: 'Deputy Director, IIT Roorkee', img: deputy, link: 'https://iitr.ac.in/' },
   { name: 'Prof. Akshay Dvivedi', designation: 'Managing Director ', img: akdewedi, link: 'https://iitr.ac.in/Departments/Mechanical%20and%20Industrial%20Engineering%20Department/People/Faculty/100549.html' },
   { name: 'Mr. G. K. Rastogi', designation: 'Finance Officer, IIT Roorkee', img: Gk, link: 'https://iitr.ac.in/Administration/Institute%20Central%20Administration.html' },
   { name: 'Mr. Ankit Trivedi', designation: 'Lead-ICAT Incubation and Acceleration Centre', img: Ak, link: 'https://example.com/trivedi' },

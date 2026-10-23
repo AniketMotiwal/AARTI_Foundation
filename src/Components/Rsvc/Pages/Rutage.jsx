@@ -72,8 +72,8 @@
 
 // export default Rutage;
 import React from "react";
-import image1 from "../../../assets/Air Coling  Based Vending Cart.jpg";
-import image2 from "../../../assets/Bagheswari Wool Charka.jpg";
+import image1 from "../../../assets/Air.jpg";
+import image2 from "../../../assets/ru.jpg";
 import image3 from "../../../assets/picohydro.jpg";
 
 const ImageGallery = () => {

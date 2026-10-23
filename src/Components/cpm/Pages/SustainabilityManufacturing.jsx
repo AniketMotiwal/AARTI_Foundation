@@ -1,11 +1,8 @@
-import React from 'react'
+import React from 'react';
+import FocusAreaPage from './FocusAreaPage';
 
-const SustainabilityManufacturing = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const SustainabilityManufacturing = () => (
+  <FocusAreaPage title="Sustainability Manufacturing" />
+);
 
-export default SustainabilityManufacturing
+export default SustainabilityManufacturing;

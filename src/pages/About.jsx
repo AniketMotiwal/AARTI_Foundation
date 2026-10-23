@@ -1,4 +1,46 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+const recognitionItems = [
+  {
+    title: 'Trademark recognition',
+    summary: 'AARTI and RuTAGe logos accepted for publication in the Trademark Journal.',
+    detail:
+      'Formal acceptance for publication strengthens brand identity for AARTI Foundation and the RuTAGe programme across official and public-facing channels.',
+    tag: 'Brand & IP',
+    accent: 'from-violet-500 to-indigo-600',
+    link: { to: '/#rsvc-showcase', label: 'RSVC programme' },
+  },
+  {
+    title: 'DGCA approval — RPTO',
+    summary: 'Approval granted by DGCA for Remote Pilot Training Organization (RPTO).',
+    detail:
+      'Regulatory clearance enables AARTI-aligned training and aviation-technology initiatives in compliance with national drone and remote-pilot standards.',
+    tag: 'Regulatory',
+    accent: 'from-sky-500 to-blue-600',
+    link: { to: '/Projects', label: 'View on Projects' },
+  },
+  {
+    title: 'Business accelerator cohorts',
+    summary:
+      'Three Ministry of Heavy Industries cohorts engaging participants from 180+ industries.',
+    detail:
+      'Programs focused on business acceleration, innovation, and leadership for MSME owners, start-up founders, and industry professionals—with 15% participation from young startups and students in the IIT Roorkee ecosystem.',
+    tag: 'MHI · Outreach',
+    accent: 'from-amber-500 to-orange-600',
+    link: { to: '/#business-accelerator-cohorts', label: 'See cohort highlights' },
+  },
+  {
+    title: 'Capacity building & global exchange',
+    summary:
+      'Capacity building for 200+ young women in emerging technology and international academic exchanges.',
+    detail:
+      'Includes the 500th birth anniversary commemoration of Rani Abakka Chowta (17–20 March 2026), the international waste-management conference, and sessions with global academic partners.',
+    tag: 'Education',
+    accent: 'from-emerald-500 to-teal-600',
+    link: { to: '/#outreach-events', label: 'View programmes & photos' },
+  },
+];
 
 const About = () => {
   const [selectedObj, setSelectedObj] = useState(null);
@@ -44,13 +86,67 @@ const About = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 dark:bg-gray-800">
+    <div className="p-4 sm:p-6 bg-slate-100 dark:bg-gray-900 min-h-screen">
+      <section
+        id="recognition-outreach"
+        className="container mx-auto px-4 sm:px-6 pt-20 pb-12 max-w-6xl"
+      >
+        <header className="text-center mb-10 md:mb-12">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400 mb-2">
+            Milestones
+          </p>
+          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
+            Recognition &amp; Outreach
+          </h1>
+          <p className="mt-4 text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            Key recognitions, regulatory approvals, and outreach programs that reflect AARTI&apos;s
+            impact at IIT Roorkee and with industry partners.
+          </p>
+        </header>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {recognitionItems.map((item) => (
+            <article
+              key={item.title}
+              className="flex flex-col rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-shadow overflow-hidden"
+            >
+              <div className={`h-1.5 bg-gradient-to-r ${item.accent}`} aria-hidden />
+              <div className="p-6 md:p-7 flex flex-col flex-1">
+                <span className="inline-block self-start text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-3">
+                  {item.tag}
+                </span>
+                <h2 className="text-xl font-bold text-slate-900 dark:text-white leading-snug">
+                  {item.title}
+                </h2>
+                <p className="mt-3 text-base font-medium text-indigo-900/90 dark:text-indigo-200 leading-relaxed">
+                  {item.summary}
+                </p>
+                <p className="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed flex-1">
+                  {item.detail}
+                </p>
+                {item.link && (
+                  <Link
+                    to={item.link.to}
+                    className="mt-5 inline-flex items-center text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
+                  >
+                    {item.link.label}
+                    <span className="ml-1" aria-hidden>
+                      →
+                    </span>
+                  </Link>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
       {/* Mission Section */}
-      <section className="bg-gradient-to-r from-blue-400 to-green-400 py-12 text-white mt-12">
+      <section className="bg-gradient-to-r from-blue-400 to-green-400 py-12 text-white mt-4">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold mb-6 text-black">Our Vison</h2>
           <p className="text-lg md:text-xl mb-4 text-justify text-black">
-            To establish a global ecosystem where every innovation seamlessly transitions from concept to commercialization, creating a self-reliant and economically empowered society. Driving transformative technological solutions through seamless industry-academia collaboration, startup acceleration, and the integration of advanced readiness frameworks, ultimately fostering sustainable economic growth and global competitiveness.
+           To establish a global ecosystem where every innovation seamlessly transitions from concept to commercialization, creating a self-reliant and economically empowered society. Driving transformative technological solutions through industry-academia collaboration, startup acceleration, and advanced readiness frameworks—while nurturing human capital through focused capacity building—to foster inclusive sustainable economic growth and global competitiveness.
           </p>
         </div>
       </section>

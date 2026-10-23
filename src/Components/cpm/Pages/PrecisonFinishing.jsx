@@ -1,11 +1,6 @@
-import React from 'react'
+import React from 'react';
+import FocusAreaPage from './FocusAreaPage';
 
-const PrecisonFinishing = () => {
-  return (
-    <div>
-      hnhg
-    </div>
-  )
-}
+const PrecisonFinishing = () => <FocusAreaPage title="Precision Finishing" />;
 
-export default PrecisonFinishing
+export default PrecisonFinishing;

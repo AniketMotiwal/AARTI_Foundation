@@ -1,11 +1,6 @@
-import React from 'react'
+import React from 'react';
+import FocusAreaPage from './FocusAreaPage';
 
-const IndustryCollaboration = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const IndustryCollaboration = () => <FocusAreaPage title="Industry Collaboration" />;
 
-export default IndustryCollaboration
+export default IndustryCollaboration;
