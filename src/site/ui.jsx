@@ -205,7 +205,7 @@ export const CountUp = ({ value, suffix = '', duration = 1400 }) => {
 };
 
 /** Navy banner used at the top of every inner page. */
-export const PageHeader = ({ eyebrow, title, lead, crumbs = [], children }) => (
+export const PageHeader = ({ eyebrow, title, lead, crumbs = [], home = { label: 'Home', to: '/' }, children }) => (
   <header className="relative overflow-hidden bg-brand-950 text-white">
     <div
       className="pointer-events-none absolute inset-0 opacity-[0.35]"
@@ -220,8 +220,8 @@ export const PageHeader = ({ eyebrow, title, lead, crumbs = [], children }) => (
       <nav aria-label="Breadcrumb" className="mb-6">
         <ol className="flex flex-wrap items-center gap-1.5 text-sm text-white/60">
           <li>
-            <Link to="/" className="hover:text-white">
-              Home
+            <Link to={home.to} className="hover:text-white">
+              {home.label}
             </Link>
           </li>
           {crumbs.map((c) => (

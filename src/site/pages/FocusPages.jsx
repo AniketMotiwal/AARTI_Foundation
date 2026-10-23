@@ -118,7 +118,7 @@ export const EMobility = () => (
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {technologies.map((t) => (
           <Link key={t.slug} to={`/technologies/${t.slug}`} className="group rounded-3xl border border-line bg-surface p-3 transition-shadow hover:shadow-lift">
-            <div className="flex h-40 items-center justify-center rounded-2xl bg-white p-5">
+            <div className="flex h-40 items-center justify-center rounded-2xl bg-paper p-5">
               <img src={t.image} alt={t.title} loading="lazy" className="max-h-full object-contain" />
             </div>
             <div className="px-3 pb-3 pt-4">

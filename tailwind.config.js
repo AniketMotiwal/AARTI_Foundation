@@ -37,6 +37,8 @@ export default {
         sky: {
           brand: '#12CDF4',
         },
+        // Always-white tile for logos and product shots (stays white in dark mode)
+        paper: '#ffffff',
         // Semantic surfaces — values switch with the .dark class (see index.css)
         page: 'rgb(var(--c-page) / <alpha-value>)',
         surface: 'rgb(var(--c-surface) / <alpha-value>)',
@@ -58,7 +60,6 @@ export default {
         lift: '0 2px 4px rgb(3 8 52 / 0.06), 0 24px 48px -20px rgb(3 8 52 / 0.25)',
       },
       animation: {
-        colorChange: 'colorChange 5s infinite',
         'logo-scroll': 'logo-scroll 45s linear infinite',
         'fade-in': 'fade-in 0.6s ease-out both',
         'loading-bar': 'loading-bar 1.1s ease-in-out infinite',
@@ -81,33 +82,8 @@ export default {
           from: { transform: 'scale(1.08)' },
           to: { transform: 'scale(1)' },
         },
-        colorChange: {
-          '0%': { color: '#FF0000' }, // Red
-          '25%': { color: '#00FF00' }, // Green
-          '50%': { color: '#0000FF' }, // Blue
-          '75%': { color: '#FFFF00' }, // Yellow
-          '100%': { color: '#FF00FF' }, // Magenta
-        },
-      },
-      lineHeight: {
-        'none': '2', // Custom line-height for .leading-none
-      },
-      filter: {
-        'custom-brightness-90': 'brightness(90%)',
-        'custom-contrast-110': 'contrast(110%)',
-      },
-      screens: {
-        'iphone12pro': '390px',
-        'iphone14pro': '430px',
-        'mobile320': '320px', // Renamed from '320px'
-        'custom': '921px',
-        'scale-150': { raw: '(width: 1500px)' }, // Adjust width for 150%
-        'scale-175': { raw: '(width: 1750px)' }, // Adjust width for 175%
-        'scale-200': { raw: '(width: 2000px)' }, // Adjust width for 200%
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/aspect-ratio'), // Adds aspect-ratio utilities
-  ],
+  plugins: [],
 };

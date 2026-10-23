@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { scrollToCpmSection } from './cpm/scrollToCpmSection';
 
 // Scrolls to the #hash target once it has rendered (lazy pages mount late).
 const scrollToId = (id, attempt = 0) => {
@@ -17,8 +16,7 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     if (hash) {
-      const id = decodeURIComponent(hash.slice(1));
-      const timer = setTimeout(() => (pathname.startsWith('/cpm') ? scrollToCpmSection(id) : scrollToId(id)), 50);
+      const timer = setTimeout(() => scrollToId(decodeURIComponent(hash.slice(1))), 50);
       return () => clearTimeout(timer);
     }
     window.scrollTo({ top: 0, behavior: 'instant' });

@@ -4,6 +4,7 @@ import { FiArrowUp } from 'react-icons/fi';
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
 import { cx } from '../ui';
+import { mainSite } from '../sites';
 
 /** Slim loading bar shown while a lazy page chunk downloads. */
 export const PageLoading = () => (
@@ -36,7 +37,7 @@ const BackToTop = () => {
   );
 };
 
-const SiteLayout = () => (
+const SiteLayout = ({ site = mainSite }) => (
   <div className="flex min-h-screen flex-col">
     <a
       href="#main"
@@ -44,13 +45,13 @@ const SiteLayout = () => (
     >
       Skip to content
     </a>
-    <SiteHeader />
+    <SiteHeader site={site} />
     <main id="main" className="flex-1">
       <Suspense fallback={<PageLoading />}>
         <Outlet />
       </Suspense>
     </main>
-    <SiteFooter />
+    <SiteFooter site={site} />
     <BackToTop />
   </div>
 );

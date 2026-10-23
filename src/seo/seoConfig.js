@@ -122,31 +122,16 @@ const seoRoutes = {
       'Centre for Precision Manufacturing (CPM) at IIT Roorkee under AARTI Foundation — Smart Factory Emulation Platform funded by Ministry of Heavy Industries (IoT, AI/ML, cybersecurity), precision finishing, lab facilities, University of Akron collaboration.',
     keywords: `${baseKeywords}, ${cpmKeywords}, smart factory emulation platform MHI, Ministry of Heavy Industries IIT Roorkee`,
   },
-  '/cpm/Introduction': {
-    title: 'CPM Introduction | Precision Manufacturing IIT Roorkee',
+  '/cpm/about': {
+    title: 'About CPM | Centre for Precision Manufacturing IIT Roorkee',
     description:
-      'Introduction to CPM at IIT Roorkee — cutting-edge precision manufacturing research hub under AARTI Foundation and University of Akron, USA.',
+      'Vision, objectives and global impact of the Centre for Precision Manufacturing (CPM) at IIT Roorkee — established under AARTI Foundation with the University of Akron, USA.',
     keywords: cpmKeywords,
   },
-  '/cpm/Facilities': {
+  '/cpm/facilities': {
     title: 'CPM Facilities & Lab | IIT Roorkee',
     description:
       'CPM facilities at IIT Roorkee: AI manufacturing, CNC, smart factory emulation platform, robotics, and cybersecurity in manufacturing.',
-    keywords: cpmKeywords,
-  },
-  '/cpm/vision': {
-    title: 'CPM Vision | Centre for Precision Manufacturing IIT Roorkee',
-    description: 'Vision and goals of the Centre for Precision Manufacturing at IIT Roorkee.',
-    keywords: cpmKeywords,
-  },
-  '/cpm/Objective': {
-    title: 'CPM Objectives | IIT Roorkee AARTI Foundation',
-    description: 'Objectives of CPM — precision manufacturing, workforce development, Make in India.',
-    keywords: cpmKeywords,
-  },
-  '/cpm/Global': {
-    title: 'CPM Global Impact | IIT Roorkee',
-    description: 'Global collaboration and impact of CPM at IIT Roorkee.',
     keywords: cpmKeywords,
   },
   '/Rsvc': {
@@ -155,14 +140,19 @@ const seoRoutes = {
       'RuTAGe Smart Village Centre (RSVC) led by AARTI at IIT Roorkee — ISVC in Nakot, Tehri, Champawat, rural technology, livelihoods, digital governance, women empowerment.',
     keywords: `${baseKeywords}, ${rsvcKeywords}`,
   },
-  '/Rsvc/Strategic': {
-    title: 'RSVC Strategic Partners | RuTAGe IIT Roorkee',
-    description: 'Strategic partners and supporters of RSVC at IIT Roorkee.',
+  '/Rsvc/activities': {
+    title: 'RSVC Activities | RuTAGe Smart Village Centre IIT Roorkee',
+    description: 'Seminars, Kisaan Mitra meets and watershed programmes run by the RuTAGe Smart Village Centre in Uttarakhand.',
     keywords: rsvcKeywords,
   },
-  '/Rsvc/Rutage': {
-    title: 'RuTAGe | RSVC IIT Roorkee',
-    description: 'RuTAGe technologies and smart village programmes at IIT Roorkee.',
+  '/Rsvc/technologies': {
+    title: 'RSVC Technologies | RuTAG & Manthan | IIT Roorkee',
+    description: 'RuTAG technologies at RSVC Almora and solutions from entities registered on the RuTAG Manthan platform.',
+    keywords: rsvcKeywords,
+  },
+  '/Rsvc/partners': {
+    title: 'RSVC Strategic Partners | RuTAGe IIT Roorkee',
+    description: 'Strategic partners and supporters of RSVC at IIT Roorkee.',
     keywords: rsvcKeywords,
   },
 };

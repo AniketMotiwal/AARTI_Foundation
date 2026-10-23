@@ -59,7 +59,7 @@ export const Intro = () => (
           <ul className="mt-5 divide-y divide-line">
             {backers.map((b) => (
               <li key={b.name} className="flex items-center gap-5 py-5 first:pt-0 last:pb-0">
-                <span className="flex h-16 w-28 shrink-0 items-center justify-center rounded-xl bg-white p-2 ring-1 ring-line">
+                <span className="flex h-16 w-28 shrink-0 items-center justify-center rounded-xl bg-paper p-2 ring-1 ring-line">
                   <img src={b.logo} alt={`${b.name} logo`} className="max-h-full max-w-full object-contain" loading="lazy" />
                 </span>
                 <span>
@@ -281,7 +281,7 @@ export const Technologies = () => (
       {technologies.map((t, i) => (
         <Reveal key={t.slug} delay={i * 80}>
           <Link to={`/technologies/${t.slug}`} className="group flex h-full flex-col rounded-3xl border border-line bg-page p-3 transition-shadow hover:shadow-lift">
-            <div className="flex h-52 items-center justify-center overflow-hidden rounded-2xl bg-white p-6">
+            <div className="flex h-52 items-center justify-center overflow-hidden rounded-2xl bg-paper p-6">
               <img src={t.image} alt={t.title} loading="lazy" className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div className="flex flex-1 flex-col px-3 pb-3 pt-5">
@@ -311,7 +311,7 @@ export const IndustrialRD = () => (
     <div className="grid gap-6 lg:grid-cols-5">
       <Reveal className="lg:col-span-2">
         <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface">
-          <div className="bg-white p-4">
+          <div className="bg-paper p-4">
             <img src={hellaCase.image} alt="Hella India LED driver prototype — block diagram, PCB and test modes" loading="lazy" className="mx-auto max-h-72 object-contain" />
           </div>
           <div className="flex flex-1 flex-col p-7">
@@ -485,7 +485,7 @@ export const Partners = () => {
             <li
               key={`${p.name}-${i}`}
               aria-hidden={i >= partners.length}
-              className="flex h-20 w-44 shrink-0 items-center justify-center rounded-2xl border border-line bg-white px-5"
+              className="flex h-20 w-44 shrink-0 items-center justify-center rounded-2xl border border-line bg-paper px-5"
               title={p.name}
             >
               <img src={p.logo} alt={i < partners.length ? p.name : ''} loading="lazy" className="max-h-12 max-w-full object-contain" />

@@ -18,12 +18,10 @@
   <url><loc>https://aarti.iitr.ac.in/technologies/modular-e2w-platform</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://aarti.iitr.ac.in/technologies/battery-pack-assembly</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://aarti.iitr.ac.in/cpm</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
-  <url><loc>https://aarti.iitr.ac.in/cpm/Introduction</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://aarti.iitr.ac.in/cpm/Facilities</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://aarti.iitr.ac.in/cpm/vision</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://aarti.iitr.ac.in/cpm/Objective</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://aarti.iitr.ac.in/cpm/Global</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/cpm/about</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/cpm/facilities</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://aarti.iitr.ac.in/Rsvc</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
-  <url><loc>https://aarti.iitr.ac.in/Rsvc/Strategic</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://aarti.iitr.ac.in/Rsvc/Rutage</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/Rsvc/activities</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/Rsvc/technologies</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://aarti.iitr.ac.in/Rsvc/partners</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

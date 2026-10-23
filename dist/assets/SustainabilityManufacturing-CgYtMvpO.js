@@ -1,1 +1,0 @@
-import{j as t}from"./index-BPvB20sQ.js";import"./react-wUXpKk3C.js";import{F as i}from"./FocusAreaPage-BK_QmIpQ.js";import"./Header1-CDRf6SXd.js";import"./iit-BkkEoOgD.js";import"./index-7thHIQzu.js";import"./Footer1-DuiNSibC.js";const n=()=>t.jsx(i,{title:"Sustainability Manufacturing"});export{n as default};

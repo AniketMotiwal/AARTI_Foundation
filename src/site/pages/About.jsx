@@ -60,7 +60,7 @@ const About = () => (
           <ul className="grid gap-3">
             {backers.map((b) => (
               <li key={b.name} className="flex items-center gap-4 rounded-2xl border border-line bg-surface p-4">
-                <span className="flex h-14 w-24 shrink-0 items-center justify-center rounded-xl bg-white p-2 ring-1 ring-line">
+                <span className="flex h-14 w-24 shrink-0 items-center justify-center rounded-xl bg-paper p-2 ring-1 ring-line">
                   <img src={b.logo} alt={`${b.name} logo`} className="max-h-full max-w-full object-contain" />
                 </span>
                 <span>

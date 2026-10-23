@@ -15,7 +15,7 @@ const Projects = () => (
       <SectionHeading eyebrow="Sponsored research" title="Industrial R&D projects" />
       <div className="grid gap-6 lg:grid-cols-3">
         <Reveal className="overflow-hidden rounded-3xl border border-line bg-surface lg:row-span-2">
-          <div className="bg-white p-4">
+          <div className="bg-paper p-4">
             <img src={hellaCase.image} alt="Hella India LED driver prototype" className="mx-auto max-h-80 object-contain" loading="lazy" />
           </div>
           <div className="p-7">

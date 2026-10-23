@@ -47,6 +47,30 @@ const jobs = [
   ['hellaportotype.jpg', 'hella-prototype', 1200],
   ['Picture1.jpg', 'ev-lab-collage', 1000],
   ['CPM1.jpg', 'cpm-1', 1200],
+
+  // CPM microsite
+  ['cobort cpm.jpg', 'cpm-cobot', 1200],
+  ['CPM2.jpg', 'cpm-2', 1200],
+  ['CPM3.jpg', 'cpm-3', 1200],
+  ['CPM4.jpg', 'cpm-4', 1200],
+  ['EV laboratory pics (2).jpg', 'cpm-lab-1', 1200],
+  ['EV laboratory pics (4).jpg', 'cpm-lab-2', 1400],
+
+  // RSVC microsite
+  ['ISVC1.jpeg', 'isvc-nakot', 1400],
+  ['ISVC2.jpeg', 'isvc-tehri', 1200],
+  ['ISVC3.jpeg', 'isvc-champawat', 1200],
+  ['ISVC4.jpeg', 'isvc-outreach', 1200],
+  ['events.jpg', 'rsvc-springshed-workshop', 1200],
+  ['rsvcintiatives.jpg', 'rsvc-khulgad-seminar', 1200],
+  ['rsvcact2.jpg', 'rsvc-kisaan-mitra', 1200],
+  ['rasct.jpg', 'rsvc-mulberry', 1200],
+  ['picohydro.jpg', 'rsvc-tech-picohydro', 900],
+  ['Air.jpg', 'rsvc-tech-cart', 900],
+  ['ru.jpg', 'rsvc-tech-charkha', 900],
+  ['hub.png', 'rsvc-layout-hub', 1600],
+  ['spoke.png', 'rsvc-layout-spoke', 1600],
+  ['rutage.jpg', 'rsvc-almora-centre', 1200],
 ];
 
 // Vector logos rasterised to WebP
@@ -70,6 +94,40 @@ for (const [file, name, width] of jobs) {
   after += b;
   console.log(`${file.padEnd(40)} ${(a / 1024).toFixed(0).padStart(7)} KB -> ${(b / 1024).toFixed(0).padStart(5)} KB`);
 }
+// Brand marks: trim the empty canvas so both logos render at the same visual size
+for (const [file, name] of [['logo.png', 'logo-aarti'], ['iit.png', 'logo-iitr']]) {
+  await sharp(path.join(SRC, file))
+    .trim({ threshold: 10 })
+    .resize({ width: 320, height: 320, fit: 'contain', background: { r: 255, g: 255, b: 255, alpha: 0 } })
+    .webp({ quality: 90 })
+    .toFile(path.join(OUT, `${name}.webp`));
+  console.log(`${file.padEnd(40)} -> ${name}.webp`);
+}
+
+// Partner logos: trim surrounding whitespace so every logo fills its tile
+const partnerLogos = [
+  ['manthan.jpg', 'partner-manthan'],
+  ['tr.jpg', 'partner-trif'],
+  ['viransh.png', 'partner-viraansh'],
+  ['platform.webp', 'partner-platform-commons'],
+  ['Mphasis.jpg', 'partner-mphasis'],
+  ['Picture12.png', 'partner-grant-thornton'],
+  ['phd.png', 'partner-phd-chamber'],
+  ['Rotary.png', 'partner-rotary'],
+  ['infosys.png', 'partner-infosys'],
+  ['Gram.webp', 'partner-gram-unnati'],
+  ['sobus.png', 'partner-sobus'],
+  ['rscvcbg.webp', 'partner-psa-manthan'],
+];
+for (const [file, name] of partnerLogos) {
+  await sharp(path.join(SRC, file))
+    .trim({ threshold: 20 })
+    .resize({ width: 480, height: 240, fit: 'inside', withoutEnlargement: true })
+    .webp({ quality: 90 })
+    .toFile(path.join(OUT, `${name}.webp`));
+  console.log(`${file.padEnd(40)} -> ${name}.webp`);
+}
+
 for (const [file, name, width] of logos) {
   await sharp(path.join(SRC, file), { density: 200 })
     .resize({ width, withoutEnlargement: true })

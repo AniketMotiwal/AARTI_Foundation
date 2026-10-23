@@ -17,13 +17,13 @@ const Technology = () => {
       <Section>
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <div className="flex aspect-[16/10] items-center justify-center rounded-3xl border border-line bg-white p-8">
+            <div className="flex aspect-[16/10] items-center justify-center rounded-3xl border border-line bg-paper p-8">
               <img src={tech.image} alt={tech.title} className="max-h-full max-w-full object-contain" />
             </div>
             {tech.gallery && (
               <div className="mt-4 grid grid-cols-2 gap-4">
                 {tech.gallery.map((g) => (
-                  <div key={g.alt} className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl border border-line bg-white">
+                  <div key={g.alt} className="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl border border-line bg-paper">
                     <img src={g.src} alt={g.alt} loading="lazy" className="h-full w-full object-contain" />
                   </div>
                 ))}
@@ -74,7 +74,7 @@ const Technology = () => {
         <div className="grid gap-5 md:grid-cols-3">
           {others.map((t) => (
             <Link key={t.slug} to={`/technologies/${t.slug}`} className="group flex items-center gap-5 rounded-3xl border border-line bg-page p-4 transition-shadow hover:shadow-lift">
-              <span className="flex h-20 w-24 shrink-0 items-center justify-center rounded-2xl bg-white p-2">
+              <span className="flex h-20 w-24 shrink-0 items-center justify-center rounded-2xl bg-paper p-2">
                 <img src={t.image} alt="" loading="lazy" className="max-h-full max-w-full object-contain" />
               </span>
               <span className="flex-1">
