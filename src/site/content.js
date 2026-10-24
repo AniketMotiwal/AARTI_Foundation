@@ -533,7 +533,7 @@ export const about = {
 /* Team                                                                */
 /* ------------------------------------------------------------------ */
 
-// Official order: Chairperson, Managing Director, Directors, then management (CEO).
+// Board order as confirmed by AARTI: Chairperson, Prof. Praveen Kumar, Managing Director, Directors; then management (CEO).
 export const board = [
   {
     name: 'Prof. K. K. Pant',
@@ -543,6 +543,7 @@ export const board = [
     link: 'https://www.iitr.ac.in/Institute/Director%20IIT%20Roorkee.html',
     lead: true,
   },
+  { name: 'Prof. Praveen Kumar', role: 'Director', affiliation: 'Deputy Director, IIT Roorkee', img: imgPraveen, link: 'https://iitr.ac.in/' },
   {
     name: 'Prof. Akshay Dvivedi',
     role: 'Managing Director',
@@ -550,7 +551,6 @@ export const board = [
     img: imgDvivedi,
     link: 'https://iitr.ac.in/Departments/Mechanical%20and%20Industrial%20Engineering%20Department/People/Faculty/100549.html',
   },
-  { name: 'Prof. Praveen Kumar', role: 'Director', affiliation: 'Deputy Director, IIT Roorkee', img: imgPraveen, link: 'https://iitr.ac.in/' },
   { name: 'Mr. Saurabh Dalela', role: 'Director', affiliation: 'Director, ICAT', img: imgDalela, link: 'https://in.linkedin.com/in/saurabhdalela' },
   {
     name: 'Mr. G. K. Rastogi',
