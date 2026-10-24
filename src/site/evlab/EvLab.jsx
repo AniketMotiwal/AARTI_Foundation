@@ -3,6 +3,7 @@ import { FiCheck } from 'react-icons/fi';
 import { CheckList, IconCard, LazyVideo, MicroHero } from '../micro';
 import { Button, Container, CountUp, Reveal, Section, SectionHeading, Tag, cx } from '../ui';
 import { Gallery } from '../home/HomeSections';
+import VisitsSection from '../VisitsSection';
 import { evAbout, evFacilities, evGallery, evHero, evObjectives, evOutcomes, evPillars, evStats, evVideo, sponsor } from './content';
 
 const EvLab = () => (
@@ -110,6 +111,8 @@ const EvLab = () => (
         ))}
       </div>
     </Section>
+
+    <VisitsSection lab="ev-lab" title="Visits & training at the EV Lab" lead="Training batches, delegations and visitors at the lab." />
 
     <Section tone="surface">
       <SectionHeading eyebrow="Photo gallery" title="Inside the EV Lab" lead="Tap any photo to view it full screen." />

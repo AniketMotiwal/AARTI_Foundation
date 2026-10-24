@@ -134,6 +134,12 @@ const seoRoutes = {
       'CPM facilities at IIT Roorkee: AI manufacturing, CNC, smart factory emulation platform, robotics, and cybersecurity in manufacturing.',
     keywords: cpmKeywords,
   },
+  '/cpm/ifactory': {
+    title: 'iFactory IIT Roorkee | Smart Factory Emulation Platform | CPM',
+    description:
+      'iFactory at IIT Roorkee — the Ministry of Heavy Industries funded Smart Factory Emulation Platform at CPM: IoT, data, AI/ML and cybersecurity on a working line, with visits and training for students, industry and defence.',
+    keywords: `${cpmKeywords}, iFactory IIT Roorkee, smart factory IIT Roorkee, Industry 4.0 training`,
+  },
   '/Rsvc': {
     title: 'RSVC IIT Roorkee | RuTAGe Smart Village Centre | AARTI Foundation',
     description:

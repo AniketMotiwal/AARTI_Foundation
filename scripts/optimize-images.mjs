@@ -1,7 +1,7 @@
 // Converts the large source photos in src/assets into web-sized WebP files
 // under src/assets/site. Run with: npm run images
 import sharp from 'sharp';
-import { mkdir, stat } from 'node:fs/promises';
+import { mkdir, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 
 const SRC = 'src/assets';
@@ -98,6 +98,19 @@ for (const [file, name] of heroSmall) jobs.push([file, name, 828]);
 const logos = [['MHI.svg', 'logo-mhi', 480]];
 
 await mkdir(OUT, { recursive: true });
+
+// Visit & training photos: every image dropped into src/assets/visits/<lab>/ is converted
+// to src/assets/site/visits/<lab>/<same-name>.webp and shows up on the website automatically.
+// The file name becomes the caption: "05-indian-army-training-visit.jpg" -> "Indian army training visit".
+for (const lab of await readdir(path.join(SRC, 'visits'))) {
+  const dir = path.join(SRC, 'visits', lab);
+  if (!(await stat(dir)).isDirectory()) continue;
+  await mkdir(path.join(OUT, 'visits', lab), { recursive: true });
+  for (const file of await readdir(dir)) {
+    if (!/\.(jpe?g|png|webp|heic)$/i.test(file)) continue;
+    jobs.push([path.join('visits', lab, file), path.join('visits', lab, path.parse(file).name), 1600]);
+  }
+}
 
 let before = 0;
 let after = 0;

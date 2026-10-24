@@ -181,3 +181,31 @@ export const labPhotos = [
   { src: cobot, alt: 'Collaborative robot cell with automatic tool changer' },
   ...ifactory.photos,
 ];
+
+/* iFactory page ------------------------------------------------------- */
+
+export const ifactoryPage = {
+  eyebrow: 'iFactory · Centre for Precision Manufacturing',
+  title: 'A real smart factory, inside IIT Roorkee.',
+  lead: 'The Smart Factory Emulation Platform — funded by the Ministry of Heavy Industries — is a working production line where students, engineers and industry learn Industry 4.0 by running it.',
+  highlights: ['Funded by the Ministry of Heavy Industries', 'Research & education platform', 'Open to industry and institutional visits'],
+  line: [
+    {
+      title: 'Sub-assembly stations',
+      text: 'Operator stations where components are prepared and checked, with screens guiding each step and capturing data as the work happens.',
+    },
+    {
+      title: 'Connected assembly line',
+      text: 'Conveyor workstations, collaborative robotics and stack lights linked over the shop-floor network — the same pattern as a modern plant.',
+    },
+    {
+      title: 'Production planning & monitoring',
+      text: 'A planning room where live production data is turned into dashboards, schedules and decisions.',
+    },
+  ],
+  audiences: [
+    { icon: 'book', title: 'Students & researchers', text: 'Hands-on exposure to IoT, data, AI/ML and cybersecurity on a running line.' },
+    { icon: 'tool', title: 'Industry & MSMEs', text: 'See smart-manufacturing practices in action before adopting them on your own shop floor.' },
+    { icon: 'shield', title: 'Defence & government', text: 'Training visits for personnel, including teams from the Indian Army.' },
+  ],
+};

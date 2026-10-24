@@ -448,7 +448,7 @@ export const Gallery = ({ items }) => {
       <div className="grid grid-flow-dense auto-rows-[150px] grid-cols-2 gap-3 sm:auto-rows-[190px] md:grid-cols-4 lg:auto-rows-[220px]">
         {items.map((m, i) => (
           <button
-            key={m.caption}
+            key={m.src}
             type="button"
             onClick={() => setOpen(i)}
             className={cx('group relative overflow-hidden rounded-2xl bg-muted text-left', m.wide && 'col-span-2 row-span-2')}

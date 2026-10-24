@@ -1,9 +1,13 @@
 import React from 'react';
 import { FiCheck } from 'react-icons/fi';
 import { CheckList, IconCard, LazyVideo, LogoStrip, MicroHero } from '../micro';
-import { Button, PageHeader, Reveal, Section, SectionHeading, TextLink } from '../ui';
+import { Button, Container, PageHeader, Reveal, Section, SectionHeading, TextLink, cx } from '../ui';
+import { org } from '../content';
+import { visitsFor } from '../visits';
+import VisitsSection from '../VisitsSection';
 import {
   about,
+  ifactoryPage,
   collaborators,
   cpmHome,
   facilities,
@@ -59,14 +63,138 @@ const IFactory = () => (
           ))}
         </div>
       </div>
-      <figure className="mt-12 overflow-hidden rounded-3xl border border-white/10 bg-black">
-        <LazyVideo className="block aspect-video w-full object-cover" src={ifactory.video} poster={ifactory.photos[0].src} />
-        <figcaption className="bg-white/[0.04] px-5 py-4 text-center text-sm text-white/70">
-          iFactory at IIT Roorkee — full platform walkthrough
-        </figcaption>
-      </figure>
+      <div className="mt-12 flex flex-wrap gap-3">
+        <Button to="/cpm/ifactory">Explore the iFactory</Button>
+        <Button to="/cpm/ifactory#visits" variant="ghostLight">
+          Visits &amp; training
+        </Button>
+      </div>
     </div>
   </Section>
+);
+
+const IFactoryHero = () => {
+  const photos = visitsFor('ifactory').slice(0, 3);
+  return (
+    <section className="relative overflow-hidden bg-brand-950 text-white">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-50"
+        style={{ backgroundImage: 'radial-gradient(48rem 28rem at 90% 10%, rgba(18,205,244,0.22), transparent 60%), radial-gradient(36rem 22rem at 0% 100%, rgba(240,175,0,0.18), transparent 60%)' }}
+        aria-hidden
+      />
+      <Container className="relative grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
+        <div>
+          <p className="eyebrow mb-6 animate-fade-in !text-gold-400">{ifactoryPage.eyebrow}</p>
+          <h1 className="animate-fade-in font-display text-[2.5rem] font-semibold leading-[1.06] tracking-tight [animation-delay:80ms] sm:text-6xl">
+            {ifactoryPage.title}
+          </h1>
+          <p className="mt-6 max-w-xl animate-fade-in text-base leading-relaxed text-white/80 [animation-delay:160ms] sm:text-lg">{ifactoryPage.lead}</p>
+          <div className="mt-9 flex animate-fade-in flex-wrap gap-3 [animation-delay:240ms]">
+            <Button to={`mailto:${org.email}?subject=${encodeURIComponent('iFactory visit / training request')}`} icon="external">
+              Book a visit
+            </Button>
+            <Button to="#walkthrough" variant="ghostLight">
+              Watch the walkthrough
+            </Button>
+          </div>
+          <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/65">
+            {ifactoryPage.highlights.map((t) => (
+              <li key={t} className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-gold-500" aria-hidden />
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+        {photos.length > 0 && (
+          <div className="grid animate-fade-in grid-cols-2 gap-3 [animation-delay:200ms]">
+            {photos.map((p, i) => (
+              <figure key={p.src} className={cx('relative overflow-hidden rounded-2xl bg-white/5', i === 0 ? 'col-span-2 aspect-[16/9]' : 'aspect-[4/3]')}>
+                {/* eslint-disable-next-line react/no-unknown-property */}
+                <img src={p.src} alt={p.caption} className="h-full w-full object-cover" fetchpriority={i === 0 ? 'high' : undefined} />
+                <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-950/90 to-transparent px-4 pb-3 pt-10 text-xs font-medium text-white sm:text-sm">
+                  {p.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        )}
+      </Container>
+      <div className="h-1 bg-gradient-to-r from-gold-500 via-gold-400 to-sky-brand" aria-hidden />
+    </section>
+  );
+};
+
+export const CpmIFactory = () => (
+  <>
+    <IFactoryHero />
+
+    <Section>
+      <SectionHeading eyebrow={ifactory.funder} title={ifactory.title} lead="Four capabilities run across every station on the line." />
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {ifactory.pillars.map((p, i) => (
+          <IconCard key={p.title} icon={['grid', 'layers', 'cpu', 'shield'][i]} title={p.title} text={p.text} index={i} delay={i * 60} />
+        ))}
+      </div>
+    </Section>
+
+    <Section tone="surface">
+      <SectionHeading eyebrow="Inside the line" title="From sub-assembly to the planning room" />
+      <div className="grid gap-5 lg:grid-cols-3">
+        {ifactoryPage.line.map((s, i) => (
+          <Reveal key={s.title} delay={i * 80} className="relative rounded-3xl border border-line bg-page p-7">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold-500 font-display font-semibold text-brand-950">{i + 1}</span>
+            <h3 className="mt-5 font-display text-xl font-semibold text-ink">{s.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.text}</p>
+          </Reveal>
+        ))}
+      </div>
+      <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
+        {ifactory.photos.map((p) => (
+          <div key={p.alt} className="aspect-[4/3] overflow-hidden rounded-2xl bg-muted">
+            <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover" />
+          </div>
+        ))}
+      </div>
+    </Section>
+
+    <Section tone="navy" id="walkthrough">
+      <SectionHeading invert eyebrow="Walkthrough" title="See the iFactory in motion" />
+      <figure className="overflow-hidden rounded-3xl border border-white/10 bg-black">
+        <LazyVideo className="block aspect-video w-full object-cover" src={ifactory.video} poster={ifactory.photos[0].src} />
+        <figcaption className="bg-white/[0.04] px-5 py-4 text-center text-sm text-white/70">iFactory at IIT Roorkee — full platform walkthrough</figcaption>
+      </figure>
+    </Section>
+
+    <Section>
+      <SectionHeading eyebrow="Who it’s for" title="Built for learning by doing" />
+      <div className="grid gap-5 md:grid-cols-3">
+        {ifactoryPage.audiences.map((a, i) => (
+          <IconCard key={a.title} {...a} delay={i * 60} />
+        ))}
+      </div>
+    </Section>
+
+    <VisitsSection
+      lab="ifactory"
+      tone="surface"
+      eyebrow="Visits & training"
+      title="Life on the iFactory floor"
+      lead="Distinguished visitors, student cohorts and defence teams training on the line."
+    />
+
+    <Section>
+      <div className="flex flex-col items-start justify-between gap-6 rounded-[2rem] bg-brand-700 px-6 py-12 text-white sm:px-12 lg:flex-row lg:items-center">
+        <div className="max-w-2xl">
+          <h2 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">Bring your team to the iFactory.</h2>
+          <p className="mt-3 text-white/80">Institutions, industry and government teams can request a guided visit or a training session.</p>
+        </div>
+        <Button to={`mailto:${org.email}?subject=${encodeURIComponent('iFactory visit / training request')}`} icon="external">
+          Request a visit
+        </Button>
+      </div>
+    </Section>
+  </>
 );
 
 export const CpmOverview = () => (

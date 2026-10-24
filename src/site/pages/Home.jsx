@@ -1,5 +1,6 @@
 import React from 'react';
 import Hero from '../home/Hero';
+import VisitsSection from '../VisitsSection';
 import {
   CallToAction,
   Centres,
@@ -25,6 +26,7 @@ const Home = () => (
     <Technologies />
     <IndustrialRD />
     <Programmes />
+    <VisitsSection />
     <Moments />
     <Partners />
     <CallToAction />

@@ -32,6 +32,7 @@ const cpmPages = () => import('./site/cpm/CpmPages');
 const CpmOverview = named(cpmPages, 'CpmOverview');
 const CpmAbout = named(cpmPages, 'CpmAbout');
 const CpmFacilities = named(cpmPages, 'CpmFacilities');
+const CpmIFactory = named(cpmPages, 'CpmIFactory');
 
 // RSVC microsite
 const rsvcPages = () => import('./site/rsvc/RsvcPages');
@@ -43,6 +44,8 @@ const RsvcPartners = named(rsvcPages, 'RsvcPartners');
 // Old URLs → new URLs. Paths differing only by letter case (e.g. /About) already
 // match the new lowercase routes because React Router matching is case-insensitive.
 const mainRedirects = {
+  '/ifactory': '/cpm/ifactory',
+  '/iFactory': '/cpm/ifactory',
   '/Teams': '/team',
   '/ContactUs': '/contact',
   '/WorkWithUs': '/careers',
@@ -113,6 +116,7 @@ const AppRoutes = () => (
         <Route index element={<CpmOverview />} />
         <Route path="about" element={<CpmAbout />} />
         <Route path="facilities" element={<CpmFacilities />} />
+        <Route path="ifactory" element={<CpmIFactory />} />
         {redirectRoutes(cpmRedirects)}
         <Route path="*" element={<NotFound />} />
       </Route>

@@ -55,7 +55,7 @@ export const cpmSite = {
     },
     { label: 'Focus Areas', to: '/cpm#focus' },
     { label: 'Facilities', to: '/cpm/facilities' },
-    { label: 'iFactory', to: '/cpm#ifactory' },
+    { label: 'iFactory', to: '/cpm/ifactory' },
   ],
   cta: { label: 'Partner with CPM', to: '/contact' },
   footerIntro:
@@ -67,7 +67,7 @@ export const cpmSite = {
         { label: 'Overview', to: '/cpm' },
         { label: 'About CPM', to: '/cpm/about' },
         { label: 'Facilities', to: '/cpm/facilities' },
-        { label: 'iFactory', to: '/cpm#ifactory' },
+        { label: 'iFactory', to: '/cpm/ifactory' },
       ],
     },
     centresGroup,

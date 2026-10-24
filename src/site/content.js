@@ -113,6 +113,7 @@ export const navigation = [
     label: 'Centres',
     children: [
       { label: 'CPM', to: '/cpm', note: 'Centre for Precision Manufacturing' },
+      { label: 'iFactory', to: '/cpm/ifactory', note: 'MHI-funded smart factory emulation platform' },
       { label: 'RSVC', to: '/Rsvc', note: 'RuTAGe Smart Village Centre' },
       { label: 'EV Lab', to: '/ev-lab', note: 'Multiskilling lab for electric vehicles' },
     ],
