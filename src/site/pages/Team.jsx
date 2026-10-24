@@ -1,43 +1,74 @@
 import React from 'react';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { board, management } from '../content';
-import { PageHeader, Reveal, Section, SectionHeading, cx } from '../ui';
+import { Button, PageHeader, Reveal, Section, SectionHeading } from '../ui';
 
-const Person = ({ person, large = false }) => {
-  const body = (
-    <>
-      <div className={cx('overflow-hidden rounded-2xl bg-muted', large ? 'aspect-[4/5] sm:aspect-square lg:aspect-[4/5]' : 'aspect-[4/5]')}>
-        <img
-          src={person.img}
-          alt={`Portrait of ${person.name}`}
-          loading="lazy"
-          className="h-full w-full object-cover object-top grayscale-[15%] transition duration-500 group-hover:scale-[1.03] group-hover:grayscale-0"
-        />
-      </div>
-      <div className="px-1 pt-5">
-        <p className="text-xs font-semibold uppercase tracking-wider text-gold-700 dark:text-gold-400">{person.role}</p>
-        <h3 className={cx('mt-1.5 font-display font-semibold text-ink', large ? 'text-2xl' : 'text-lg')}>
-          {person.name}
+/** Uniform portrait card used for every board member and manager. */
+const PersonCard = ({ person, delay = 0 }) => {
+  const Wrapper = person.link ? 'a' : 'div';
+  const linkProps = person.link ? { href: person.link, target: '_blank', rel: 'noopener noreferrer' } : {};
+  return (
+    <Reveal delay={delay} className="w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]">
+      <Wrapper
+        {...linkProps}
+        className="group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface shadow-card transition-shadow duration-300 hover:shadow-lift"
+      >
+        <div className="aspect-[4/5] overflow-hidden bg-paper">
+          <img
+            src={person.img}
+            alt={`Portrait of ${person.name}`}
+            loading="lazy"
+            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+        </div>
+        <div className="flex flex-1 flex-col items-center border-t border-line px-3 pb-5 pt-4 text-center sm:px-5 sm:pb-6 sm:pt-5">
+          <span className="rounded-full bg-gold-50 px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-gold-800 sm:text-[0.68rem] sm:tracking-[0.12em] dark:bg-gold-500/10 dark:text-gold-300">
+            {person.role}
+          </span>
+          <h3 className="mt-3 font-display text-base font-semibold leading-snug text-ink sm:text-xl">{person.name}</h3>
+          <p className="mt-1.5 text-xs leading-snug text-ink-soft sm:text-sm">{person.affiliation}</p>
           {person.link && (
-            <FiArrowUpRight className="ml-1 inline h-4 w-4 text-ink-soft transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
+            <span className="mt-auto inline-flex items-center gap-1 pt-4 text-xs font-semibold text-brand-700 dark:text-gold-400">
+              View profile
+              <FiArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
+            </span>
           )}
-        </h3>
-        <p className="mt-1 text-sm leading-snug text-ink-soft">{person.affiliation}</p>
-      </div>
-    </>
-  );
-  return person.link ? (
-    <a href={person.link} target="_blank" rel="noopener noreferrer" className="group block">
-      {body}
-    </a>
-  ) : (
-    <div className="group">{body}</div>
+        </div>
+      </Wrapper>
+    </Reveal>
   );
 };
 
+const ChairCard = ({ person }) => (
+  <Reveal className="overflow-hidden rounded-3xl border border-line bg-surface shadow-card">
+    <div className="grid md:grid-cols-[minmax(0,20rem)_1fr]">
+      <div className="aspect-[4/5] overflow-hidden bg-paper md:aspect-auto">
+        <img src={person.img} alt={`Portrait of ${person.name}`} className="h-full w-full object-cover object-top" />
+      </div>
+      <div className="relative flex flex-col justify-center border-t border-line p-8 md:border-l md:border-t-0 sm:p-10 lg:p-14">
+        <span className="absolute inset-y-0 left-0 hidden w-1 bg-gradient-to-b from-gold-500 to-sky-brand md:block" aria-hidden />
+        <p className="eyebrow">Chairperson, Board of Directors</p>
+        <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">{person.name}</h2>
+        <p className="mt-3 text-lg text-ink-soft">{person.affiliation}</p>
+        <p className="mt-6 max-w-xl leading-relaxed text-ink-soft">
+          The board of AARTI Foundation brings together the leadership of IIT Roorkee and ICAT, steering the industry
+          accelerator’s programmes, partnerships and governance.
+        </p>
+        {person.link && (
+          <div className="mt-8">
+            <Button to={person.link} variant="outline" size="sm" icon="external">
+              View profile
+            </Button>
+          </div>
+        )}
+      </div>
+    </div>
+  </Reveal>
+);
+
 const Team = () => {
   const chair = board.find((b) => b.lead);
-  const others = board.filter((b) => !b.lead);
+  const directors = board.filter((b) => !b.lead);
   return (
     <>
       <PageHeader
@@ -46,39 +77,25 @@ const Team = () => {
         lead="AARTI is governed by a board drawn from IIT Roorkee and ICAT, bringing together academic depth and automotive industry experience."
         crumbs={[{ label: 'About', to: '/about' }]}
       />
+
       <Section>
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <Reveal className="lg:col-span-4">
-            <SectionHeading eyebrow="Chairperson" title="Leading from IIT Roorkee" className="!mb-8" />
-            <Person person={chair} large />
-          </Reveal>
-          <div className="lg:col-span-8">
-            <SectionHeading eyebrow="Board of directors" title="The people steering AARTI" className="!mb-8" />
-            <div className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-4">
-              {others.map((p, i) => (
-                <Reveal key={p.name} delay={i * 70}>
-                  <Person person={p} />
-                </Reveal>
-              ))}
-            </div>
-          </div>
+        <ChairCard person={chair} />
+      </Section>
+
+      <Section tone="surface" className="!pt-16 sm:!pt-20">
+        <SectionHeading eyebrow="Board of directors" title="The people steering AARTI" align="center" />
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+          {directors.map((p, i) => (
+            <PersonCard key={p.name} person={p} delay={i * 70} />
+          ))}
         </div>
       </Section>
 
-      <Section tone="surface" id="management">
-        <SectionHeading eyebrow="Management" title="Running AARTI day to day" className="!mb-8" />
-        <div className="grid gap-6 md:grid-cols-2">
-          {management.map((p) => (
-            <Reveal key={p.name} className="flex items-center gap-6 rounded-3xl border border-line bg-page p-4 sm:p-5">
-              <div className="h-36 w-28 shrink-0 overflow-hidden rounded-2xl bg-muted sm:h-44 sm:w-36">
-                <img src={p.img} alt={`Portrait of ${p.name}`} loading="lazy" className="h-full w-full object-cover object-top" />
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-gold-700 dark:text-gold-400">{p.role}</p>
-                <h3 className="mt-1.5 font-display text-xl font-semibold text-ink">{p.name}</h3>
-                <p className="mt-1 text-sm text-ink-soft">{p.affiliation}</p>
-              </div>
-            </Reveal>
+      <Section id="management">
+        <SectionHeading eyebrow="Management" title="Running AARTI day to day" align="center" />
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+          {management.map((p, i) => (
+            <PersonCard key={p.name} person={p} delay={i * 70} />
           ))}
         </div>
       </Section>

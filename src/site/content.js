@@ -567,6 +567,7 @@ export const management = [
     role: 'Chief Executive Officer',
     affiliation: 'AARTI Foundation · Lead, ICAT Incubation and Acceleration Centre',
     img: imgTrivedi,
+    link: 'https://www.linkedin.com/in/ankittrivedi7/',
   },
 ];
 
