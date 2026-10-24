@@ -561,7 +561,14 @@ export const board = [
   },
 ];
 
-export const management = [{ name: 'Mr. Ankit Trivedi', role: 'Chief Executive Officer', affiliation: 'AARTI Foundation', img: imgTrivedi }];
+export const management = [
+  {
+    name: 'Mr. Ankit Trivedi',
+    role: 'Chief Executive Officer',
+    affiliation: 'AARTI Foundation · Lead, ICAT Incubation and Acceleration Centre',
+    img: imgTrivedi,
+  },
+];
 
 /* ------------------------------------------------------------------ */
 /* Projects & activities                                               */
