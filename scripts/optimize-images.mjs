@@ -74,6 +74,7 @@ const jobs = [
 
   // Team portraits
   ['team/akshay-dvivedi.jpg', 'team-akshay-dvivedi', 800],
+  ['team/gk-rastogi.jpg', 'team-gk-rastogi', 800],
 
   // EV Lab
   ['EV-LAB/EV-lab-1.jpeg', 'evlab-1', 1400],
