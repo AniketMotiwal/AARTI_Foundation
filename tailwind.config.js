@@ -64,6 +64,10 @@ export default {
         'fade-in': 'fade-in 0.6s ease-out both',
         'loading-bar': 'loading-bar 1.1s ease-in-out infinite',
         'hero-zoom': 'hero-zoom 9s ease-out both',
+        float: 'float 7s ease-in-out infinite',
+        drift: 'drift 22s ease-in-out infinite alternate',
+        draw: 'draw 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+        'scroll-cue': 'scroll-cue 1.8s ease-in-out infinite',
       },
       keyframes: {
         'logo-scroll': {
@@ -77,6 +81,23 @@ export default {
         'loading-bar': {
           from: { transform: 'translateX(-100%)' },
           to: { transform: 'translateX(300%)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-12px)' },
+        },
+        drift: {
+          from: { transform: 'translate3d(0, 0, 0) scale(1)' },
+          to: { transform: 'translate3d(-6%, 8%, 0) scale(1.15)' },
+        },
+        draw: {
+          from: { strokeDashoffset: '1' },
+          to: { strokeDashoffset: '0' },
+        },
+        'scroll-cue': {
+          '0%': { transform: 'translateY(0)', opacity: '0' },
+          '30%': { opacity: '1' },
+          '100%': { transform: 'translateY(10px)', opacity: '0' },
         },
         'hero-zoom': {
           from: { transform: 'scale(1.08)' },
