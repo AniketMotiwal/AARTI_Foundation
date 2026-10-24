@@ -64,7 +64,7 @@ import pIcici from '../assets/site/partner-icici.webp';
 
 import imgPant from '../assets/DirectorSir.webp';
 import imgPraveen from '../assets/deputy.jpg';
-import imgDvivedi from '../assets/akdewedi.webp';
+import imgDvivedi from '../assets/site/team-akshay-dvivedi.webp';
 import imgRastogi from '../assets/Gk.webp';
 import imgTrivedi from '../assets/ankit.webp';
 import imgDalela from '../assets/dalera.webp';

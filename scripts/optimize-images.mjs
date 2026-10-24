@@ -72,6 +72,9 @@ const jobs = [
   ['spoke.png', 'rsvc-layout-spoke', 1600],
   ['rutage.jpg', 'rsvc-almora-centre', 1200],
 
+  // Team portraits
+  ['team/akshay-dvivedi.jpg', 'team-akshay-dvivedi', 800],
+
   // EV Lab
   ['EV-LAB/EV-lab-1.jpeg', 'evlab-1', 1400],
   ['EV-LAB/EV-lab-2.jpeg', 'evlab-2', 1400],
