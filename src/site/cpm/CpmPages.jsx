@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiCheck } from 'react-icons/fi';
 import { CheckList, IconCard, LazyVideo, LogoStrip, MicroHero } from '../micro';
-import { Button, Container, PageHeader, Reveal, Section, SectionHeading, TextLink, cx } from '../ui';
+import { Button, Container, PageHeader, Reveal, Section, SectionHeading, TextLink } from '../ui';
 import { org } from '../content';
 import { visitsFor } from '../visits';
 import VisitsSection from '../VisitsSection';
@@ -74,7 +74,7 @@ const IFactory = () => (
 );
 
 const IFactoryHero = () => {
-  const photos = visitsFor('ifactory').slice(0, 3);
+  const photos = visitsFor('ifactory').slice(0, 1);
   return (
     <section className="relative overflow-hidden bg-brand-950 text-white">
       <div
@@ -107,11 +107,11 @@ const IFactoryHero = () => {
           </ul>
         </div>
         {photos.length > 0 && (
-          <div className="grid animate-fade-in grid-cols-2 gap-3 [animation-delay:200ms]">
+          <div className="animate-fade-in [animation-delay:200ms]">
             {photos.map((p, i) => (
-              <figure key={p.src} className={cx('relative overflow-hidden rounded-2xl bg-white/5', i === 0 ? 'col-span-2 aspect-[16/9]' : 'aspect-[4/3]')}>
+              <figure key={p.src} className="relative overflow-hidden rounded-3xl bg-white/5 shadow-lift ring-1 ring-white/10">
                 {/* eslint-disable-next-line react/no-unknown-property */}
-                <img src={p.src} alt={p.caption} className="h-full w-full object-cover" fetchpriority={i === 0 ? 'high' : undefined} />
+                <img src={p.src} alt={p.caption} className="block h-auto w-full" fetchpriority={i === 0 ? 'high' : undefined} />
                 <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-950/90 to-transparent px-4 pb-3 pt-10 text-xs font-medium text-white sm:text-sm">
                   {p.caption}
                 </figcaption>

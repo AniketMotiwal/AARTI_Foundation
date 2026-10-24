@@ -3,9 +3,6 @@ import { Gallery } from './home/HomeSections';
 import { Section, SectionHeading, TextLink, cx } from './ui';
 import { labs, visits, visitsFor } from './visits';
 
-// Every sixth photo spans two columns so the mosaic keeps a rhythm.
-const withLayout = (items) => items.map((v, i) => ({ ...v, wide: i % 6 === 0 }));
-
 /**
  * Photo gallery of lab visits and training sessions.
  * `lab` pins it to one lab; without it, visitors can switch between labs with tabs.
@@ -16,8 +13,8 @@ const VisitsSection = ({ lab, tone = 'page', eyebrow = 'Visits & training', titl
   const [active, setActive] = useState('all');
 
   const items = useMemo(() => {
-    if (lab) return withLayout(visitsFor(lab));
-    return withLayout(active === 'all' ? visits : visitsFor(active));
+    if (lab) return visitsFor(lab);
+    return active === 'all' ? visits : visitsFor(active);
   }, [lab, active]);
 
   if (!items.length && (lab || !visits.length)) return null;
@@ -59,7 +56,7 @@ const VisitsSection = ({ lab, tone = 'page', eyebrow = 'Visits & training', titl
         </div>
       )}
 
-      <Gallery key={lab || active} items={items} />
+      <Gallery key={lab || active} items={items} layout="masonry" />
 
       {!lab && activeLab?.to && (
         <TextLink to={activeLab.to} className="mt-8">

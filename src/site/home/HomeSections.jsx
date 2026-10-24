@@ -437,11 +437,39 @@ const Lightbox = ({ items, index, onClose, onStep }) => {
   );
 };
 
-/** Mosaic photo grid with a full-screen lightbox. Items: { src, caption, wide? } */
-export const Gallery = ({ items }) => {
+/**
+ * Photo grid with a full-screen lightbox. Items: { src, caption, wide? }
+ * layout="mosaic" fills fixed tiles (crops edges); layout="masonry" keeps every photo uncropped.
+ */
+export const Gallery = ({ items, layout = 'mosaic' }) => {
   const [open, setOpen] = useState(null);
   const close = useCallback(() => setOpen(null), []);
   const step = useCallback((d) => setOpen((i) => (i + d + items.length) % items.length), [items.length]);
+
+  if (layout === 'masonry') {
+    return (
+      <>
+        <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
+          {items.map((m, i) => (
+            <button
+              key={m.src}
+              type="button"
+              onClick={() => setOpen(i)}
+              className="group relative mb-4 block w-full break-inside-avoid overflow-hidden rounded-2xl bg-muted text-left"
+              aria-label={`Open photo: ${m.caption}`}
+            >
+              <img src={m.src} alt="" loading="lazy" decoding="async" className="block h-auto w-full transition-transform duration-700 group-hover:scale-[1.03]" />
+              <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-brand-950/85 to-transparent p-4 pt-12">
+                <span className="text-sm font-medium leading-snug text-white">{m.caption}</span>
+                <FiMaximize2 className="h-4 w-4 shrink-0 text-white/70 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden />
+              </span>
+            </button>
+          ))}
+        </div>
+        {open !== null && <Lightbox items={items} index={open} onClose={close} onStep={step} />}
+      </>
+    );
+  }
 
   return (
     <>
