@@ -6,6 +6,7 @@ import {
   SITE_URL,
   buildCanonical,
   getSeoForPath,
+  ogImageFor,
 } from '../seo/seoConfig';
 
 const ORGANIZATION_JSON_LD = {
@@ -42,7 +43,7 @@ const Seo = () => {
   const { pathname } = useLocation();
   const seo = getSeoForPath(pathname);
   const canonical = buildCanonical(seo.canonicalPath || pathname);
-  const ogImage = `${SITE_URL.replace(/\/$/, '')}/logo.png`;
+  const ogImage = ogImageFor(pathname);
 
   return (
     <Helmet>
@@ -63,6 +64,8 @@ const Seo = () => {
       <meta property="og:description" content={seo.description} />
       <meta property="og:url" content={canonical} />
       <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:locale" content="en_IN" />
 
       <meta name="twitter:card" content="summary_large_image" />
