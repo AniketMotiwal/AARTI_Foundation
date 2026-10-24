@@ -71,6 +71,17 @@ const jobs = [
   ['hub.png', 'rsvc-layout-hub', 1600],
   ['spoke.png', 'rsvc-layout-spoke', 1600],
   ['rutage.jpg', 'rsvc-almora-centre', 1200],
+
+  // EV Lab
+  ['EV-LAB/EV-lab-1.jpeg', 'evlab-1', 1400],
+  ['EV-LAB/EV-lab-2.jpeg', 'evlab-2', 1400],
+  ['EV-LAB/EV-lab-3.jpeg', 'evlab-3', 1400],
+  ['EV-LAB/EV-lab-4.jpeg', 'evlab-4', 1400],
+  ['EV-LAB/EV-lab-5.jpeg', 'evlab-5', 1400],
+  ['EV-LAB/EV-lab-6.jpeg', 'evlab-6', 1400],
+  ['EV-LAB/EV-lab-7.jpeg', 'evlab-7', 1400],
+  ['EV-LAB/EV-lab-8.jpeg', 'evlab-8', 1400],
+  ['EV-LAB/EV-lab-9.jpeg', 'evlab-9', 1400],
 ];
 
 // Vector logos rasterised to WebP

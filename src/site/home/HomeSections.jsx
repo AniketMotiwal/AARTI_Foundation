@@ -400,7 +400,7 @@ export const Programmes = () => (
 
 /* ---------------------------------------------------------------- */
 
-const Lightbox = ({ index, onClose, onStep }) => {
+const Lightbox = ({ items, index, onClose, onStep }) => {
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'Escape') onClose();
@@ -415,13 +415,13 @@ const Lightbox = ({ index, onClose, onStep }) => {
     };
   }, [onClose, onStep]);
 
-  const item = moments[index];
+  const item = items[index];
   return (
     <div role="dialog" aria-modal="true" aria-label={item.caption} className="fixed inset-0 z-[120] flex items-center justify-center bg-brand-950/95 p-4" onClick={onClose}>
       <figure className="relative max-h-full max-w-6xl" onClick={(e) => e.stopPropagation()}>
         <img src={item.src} alt={item.caption} className="max-h-[80vh] w-auto rounded-xl object-contain" />
         <figcaption className="mt-4 text-center text-sm text-white/80">
-          {item.caption} <span className="ml-2 text-white/40">{index + 1} / {moments.length}</span>
+          {item.caption} <span className="ml-2 text-white/40">{index + 1} / {items.length}</span>
         </figcaption>
       </figure>
       <button type="button" onClick={onClose} className="absolute right-4 top-4 rounded-full bg-white/10 p-3 text-white hover:bg-white/20" aria-label="Close">
@@ -437,16 +437,16 @@ const Lightbox = ({ index, onClose, onStep }) => {
   );
 };
 
-export const Moments = () => {
+/** Mosaic photo grid with a full-screen lightbox. Items: { src, caption, wide? } */
+export const Gallery = ({ items }) => {
   const [open, setOpen] = useState(null);
   const close = useCallback(() => setOpen(null), []);
-  const step = useCallback((d) => setOpen((i) => (i + d + moments.length) % moments.length), []);
+  const step = useCallback((d) => setOpen((i) => (i + d + items.length) % items.length), [items.length]);
 
   return (
-    <Section>
-      <SectionHeading eyebrow="Moments" title="Life at AARTI" lead="Inaugurations, MoUs, trainings and the people behind them." />
+    <>
       <div className="grid grid-flow-dense auto-rows-[150px] grid-cols-2 gap-3 sm:auto-rows-[190px] md:grid-cols-4 lg:auto-rows-[220px]">
-        {moments.map((m, i) => (
+        {items.map((m, i) => (
           <button
             key={m.caption}
             type="button"
@@ -463,10 +463,17 @@ export const Moments = () => {
           </button>
         ))}
       </div>
-      {open !== null && <Lightbox index={open} onClose={close} onStep={step} />}
-    </Section>
+      {open !== null && <Lightbox items={items} index={open} onClose={close} onStep={step} />}
+    </>
   );
 };
+
+export const Moments = () => (
+  <Section>
+    <SectionHeading eyebrow="Moments" title="Life at AARTI" lead="Inaugurations, MoUs, trainings and the people behind them." />
+    <Gallery items={moments} />
+  </Section>
+);
 
 /* ---------------------------------------------------------------- */
 

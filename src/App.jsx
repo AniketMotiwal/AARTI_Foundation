@@ -25,7 +25,7 @@ const EconomicGrowth = named(focusPages, 'EconomicGrowth');
 const SupportDevelopment = named(focusPages, 'SupportDevelopment');
 const Innovation = named(focusPages, 'Innovation');
 const Networking = named(focusPages, 'Networking');
-const EvLab = lazy(() => import('./pages/Multiskilling'));
+const EvLab = lazy(() => import('./site/evlab/EvLab'));
 
 // CPM microsite
 const cpmPages = () => import('./site/cpm/CpmPages');

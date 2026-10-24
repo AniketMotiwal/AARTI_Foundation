@@ -60,7 +60,7 @@ const IFactory = () => (
         </div>
       </div>
       <figure className="mt-12 overflow-hidden rounded-3xl border border-white/10 bg-black">
-        <video className="block aspect-video w-full object-cover" src={ifactory.video} autoPlay muted loop playsInline controls preload="metadata" />
+        <video className="block aspect-video w-full object-cover" src={ifactory.video} poster={ifactory.photos[0].src} autoPlay muted loop playsInline controls preload="metadata" />
         <figcaption className="bg-white/[0.04] px-5 py-4 text-center text-sm text-white/70">
           iFactory at IIT Roorkee — full platform walkthrough
         </figcaption>
