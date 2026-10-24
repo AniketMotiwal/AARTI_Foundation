@@ -78,7 +78,7 @@ export const org = {
   email: 'md@aarti.iitr.ac.in',
   // Contact-form submissions are delivered here via FormSubmit (formsubmit.co) — no backend needed.
   // The first submission sends a one-time activation link to this inbox; click it once to start receiving messages.
-  contactFormEmail: 'md@aarti.iitr.ac.in',
+  contactFormEmail: 'aarti01062024@gmail.com',
   phone: '+91 94111 76136',
   phoneHref: '+919411176136',
   address: ['James Thomson Building', 'Indian Institute of Technology Roorkee', 'Roorkee, Uttarakhand 247667, India'],
