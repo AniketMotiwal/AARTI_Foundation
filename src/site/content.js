@@ -63,7 +63,7 @@ import pAspire from '../assets/site/partner-aspire.webp';
 import pIcici from '../assets/site/partner-icici.webp';
 
 import imgPant from '../assets/DirectorSir.webp';
-import imgPraveen from '../assets/deputy.jpg';
+import imgPraveen from '../assets/site/team-praveen-kumar.webp';
 import imgDvivedi from '../assets/site/team-akshay-dvivedi.webp';
 import imgRastogi from '../assets/site/team-gk-rastogi.webp';
 import imgTrivedi from '../assets/ankit.webp';
