@@ -1,6 +1,6 @@
 import React from 'react';
 import { FiArrowUpRight } from 'react-icons/fi';
-import { board } from '../content';
+import { board, management } from '../content';
 import { PageHeader, Reveal, Section, SectionHeading, cx } from '../ui';
 
 const Person = ({ person, large = false }) => {
@@ -53,8 +53,8 @@ const Team = () => {
             <Person person={chair} large />
           </Reveal>
           <div className="lg:col-span-8">
-            <SectionHeading eyebrow="Board &amp; leadership" title="The people steering AARTI" className="!mb-8" />
-            <div className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3">
+            <SectionHeading eyebrow="Board of directors" title="The people steering AARTI" className="!mb-8" />
+            <div className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-4">
               {others.map((p, i) => (
                 <Reveal key={p.name} delay={i * 70}>
                   <Person person={p} />
@@ -62,6 +62,24 @@ const Team = () => {
               ))}
             </div>
           </div>
+        </div>
+      </Section>
+
+      <Section tone="surface" id="management">
+        <SectionHeading eyebrow="Management" title="Running AARTI day to day" className="!mb-8" />
+        <div className="grid gap-6 md:grid-cols-2">
+          {management.map((p) => (
+            <Reveal key={p.name} className="flex items-center gap-6 rounded-3xl border border-line bg-page p-4 sm:p-5">
+              <div className="h-36 w-28 shrink-0 overflow-hidden rounded-2xl bg-muted sm:h-44 sm:w-36">
+                <img src={p.img} alt={`Portrait of ${p.name}`} loading="lazy" className="h-full w-full object-cover object-top" />
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-gold-700 dark:text-gold-400">{p.role}</p>
+                <h3 className="mt-1.5 font-display text-xl font-semibold text-ink">{p.name}</h3>
+                <p className="mt-1 text-sm text-ink-soft">{p.affiliation}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </Section>
     </>
