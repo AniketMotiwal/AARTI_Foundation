@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { FiAward, FiPause, FiPlay, FiSend } from 'react-icons/fi';
-import { backers, heroSlides, impactStats } from '../content';
+import React, { useEffect, useState } from 'react';
+import { FiAward, FiBriefcase, FiPause, FiPlay, FiSend } from 'react-icons/fi';
+import { heroSlides, impactStats } from '../content';
 import { Button, Container, CountUp, cx } from '../ui';
 
 const SLIDE_MS = 7000;
@@ -9,39 +9,11 @@ const WORD_MS = 2800;
 // Last line of the headline cycles through what AARTI turns research into.
 const outcomes = ['Indian industry.', 'new start-ups.', 'smart villages.', 'skilled talent.'];
 
-const mhiLogo = backers.find((b) => b.name.startsWith('Ministry'))?.logo;
-
-const floatingCards = [
-  {
-    key: 'nse',
-    icon: <FiAward className="h-5 w-5" aria-hidden />,
-    kicker: 'First prize',
-    title: 'NSE Social Stock Exchange',
-    note: 'RuTAGe Smart Village Centre model',
-    pos: 'right-[6%] top-[14%]',
-    depth: 18,
-    delay: '0s',
-  },
-  {
-    key: 'mhi',
-    logo: mhiLogo,
-    kicker: 'Industry Accelerator',
-    title: 'Ministry of Heavy Industries',
-    note: 'Four ventures approved for funding',
-    pos: 'right-[24%] top-[44%]',
-    depth: 30,
-    delay: '-2.5s',
-  },
-  {
-    key: 'dgca',
-    icon: <FiSend className="h-5 w-5" aria-hidden />,
-    kicker: 'DGCA approved',
-    title: 'Remote Pilot Training Organisation',
-    note: 'Drone training to national standards',
-    pos: 'right-[3%] top-[60%]',
-    depth: 12,
-    delay: '-5s',
-  },
+// Recognitions shown as badges under the call-to-action buttons.
+const badges = [
+  { icon: FiAward, label: 'First prize', text: 'NSE Social Stock Exchange' },
+  { icon: FiBriefcase, label: 'MHI', text: 'Industry Accelerator' },
+  { icon: FiSend, label: 'DGCA', text: 'Approved RPTO' },
 ];
 
 const usePrefersReducedMotion = () => {
@@ -100,31 +72,11 @@ const RotatingWord = ({ paused }) => {
   );
 };
 
-const GlassCard = ({ card }) => (
-  <div className="w-80 rounded-2xl border border-white/15 bg-white/10 p-4 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)] backdrop-blur-md">
-    <div className="flex items-center gap-3">
-      {card.logo ? (
-        <span className="flex h-11 w-20 shrink-0 items-center justify-center rounded-xl bg-paper px-1.5">
-          <img src={card.logo} alt="" className="max-h-full max-w-full object-contain" />
-        </span>
-      ) : (
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gold-500 text-brand-950">{card.icon}</span>
-      )}
-      <div className="min-w-0">
-        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-gold-300">{card.kicker}</p>
-        <p className="text-sm font-semibold leading-snug text-white">{card.title}</p>
-      </div>
-    </div>
-    <p className="mt-3 border-t border-white/10 pt-3 text-xs text-white/65">{card.note}</p>
-  </div>
-);
-
 const Hero = () => {
   const reduce = usePrefersReducedMotion();
   const [index, setIndex] = useState(0);
   const [userPaused, setUserPaused] = useState(false);
   const playing = !userPaused && !reduce;
-  const sectionRef = useRef(null);
 
   useEffect(() => {
     if (!playing) return undefined;
@@ -142,23 +94,9 @@ const Hero = () => {
     return () => clearTimeout(t);
   }, [index]);
 
-  // Pointer parallax for the floating cards — written to CSS variables, so no re-renders.
-  const onPointerMove = (e) => {
-    if (reduce || e.pointerType !== 'mouse') return;
-    const el = sectionRef.current;
-    const r = el.getBoundingClientRect();
-    el.style.setProperty('--mx', ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
-    el.style.setProperty('--my', ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
-  };
-
   return (
     <>
-      <section
-        ref={sectionRef}
-        onPointerMove={onPointerMove}
-        className="relative isolate overflow-hidden bg-brand-950 text-white [--mx:0] [--my:0]"
-        aria-label="Introduction"
-      >
+      <section className="relative isolate overflow-hidden bg-brand-950 text-white" aria-label="Introduction">
         {heroSlides.map((slide, i) =>
           mounted.has(i) ? (
             <img
@@ -183,7 +121,7 @@ const Hero = () => {
 
         {/* Colour wash, glow and grid layers */}
         <div
-          className="absolute inset-0 -z-20 bg-[linear-gradient(100deg,rgba(3,8,52,0.97)_0%,rgba(3,8,52,0.86)_40%,rgba(3,8,52,0.5)_72%,rgba(3,8,52,0.35)_100%)]"
+          className="absolute inset-0 -z-20 bg-[linear-gradient(100deg,rgba(3,8,52,0.97)_0%,rgba(3,8,52,0.85)_40%,rgba(3,8,52,0.35)_70%,rgba(3,8,52,0.15)_100%)]"
           aria-hidden
         />
         <div className="pointer-events-none absolute -left-40 -top-40 -z-10 h-[34rem] w-[34rem] animate-drift rounded-full bg-gold-500/20 blur-[120px]" aria-hidden />
@@ -193,21 +131,6 @@ const Hero = () => {
           aria-hidden
         />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-56 bg-gradient-to-t from-brand-950 to-transparent" aria-hidden />
-
-        {/* Floating highlight cards (large screens) */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[44%] xl:block" aria-hidden>
-          {floatingCards.map((c) => (
-            <div
-              key={c.key}
-              className={cx('absolute transition-transform duration-300 ease-out', c.pos)}
-              style={{ transform: `translate3d(calc(var(--mx) * ${-c.depth}px), calc(var(--my) * ${-c.depth}px), 0)` }}
-            >
-              <div className={cx('animate-fade-in', !reduce && 'animate-float')} style={{ animationDelay: c.delay }}>
-                <GlassCard card={c} />
-              </div>
-            </div>
-          ))}
-        </div>
 
         <Container className="flex min-h-[660px] flex-col justify-center pb-40 pt-16 sm:min-h-[720px] lg:min-h-[min(90vh,860px)] lg:pb-44">
           <p className="mb-7 inline-flex w-fit animate-fade-in items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.07] py-1.5 pl-2 pr-4 text-[0.62rem] font-semibold uppercase tracking-[0.1em] text-gold-300 sm:text-xs sm:tracking-[0.16em] backdrop-blur-sm">
@@ -237,11 +160,16 @@ const Hero = () => {
             </Button>
           </div>
 
-          <ul className="mt-10 flex animate-fade-in flex-wrap gap-x-6 gap-y-2 text-sm text-white/65 [animation-delay:320ms]">
-            {['Supported by the Ministry of Heavy Industries', 'Co-hosted with ICAT', 'Section 8 not-for-profit'].map((t) => (
-              <li key={t} className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-gold-500" aria-hidden />
-                {t}
+          <ul className="mt-10 flex animate-fade-in flex-wrap gap-3 [animation-delay:320ms]">
+            {badges.map(({ icon: Icon, label, text }) => (
+              <li key={text} className="flex items-center gap-3 rounded-xl border border-white/10 bg-brand-950/70 py-2 pl-2 pr-4">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gold-500 text-brand-950">
+                  <Icon className="h-4 w-4" aria-hidden />
+                </span>
+                <span className="leading-tight">
+                  <span className="block text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-gold-300">{label}</span>
+                  <span className="block text-sm font-medium text-white">{text}</span>
+                </span>
               </li>
             ))}
           </ul>
