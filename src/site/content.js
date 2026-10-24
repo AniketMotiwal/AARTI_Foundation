@@ -550,6 +550,7 @@ export const board = [
     img: imgDvivedi,
     link: 'https://iitr.ac.in/Departments/Mechanical%20and%20Industrial%20Engineering%20Department/People/Faculty/100549.html',
   },
+  { name: 'Mr. Ankit Trivedi', role: 'Chief Executive Officer', affiliation: 'AARTI Foundation', img: imgTrivedi },
   {
     name: 'Mr. G. K. Rastogi',
     role: 'Director',
@@ -558,7 +559,6 @@ export const board = [
     link: 'https://iitr.ac.in/Administration/Institute%20Central%20Administration.html',
   },
   { name: 'Mr. Saurabh Dalela', role: 'Director', affiliation: 'Director, ICAT', img: imgDalela, link: 'https://in.linkedin.com/in/saurabhdalela' },
-  { name: 'Mr. Ankit Trivedi', role: 'Director', affiliation: 'Lead — ICAT Incubation and Acceleration Centre', img: imgTrivedi },
 ];
 
 /* ------------------------------------------------------------------ */

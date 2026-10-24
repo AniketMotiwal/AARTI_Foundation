@@ -53,7 +53,7 @@ const Team = () => {
             <Person person={chair} large />
           </Reveal>
           <div className="lg:col-span-8">
-            <SectionHeading eyebrow="Board of directors" title="The people steering AARTI" className="!mb-8" />
+            <SectionHeading eyebrow="Board &amp; leadership" title="The people steering AARTI" className="!mb-8" />
             <div className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3">
               {others.map((p, i) => (
                 <Reveal key={p.name} delay={i * 70}>
