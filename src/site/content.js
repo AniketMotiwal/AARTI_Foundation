@@ -76,6 +76,9 @@ export const org = {
   tagline: 'An Industry Accelerator of IIT Roorkee',
   legal: 'Section 8 Company of IIT Roorkee',
   email: 'md@aarti.iitr.ac.in',
+  // Contact-form submissions are delivered here via FormSubmit (formsubmit.co) — no backend needed.
+  // The first submission sends a one-time activation link to this inbox; click it once to start receiving messages.
+  contactFormEmail: 'md@aarti.iitr.ac.in',
   phone: '+91 94111 76136',
   phoneHref: '+919411176136',
   address: ['James Thomson Building', 'Indian Institute of Technology Roorkee', 'Roorkee, Uttarakhand 247667, India'],

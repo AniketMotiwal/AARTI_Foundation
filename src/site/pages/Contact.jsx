@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiMail, FiMapPin, FiPhone, FiSend } from 'react-icons/fi';
+import { FiCheckCircle, FiLoader, FiMail, FiMapPin, FiPhone, FiSend } from 'react-icons/fi';
 import { FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
 import { org } from '../content';
 import { PageHeader, Section } from '../ui';
@@ -9,30 +9,64 @@ const topics = ['Industry partnership', 'Sponsored research / RFP', 'Start-up ac
 const field =
   'mt-2 block w-full rounded-xl border border-line bg-page px-4 py-3 text-[0.95rem] text-ink placeholder:text-ink-soft/60 transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 dark:focus:border-gold-400 dark:focus:ring-gold-400/20';
 
+const emptyForm = { name: '', organisation: '', email: '', topic: topics[0], message: '' };
+
 const EnquiryForm = () => {
-  const [form, setForm] = useState({ name: '', organisation: '', email: '', topic: topics[0], message: '' });
+  const [form, setForm] = useState(emptyForm);
+  const [status, setStatus] = useState({ state: 'idle', note: '' });
   const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
 
-  // No backend yet — the form composes an email in the visitor's mail client.
-  const submit = (e) => {
+  // Messages are delivered to org.contactFormEmail through FormSubmit — no backend of our own.
+  const submit = async (e) => {
     e.preventDefault();
-    const body = [
-      form.message,
-      '',
-      '—',
-      `Name: ${form.name}`,
-      form.organisation && `Organisation: ${form.organisation}`,
-      `Email: ${form.email}`,
-    ]
-      .filter(Boolean)
-      .join('\n');
-    window.location.href = `mailto:${org.email}?subject=${encodeURIComponent(`[${form.topic}] Enquiry from ${form.name}`)}&body=${encodeURIComponent(body)}`;
+    if (e.target.elements._honey.value) return; // bot filled the hidden field
+    setStatus({ state: 'sending', note: '' });
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${org.contactFormEmail}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          organisation: form.organisation || '—',
+          topic: form.topic,
+          message: form.message,
+          _subject: `[AARTI website] ${form.topic} — ${form.name}`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || String(data.success) !== 'true') throw new Error(data.message || 'Submission failed');
+      setForm(emptyForm);
+      setStatus({ state: 'sent', note: '' });
+    } catch (err) {
+      setStatus({ state: 'error', note: err.message });
+    }
   };
+
+  const mailtoFallback = `mailto:${org.email}?subject=${encodeURIComponent(`[${form.topic}] Enquiry from ${form.name}`)}&body=${encodeURIComponent(form.message)}`;
+
+  if (status.state === 'sent') {
+    return (
+      <div role="status" className="flex h-full flex-col items-start justify-center rounded-3xl border border-line bg-surface p-6 shadow-card sm:p-9">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-300">
+          <FiCheckCircle className="h-6 w-6" aria-hidden />
+        </span>
+        <h2 className="mt-6 font-display text-2xl font-semibold text-ink">Thank you — message sent.</h2>
+        <p className="mt-2 text-ink-soft">The AARTI team has received your enquiry and will reply to your email.</p>
+        <button type="button" onClick={() => setStatus({ state: 'idle', note: '' })} className="mt-6 text-sm font-semibold text-brand-700 hover:underline dark:text-gold-400">
+          Send another message
+        </button>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={submit} className="rounded-3xl border border-line bg-surface p-6 shadow-card sm:p-9">
       <h2 className="font-display text-2xl font-semibold text-ink">Send an enquiry</h2>
-      <p className="mt-2 text-sm text-ink-soft">This opens your email app with the message ready to send.</p>
+      <p className="mt-2 text-sm text-ink-soft">Your message goes straight to the AARTI team. We usually reply by email.</p>
+      <input type="text" name="_honey" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
       <div className="mt-8 grid gap-5 sm:grid-cols-2">
         <label className="text-sm font-medium text-ink">
           Full name
@@ -59,11 +93,29 @@ const EnquiryForm = () => {
           <textarea required rows={5} value={form.message} onChange={update('message')} className={field} placeholder="Tell us briefly what you have in mind…" />
         </label>
       </div>
+      {status.state === 'error' && (
+        <p role="alert" className="mt-6 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800 dark:border-rose-400/30 dark:bg-rose-400/10 dark:text-rose-200">
+          Sorry, the message couldn’t be sent right now. Please try again, or{' '}
+          <a href={mailtoFallback} className="font-semibold underline">
+            email us directly
+          </a>
+          .
+        </p>
+      )}
       <button
         type="submit"
-        className="mt-7 inline-flex items-center gap-2 rounded-full bg-brand-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-600 dark:bg-gold-500 dark:text-brand-950 dark:hover:bg-gold-400"
+        disabled={status.state === 'sending'}
+        className="mt-7 inline-flex items-center gap-2 rounded-full bg-brand-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-600 disabled:cursor-wait disabled:opacity-70 dark:bg-gold-500 dark:text-brand-950 dark:hover:bg-gold-400"
       >
-        <FiSend className="h-4 w-4" aria-hidden /> Compose email
+        {status.state === 'sending' ? (
+          <>
+            <FiLoader className="h-4 w-4 animate-spin" aria-hidden /> Sending…
+          </>
+        ) : (
+          <>
+            <FiSend className="h-4 w-4" aria-hidden /> Send message
+          </>
+        )}
       </button>
     </form>
   );
