@@ -8,7 +8,7 @@ const PersonCard = ({ person, delay = 0 }) => {
   const Wrapper = person.link ? 'a' : 'div';
   const linkProps = person.link ? { href: person.link, target: '_blank', rel: 'noopener noreferrer' } : {};
   return (
-    <Reveal delay={delay} className="w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]">
+    <Reveal delay={delay} className="w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc(20%-1.2rem)]">
       <Wrapper
         {...linkProps}
         className="group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface shadow-card transition-shadow duration-300 hover:shadow-lift"
@@ -68,7 +68,7 @@ const ChairCard = ({ person }) => (
 
 const Team = () => {
   const chair = board.find((b) => b.lead);
-  const directors = board.filter((b) => !b.lead);
+  const people = [...board.filter((b) => !b.lead), ...management];
   return (
     <>
       <PageHeader
@@ -83,18 +83,9 @@ const Team = () => {
       </Section>
 
       <Section tone="surface" className="!pt-16 sm:!pt-20">
-        <SectionHeading eyebrow="Board of directors" title="The people steering AARTI" align="center" />
+        <SectionHeading eyebrow="Board &amp; leadership" title="The people steering AARTI" align="center" />
         <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-          {directors.map((p, i) => (
-            <PersonCard key={p.name} person={p} delay={i * 70} />
-          ))}
-        </div>
-      </Section>
-
-      <Section id="management">
-        <SectionHeading eyebrow="Management" title="Running AARTI day to day" align="center" />
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-          {management.map((p, i) => (
+          {people.map((p, i) => (
             <PersonCard key={p.name} person={p} delay={i * 70} />
           ))}
         </div>
