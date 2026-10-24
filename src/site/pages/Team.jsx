@@ -8,7 +8,7 @@ const PersonCard = ({ person, delay = 0 }) => {
   const Wrapper = person.link ? 'a' : 'div';
   const linkProps = person.link ? { href: person.link, target: '_blank', rel: 'noopener noreferrer' } : {};
   return (
-    <Reveal delay={delay} className="w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc(20%-1.2rem)]">
+    <Reveal delay={delay} className="w-[calc(50%-0.5rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(20%-1.2rem)]">
       <Wrapper
         {...linkProps}
         className="group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface shadow-card transition-shadow duration-300 hover:shadow-lift"
@@ -21,11 +21,11 @@ const PersonCard = ({ person, delay = 0 }) => {
             className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
           />
         </div>
-        <div className="flex flex-1 flex-col items-center border-t border-line px-3 pb-5 pt-4 text-center sm:px-5 sm:pb-6 sm:pt-5">
-          <span className="rounded-full bg-gold-50 px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-gold-800 sm:text-[0.68rem] sm:tracking-[0.12em] dark:bg-gold-500/10 dark:text-gold-300">
+        <div className="flex flex-1 flex-col items-center border-t border-line px-3 pb-5 pt-4 text-center sm:px-4 sm:pb-6 sm:pt-5">
+          <span className="rounded-full bg-gold-50 px-3 py-1 sm:whitespace-nowrap text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-gold-800 sm:text-[0.68rem] sm:tracking-[0.12em] dark:bg-gold-500/10 dark:text-gold-300">
             {person.role}
           </span>
-          <h3 className="mt-3 font-display text-base font-semibold leading-snug text-ink sm:text-xl">{person.name}</h3>
+          <h3 className="mt-3 font-display text-[0.95rem] font-semibold leading-snug text-ink sm:whitespace-nowrap sm:text-lg xl:text-[1.05rem] 2xl:text-lg">{person.name}</h3>
           <p className="mt-1.5 text-xs leading-snug text-ink-soft sm:text-sm">{person.affiliation}</p>
           {person.link && (
             <span className="mt-auto inline-flex items-center gap-1 pt-4 text-xs font-semibold text-brand-700 dark:text-gold-400">
