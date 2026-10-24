@@ -67,7 +67,7 @@ import imgPraveen from '../assets/deputy.jpg';
 import imgDvivedi from '../assets/site/team-akshay-dvivedi.webp';
 import imgRastogi from '../assets/site/team-gk-rastogi.webp';
 import imgTrivedi from '../assets/ankit.webp';
-import imgDalela from '../assets/dalera.webp';
+import imgDalela from '../assets/site/team-saurabh-dalela.webp';
 
 /* ------------------------------------------------------------------ */
 /* Organisation                                                        */
