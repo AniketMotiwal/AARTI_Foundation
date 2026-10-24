@@ -88,3 +88,13 @@ for (const card of cards) {
     .toFile(`${OUT}/${card.file}.jpg`);
   console.log(`${OUT}/${card.file}.jpg`);
 }
+
+// Favicons (small files instead of the 2,800px logo)
+await sharp('src/assets/site/logo-aarti.webp').resize(64, 64, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toFile('public/favicon.png');
+await sharp('src/assets/site/logo-aarti.webp')
+  .resize(156, 156, { fit: 'contain', background: '#ffffff' })
+  .extend({ top: 12, bottom: 12, left: 12, right: 12, background: '#ffffff' })
+  .flatten({ background: '#ffffff' })
+  .png()
+  .toFile('public/apple-touch-icon.png');
+console.log('public/favicon.png, public/apple-touch-icon.png');

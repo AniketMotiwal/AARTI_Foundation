@@ -1,5 +1,6 @@
 // Copy for the RSVC (RuTAGe Smart Village Centre) microsite.
 import heroTeam from '../../assets/site/rsvc-team.webp';
+import heroTeamSm from '../../assets/site/rsvc-team-sm.webp';
 import nseAward from '../../assets/site/rsvc-nse-award.webp';
 import inauguration from '../../assets/site/rsvc-hero-inauguration.webp';
 import almoraCentre from '../../assets/site/rsvc-almora-centre.webp';
@@ -36,6 +37,7 @@ export const rsvcHome = { label: 'RSVC', to: '/Rsvc' };
 
 export const hero = {
   image: heroTeam,
+  imageSm: heroTeamSm,
   imageAlt: 'Inauguration of the RuTAGe Smart Village Centre with community leaders',
   eyebrow: 'RuTAGe Smart Village Centre · RSVC',
   title: 'Technology that works for the village.',

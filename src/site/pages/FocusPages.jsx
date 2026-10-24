@@ -233,7 +233,7 @@ export const Innovation = () => {
           <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {stages.map((s, i) => (
               <li key={s} className="rounded-3xl border border-line bg-page p-6">
-                <span className="font-display text-3xl font-semibold text-gold-600">{String(i + 1).padStart(2, '0')}</span>
+                <span className="font-display text-3xl font-semibold text-gold-700 dark:text-gold-400">{String(i + 1).padStart(2, '0')}</span>
                 <p className="mt-4 font-medium leading-snug text-ink">{s}</p>
               </li>
             ))}

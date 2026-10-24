@@ -1,6 +1,6 @@
 import React from 'react';
 import { FiCheck } from 'react-icons/fi';
-import { CheckList, IconCard, LogoStrip, MicroHero } from '../micro';
+import { CheckList, IconCard, LazyVideo, LogoStrip, MicroHero } from '../micro';
 import { Button, PageHeader, Reveal, Section, SectionHeading, TextLink } from '../ui';
 import {
   about,
@@ -60,7 +60,7 @@ const IFactory = () => (
         </div>
       </div>
       <figure className="mt-12 overflow-hidden rounded-3xl border border-white/10 bg-black">
-        <video className="block aspect-video w-full object-cover" src={ifactory.video} poster={ifactory.photos[0].src} autoPlay muted loop playsInline controls preload="metadata" />
+        <LazyVideo className="block aspect-video w-full object-cover" src={ifactory.video} poster={ifactory.photos[0].src} />
         <figcaption className="bg-white/[0.04] px-5 py-4 text-center text-sm text-white/70">
           iFactory at IIT Roorkee — full platform walkthrough
         </figcaption>

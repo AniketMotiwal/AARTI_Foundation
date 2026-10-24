@@ -5,6 +5,10 @@ import heroIitr from '../assets/site/hero-iitr.webp';
 import heroDrone from '../assets/site/hero-drone-training.webp';
 import heroEvLab from '../assets/site/hero-ev-lab.webp';
 import heroWorkbench from '../assets/site/hero-ev-workbench.webp';
+import heroIitrSm from '../assets/site/hero-iitr-sm.webp';
+import heroDroneSm from '../assets/site/hero-drone-training-sm.webp';
+import heroEvLabSm from '../assets/site/hero-ev-lab-sm.webp';
+import heroWorkbenchSm from '../assets/site/hero-ev-workbench-sm.webp';
 
 import momentMou from '../assets/site/moment-mou-signing.webp';
 import momentRsvc from '../assets/site/moment-rsvc-inauguration.webp';
@@ -41,22 +45,22 @@ import cellMachine from '../assets/cell.webp';
 
 import logoIitr from '../assets/iit.webp';
 import logoMhi from '../assets/site/logo-mhi.webp';
-import pIiml from '../assets/lucknow.png';
-import pHella from '../assets/Hella.png';
-import pIcat from '../assets/icat.jpg';
-import pLumax from '../assets/Lumnx.png';
-import pAltigreen from '../assets/altgreen.png';
-import pIitk from '../assets/iitkanpur.png';
-import pBia from '../assets/Bhagwan.png';
-import pMathworks from '../assets/mathworks.jpg';
-import pEntuple from '../assets/Entuple.png';
-import pShivalik from '../assets/shiavlik.png';
-import pStartupIndia from '../assets/startup.webp';
-import pTworks from '../assets/tworks.png';
-import pYali from '../assets/mob.png';
-import pAkron from '../assets/Akon.webp';
-import pAspire from '../assets/partners6.webp';
-import pIcici from '../assets/ICICI_Foundation_Logo.png';
+import pIiml from '../assets/site/partner-iiml.webp';
+import pHella from '../assets/site/partner-hella.webp';
+import pIcat from '../assets/site/partner-icat.webp';
+import pLumax from '../assets/site/partner-lumax.webp';
+import pAltigreen from '../assets/site/partner-altigreen.webp';
+import pIitk from '../assets/site/partner-iitk-design.webp';
+import pBia from '../assets/site/partner-bia.webp';
+import pMathworks from '../assets/site/partner-mathworks.webp';
+import pEntuple from '../assets/site/partner-entuple.webp';
+import pShivalik from '../assets/site/partner-shivalik.webp';
+import pStartupIndia from '../assets/site/partner-startup-india.webp';
+import pTworks from '../assets/site/partner-tworks.webp';
+import pYali from '../assets/site/partner-yali.webp';
+import pAkron from '../assets/site/partner-akron.webp';
+import pAspire from '../assets/site/partner-aspire.webp';
+import pIcici from '../assets/site/partner-icici.webp';
 
 import imgPant from '../assets/DirectorSir.webp';
 import imgPraveen from '../assets/deputy.jpg';
@@ -138,10 +142,10 @@ export const navigation = [
 /* ------------------------------------------------------------------ */
 
 export const heroSlides = [
-  { src: heroIitr, caption: 'Main Building, IIT Roorkee' },
-  { src: heroDrone, caption: 'Agri-drone training for farmers and students' },
-  { src: heroEvLab, caption: 'Electric Vehicle Multiskilling Lab' },
-  { src: heroWorkbench, caption: 'EV powertrain training workbench' },
+  { src: heroIitr, srcSm: heroIitrSm, caption: 'Main Building, IIT Roorkee' },
+  { src: heroDrone, srcSm: heroDroneSm, caption: 'Agri-drone training for farmers and students' },
+  { src: heroEvLab, srcSm: heroEvLabSm, caption: 'Electric Vehicle Multiskilling Lab' },
+  { src: heroWorkbench, srcSm: heroWorkbenchSm, caption: 'EV powertrain training workbench' },
 ];
 
 export const impactStats = [

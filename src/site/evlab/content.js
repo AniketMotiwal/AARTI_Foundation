@@ -1,5 +1,6 @@
 // Copy for the Electric Vehicle Multiskilling Lab page (/ev-lab).
 import hero from '../../assets/site/hero-ev-lab.webp';
+import heroSm from '../../assets/site/hero-ev-lab-sm.webp';
 import iciciLogo from '../../assets/ICICI_Foundation_Logo.png';
 import lab1 from '../../assets/site/evlab-1.webp';
 import lab2 from '../../assets/site/evlab-2.webp';
@@ -13,6 +14,7 @@ import lab9 from '../../assets/site/evlab-9.webp';
 
 export const evHero = {
   image: hero,
+  imageSm: heroSm,
   imageAlt: 'Electric vehicles and training benches inside the EV Multiskilling Lab',
   eyebrow: 'Electric Vehicle Multiskilling Lab · IIT Roorkee',
   title: 'Where India’s EV workforce is trained.',

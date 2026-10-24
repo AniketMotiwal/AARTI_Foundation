@@ -1,6 +1,6 @@
 import React from 'react';
 import { FiCheck } from 'react-icons/fi';
-import { CheckList, IconCard, MicroHero } from '../micro';
+import { CheckList, IconCard, LazyVideo, MicroHero } from '../micro';
 import { Button, Container, CountUp, Reveal, Section, SectionHeading, Tag, cx } from '../ui';
 import { Gallery } from '../home/HomeSections';
 import { evAbout, evFacilities, evGallery, evHero, evObjectives, evOutcomes, evPillars, evStats, evVideo, sponsor } from './content';
@@ -9,6 +9,7 @@ const EvLab = () => (
   <>
     <MicroHero
       image={evHero.image}
+      imageSm={evHero.imageSm}
       imageAlt={evHero.imageAlt}
       eyebrow={evHero.eyebrow}
       title={evHero.title}
@@ -62,7 +63,7 @@ const EvLab = () => (
         </Reveal>
         <Reveal delay={100}>
           <figure className="overflow-hidden rounded-3xl border border-line bg-black">
-            <video className="block aspect-video w-full object-cover" src={evVideo} poster={evGallery[0].src} autoPlay muted loop playsInline controls preload="metadata" />
+            <LazyVideo className="block aspect-video w-full object-cover" src={evVideo} poster={evGallery[0].src} />
             <figcaption className="bg-surface px-5 py-4 text-sm text-ink-soft">EV Lab walkthrough — facilities, training set-ups and research spaces.</figcaption>
           </figure>
         </Reveal>

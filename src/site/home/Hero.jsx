@@ -20,27 +20,40 @@ const Hero = () => {
     return () => clearTimeout(t);
   }, [index, playing]);
 
+  // Only download the visible slide and the next one; the first preload waits until the page has settled.
+  const [mounted, setMounted] = useState(() => new Set([0]));
+  useEffect(() => {
+    const t = setTimeout(
+      () => setMounted((s) => new Set([...s, index, (index + 1) % heroSlides.length])),
+      index === 0 ? 2500 : 0
+    );
+    return () => clearTimeout(t);
+  }, [index]);
+
   return (
     <>
       <section className="relative isolate overflow-hidden bg-brand-950 text-white" aria-label="Introduction">
-        {heroSlides.map((slide, i) => (
-          <img
-            key={slide.src}
-            src={slide.src}
-            alt=""
-            aria-hidden
-            // React 18 doesn't know fetchPriority yet; the lowercase attribute passes through to the DOM
-            // eslint-disable-next-line react/no-unknown-property
-            fetchpriority={i === 0 ? 'high' : 'low'}
-            loading={i === 0 ? 'eager' : 'lazy'}
-            decoding="async"
-            className={cx(
-              'absolute inset-0 -z-20 h-full w-full object-cover transition-opacity duration-[1400ms] ease-out',
-              i === index ? 'opacity-100' : 'opacity-0',
-              i === index && playing && 'animate-hero-zoom'
-            )}
-          />
-        ))}
+        {heroSlides.map((slide, i) =>
+          mounted.has(i) ? (
+            <img
+              key={slide.src}
+              src={slide.src}
+              srcSet={`${slide.srcSm} 828w, ${slide.src} 1920w`}
+              sizes="100vw"
+              alt=""
+              aria-hidden
+              // React 18 doesn't know fetchPriority yet; the lowercase attribute passes through to the DOM
+              // eslint-disable-next-line react/no-unknown-property
+              fetchpriority={i === 0 ? 'high' : 'low'}
+              decoding={i === 0 ? 'sync' : 'async'}
+              className={cx(
+                'absolute inset-0 -z-20 h-full w-full object-cover transition-opacity duration-[1400ms] ease-out',
+                i === index ? 'opacity-100' : 'opacity-0',
+                i === index && playing && 'animate-hero-zoom'
+              )}
+            />
+          ) : null
+        )}
         <div
           className="absolute inset-0 -z-10 bg-[linear-gradient(100deg,rgba(3,8,52,0.96)_0%,rgba(3,8,52,0.82)_38%,rgba(3,8,52,0.35)_75%,rgba(3,8,52,0.15)_100%)]"
           aria-hidden

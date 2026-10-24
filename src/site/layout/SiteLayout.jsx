@@ -8,7 +8,7 @@ import { mainSite } from '../sites';
 
 /** Slim loading bar shown while a lazy page chunk downloads. */
 export const PageLoading = () => (
-  <div className="min-h-[60vh]" role="status" aria-label="Loading page">
+  <div className="min-h-screen" role="status" aria-label="Loading page">
     <div className="fixed inset-x-0 top-0 z-[60] h-0.5 overflow-hidden bg-transparent">
       <div className="h-full w-1/3 animate-loading-bar bg-gold-500" />
     </div>

@@ -92,6 +92,7 @@ export const RsvcOverview = () => (
   <>
     <MicroHero
       image={hero.image}
+      imageSm={hero.imageSm}
       imageAlt={hero.imageAlt}
       eyebrow={hero.eyebrow}
       title={hero.title}

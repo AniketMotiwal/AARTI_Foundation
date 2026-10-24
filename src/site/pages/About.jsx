@@ -19,7 +19,7 @@ const Objectives = () => {
                 aria-expanded={isOpen}
                 className="flex w-full items-center gap-5 px-6 py-5 text-left transition-colors hover:bg-muted sm:px-8"
               >
-                <span className="font-display text-sm font-semibold text-gold-600">{String(i + 1).padStart(2, '0')}</span>
+                <span className="font-display text-sm font-semibold text-gold-700 dark:text-gold-400">{String(i + 1).padStart(2, '0')}</span>
                 <span className="flex-1 font-display text-lg font-semibold text-ink">{o.title}</span>
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-line text-ink-soft">
                   {isOpen ? <FiMinus className="h-4 w-4" /> : <FiPlus className="h-4 w-4" />}

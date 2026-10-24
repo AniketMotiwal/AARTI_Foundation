@@ -1,12 +1,14 @@
 // Building blocks shared by the CPM and RSVC microsites.
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { icons } from './icons';
 import { Container, Reveal, cx } from './ui';
 
-export const MicroHero = ({ image, imageAlt, eyebrow, title, lead, actions, children }) => (
+export const MicroHero = ({ image, imageSm, imageAlt, eyebrow, title, lead, actions, children }) => (
   <section className="relative isolate overflow-hidden bg-brand-950 text-white">
     <img
       src={image}
+      srcSet={imageSm ? `${imageSm} 828w, ${image} 1920w` : undefined}
+      sizes="100vw"
       alt={imageAlt}
       className="absolute inset-0 -z-20 h-full w-full animate-hero-zoom object-cover"
       // eslint-disable-next-line react/no-unknown-property
@@ -38,7 +40,7 @@ export const IconCard = ({ icon, title, text, tag, index, delay = 0, className }
           {Icon && <Icon className="h-5 w-5" aria-hidden />}
         </span>
         {index !== undefined && (
-          <span className="font-display text-sm font-semibold text-gold-600">{String(index + 1).padStart(2, '0')}</span>
+          <span className="font-display text-sm font-semibold text-gold-700 dark:text-gold-400">{String(index + 1).padStart(2, '0')}</span>
         )}
       </div>
       {tag && <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-gold-700 dark:text-gold-400">{tag}</p>}
@@ -66,6 +68,29 @@ export const LogoStrip = ({ items, className }) => (
     </ul>
   </Container>
 );
+
+/** Muted looping video that only downloads and plays once it scrolls into view. */
+export const LazyVideo = ({ src, poster, className }) => {
+  const ref = useRef(null);
+  useEffect(() => {
+    const video = ref.current;
+    if (!video || typeof IntersectionObserver === 'undefined') return undefined;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (!video.getAttribute('src')) video.setAttribute('src', src);
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { rootMargin: '200px 0px' }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [src]);
+  return <video ref={ref} poster={poster} className={className} muted loop playsInline controls preload="none" />;
+};
 
 export const CheckList = ({ items, invert = false }) => (
   <ul className="space-y-3">

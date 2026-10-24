@@ -94,7 +94,7 @@ export const FocusAreas = () => (
             className="group relative flex flex-col bg-surface p-6 transition-colors duration-300 hover:bg-brand-950 sm:p-7 sm:last:col-span-2 lg:last:col-span-1"
           >
             <div className="flex items-center justify-between">
-              <span className="font-display text-sm font-semibold text-gold-600 group-hover:text-gold-400">
+              <span className="font-display text-sm font-semibold text-gold-700 dark:text-gold-400 group-hover:text-gold-400">
                 {String(i + 1).padStart(2, '0')}
               </span>
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-50 text-brand-700 transition-colors group-hover:bg-white/10 group-hover:text-gold-400 dark:bg-white/5 dark:text-gold-400">

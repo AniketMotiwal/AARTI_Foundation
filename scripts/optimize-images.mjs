@@ -84,6 +84,16 @@ const jobs = [
   ['EV-LAB/EV-lab-9.jpeg', 'evlab-9', 1400],
 ];
 
+// Small (mobile) variants of full-bleed hero photos, used via srcSet
+const heroSmall = [
+  ['IIT-Roorkee.jpg', 'hero-iitr-sm'],
+  ['DSC_9871.JPG', 'hero-drone-training-sm'],
+  ['DSC_9851.JPG', 'hero-ev-lab-sm'],
+  ['DSC_9834.JPG', 'hero-ev-workbench-sm'],
+  ['rsvc.jpeg', 'rsvc-team-sm'],
+];
+for (const [file, name] of heroSmall) jobs.push([file, name, 828]);
+
 // Vector logos rasterised to WebP
 const logos = [['MHI.svg', 'logo-mhi', 480]];
 
@@ -129,6 +139,22 @@ const partnerLogos = [
   ['Gram.webp', 'partner-gram-unnati'],
   ['sobus.png', 'partner-sobus'],
   ['rscvcbg.webp', 'partner-psa-manthan'],
+  ['lucknow.png', 'partner-iiml'],
+  ['Hella.png', 'partner-hella'],
+  ['icat.jpg', 'partner-icat'],
+  ['Lumnx.png', 'partner-lumax'],
+  ['altgreen.png', 'partner-altigreen'],
+  ['iitkanpur.png', 'partner-iitk-design'],
+  ['Bhagwan.png', 'partner-bia'],
+  ['mathworks.jpg', 'partner-mathworks'],
+  ['Entuple.png', 'partner-entuple'],
+  ['shiavlik.png', 'partner-shivalik'],
+  ['startup.webp', 'partner-startup-india'],
+  ['tworks.png', 'partner-tworks'],
+  ['mob.png', 'partner-yali'],
+  ['Akon.webp', 'partner-akron'],
+  ['partners6.webp', 'partner-aspire'],
+  ['ICICI_Foundation_Logo.png', 'partner-icici'],
 ];
 for (const [file, name] of partnerLogos) {
   await sharp(path.join(SRC, file))

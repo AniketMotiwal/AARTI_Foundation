@@ -45,7 +45,7 @@ const logoTile = (invert) =>
   );
 
 export const BrandLockup = ({ brand, invert = false, compact = false }) => (
-  <Link to={brand.to} className="flex min-w-0 items-center gap-3 sm:gap-4" aria-label={`${brand.title} — home`}>
+  <Link to={brand.to} className="flex min-w-0 items-center gap-3 sm:gap-4" aria-label={compact ? `${brand.title} — home` : undefined}>
     <span className="flex shrink-0 items-center gap-2 sm:gap-3">
       <img src={iitLogo} alt="" width="60" height="60" className={logoTile(invert)} />
       <span className={cx('h-10 w-px sm:h-12', invert ? 'bg-white/20' : 'bg-line')} aria-hidden />
@@ -176,7 +176,7 @@ const MobileMenu = ({ site, open, onClose }) => {
   const rowClass = 'block rounded-xl px-3 py-3 font-medium text-ink hover:bg-muted';
 
   return createPortal(
-    <div className={cx('fixed inset-0 z-[100] lg:hidden', !open && 'pointer-events-none')} aria-hidden={!open}>
+    <div className={cx('fixed inset-0 z-[100] transition-[visibility] duration-300 lg:hidden', open ? 'visible' : 'pointer-events-none invisible')}>
       <div
         className={cx('absolute inset-0 bg-brand-950/60 backdrop-blur-sm transition-opacity', open ? 'opacity-100' : 'opacity-0')}
         onClick={onClose}
