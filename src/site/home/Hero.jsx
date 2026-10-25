@@ -158,6 +158,9 @@ const Hero = () => {
             <Button to="/contact" variant="ghostLight" className="backdrop-blur-sm">
               Partner with us
             </Button>
+            <Button to="/cpm" variant="ghostLight" className="backdrop-blur-sm">
+              Explore CPM
+            </Button>
           </div>
 
           <ul className="mt-10 flex animate-fade-in flex-wrap gap-3 [animation-delay:320ms]">
